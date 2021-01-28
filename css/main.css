@@ -62,7 +62,6 @@ body {
 }
 
 /* Start of bottom (Same for every page) */
-
 .bottom {
     padding: 0 1em 0 1em;
     background-color: black;
@@ -75,9 +74,15 @@ body {
     padding: 0.1em;
 }
 
+.bottom a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
 .bottom h5 {
     color: white;
     padding: 0.3em;
 }
-
 /* End of bottom */

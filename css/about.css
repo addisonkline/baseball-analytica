@@ -36,13 +36,38 @@ body {
     max-width: 100%;
 }
 
-.bg-site-info {
-    background-color: black;
+.bg p {
+    padding: 0 1em 0 1em;
 }
 
 .bg nav li {
     display: inline;
     padding: 0 3em 0 3em;
 }
-
 /* End of top */
+
+/* Start of bottom (Same for every page) */
+.bottom {
+    padding: 0 1em 0 1em;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.bottom section {
+    color: white;
+    padding: 0.1em;
+}
+
+.bottom a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.bottom h5 {
+    color: white;
+    padding: 0.3em;
+}
+/* End of bottom */
