@@ -32,7 +32,11 @@ body {
     font-size: 1em;
 }
 
-.bg img {
+.bg a:hover {
+    color: rgb(100 100 100);
+}
+
+.bg .bg-site-info .image img {
     max-width: 100%;
 }
 
@@ -45,6 +49,19 @@ body {
     padding: 0 3em 0 3em;
 }
 /* End of top */
+
+.contact-info {
+    padding: 0 1em 1em 1em;
+}
+
+.contact-info hr {
+    opacity: .5;
+}
+
+.contact-info h1 {
+    padding: .1em 0 .2em 0;
+    font-size: 1.5em;
+}
 
 /* Start of bottom (Same for every page) */
 .bottom {
@@ -66,8 +83,55 @@ body {
     font-size: 0.8em;
 }
 
+.bottom a:hover {
+    color: rgb(100 100 100);
+}
+
 .bottom h5 {
     color: white;
     padding: 0.3em;
 }
 /* End of bottom */
+
+/* Start of size adjustments (Same for every page)*/
+@media (min-width: 360px) {
+    .bg nav li {
+        display: inline;
+        padding: 1em;
+        margin: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .bg nav li {
+        display: inline;
+        padding: 2em;
+        margin: 0;
+    }
+    .bg-site-info .image {
+        max-width: 85%;
+        max-height: 85%;
+        margin: auto;
+        padding: 0 7.5% 0 7.5%;
+        background: rgb(100 100 100) url('../images/background-formulas.png');
+        background-blend-mode: soft-light;
+        display: flex;
+    }
+}
+
+@media (min-width: 992px) {
+    .bg-site-info .image {
+        max-width: 65%;
+        max-height: 65%;
+        padding: 0 17.5% 0 17.5%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bg-site-info .image {
+        max-width: 45%;
+        max-height: 45%;
+        padding: 0 32.5% 0 32.5%;
+    }
+}
+/* End of size adjustments */
