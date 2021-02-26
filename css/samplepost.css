@@ -85,9 +85,25 @@ body {
     text-decoration: underline;
 }
 
+.post-content img {
+    padding: 1em 0 1em 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.post-content h4 {
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+}
+
 /* Start of bottom (Same for every page) */
 .bottom {
-    padding: 0 1em 0 1em;
+    padding: 1em 0 1em 0;
     background-color: black;
     text-align: center;
     margin: 0;
@@ -98,14 +114,35 @@ body {
     padding: 0.1em;
 }
 
-.bottom a {
+.bottom .share-this-page {
+    align-items: center;
+    margin: auto;
+}
+
+.bottom .share-this-page li {
+    display: inline;
+    padding: 0 1em 0 1em;
+}
+
+.bottom .share-this-page a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.bottom .share-this-page a:hover {
+    color: rgb(100 100 100);
+}
+
+.bottom .social-media-links a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 0.8em;
 }
 
-.bottom a:hover {
+.bottom .social-media-links a:hover {
     color: rgb(100 100 100);
 }
 
