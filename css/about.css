@@ -63,6 +63,17 @@ body {
     font-size: 1.5em;
 }
 
+.about-section a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about-section a:hover {
+    color: rgb(100 100 100);
+    text-decoration: underline;
+}
+
 /* Start of bottom (Same for every page) */
 .bottom {
     padding: 1em 0 1em 0;
