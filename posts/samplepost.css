@@ -172,7 +172,7 @@ body {
         max-height: 85%;
         margin: auto;
         padding: 0 7.5% 0 7.5%;
-        background: rgb(100 100 100) url('../../images/background-formulas.png');
+        background: rgb(100 100 100) url('../images/background-formulas.png');
         background-blend-mode: soft-light;
         display: flex;
     }
