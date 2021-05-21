@@ -14,7 +14,7 @@
 
  * Project started: January 10, 2021
 
- * Domain registered: _, 2021
+ * Domain registered: May 18, 2021
 
  * First post: _, 2021
 
