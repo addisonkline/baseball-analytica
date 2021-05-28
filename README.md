@@ -16,7 +16,7 @@
 
  * Domain registered: May 18, 2021
 
- * First post: _, 2021
+ * First post: May 21, 2021
 
  * Most recent README update: March 3, 2021
 

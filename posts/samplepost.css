@@ -101,6 +101,13 @@ body {
     text-align: center;
 }
 
+.post-content h2 {
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: normal;
+    color: rgb(100 100 100);
+}
+
 /* Start of bottom (Same for every page) */
 .bottom {
     padding: 1em 0 1em 0;

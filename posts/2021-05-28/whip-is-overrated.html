@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WHIP is Overrated | Baseball Analytica</title>
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2021-05-28/whip-is-overrated.html">
+</head>
+<body>
+    <div class="bg">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li><a href="https://baseball-analytica.com">Posts</a></li>
+                        <li><a href="../../about.html">About</a></li>
+                        <li><a href="../../contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>WHIP is Overrated</h1>
+            <h3>by A. Kline</h3>
+            <h3>Posted on 05/28/2021</h3>
+            <hr>
+        </section>
+        <p>If you go to any current pitcher’s page on <a href="https://www.mlb.com" target="_blank">Major League Baseball’s official site</a>, you will be greeted not just by their photo, age, height, weight, and handedness, but some very basic stats as well. Win-loss record, ERA, innings pitched, all that. But you’ll also see their WHIP.</p>
+        <img src="jacob-degrom-pitching-stats.png" alt="Jacob deGrom's pitching stats, including a line for WHIP">
+        <h2>Jacob deGrom’s stats as seen on MLB.com as of May 26 of this year. And yes, that 3-2 record with an ERA of less than 1 is the most Jacob deGrom thing ever.</h2>
+        <p>If you are in the camp of baseball fans who know enough about baseball to recognize most of what’s in the image above but not enough to dare approach any statistic that sounds like onomatopoeia, it may be a surprise to see such a strange-sounding stat effectively endorsed by the MLB itself. And if you’re anything like me, you’re also surprised to see WHIP promoted that highly by the league, but not for the same reason.</p>
+        <p>On some level, I genuinely do get why WHIP is as popular as it is. For starters, WHIP was not a name plucked out of thin air—it’s simply an acronym for Walks plus Hits per Innings Pitched. To make it even simpler, here is the formula for it:</p>
+        <h4>WHIP = (Walks + Hits) / Innings Pitched</h4>
+        <p>Yes, it really is that simple—and that’s a huge part of the appeal. With just three basic and easy-to-find counting stats, you can roughly calculate how effective any pitcher is at preventing hitters from reaching base. And given how reaching base is essential to scoring runs, you can therefore approximate how effective a pitcher should be at preventing runs—which is the job description for a pitcher when you really think about it. In this sense, it is like a more skill-based version of the more results-based (a.k.a. more luck based) ERA, an undisputed cornerstone of pitching statistics. As I referenced in <a href="https://baseball-analytica.com/posts/2021-05-21/past-present-future-sabermetrics.html" target="_blank">my previous post</a>, WHIP is a creation of Daniel Okrent and is often considered to be one of the hallmark sabermetric stats of its age, despite its simplicity. So if WHIP is so simple and so effective, then what’s the issue here?</p>
+        <p>Well, let’s return to what WHIP’s most fundamental goal is: assessing a pitcher’s skill at preventing hitters from reaching base. When I said that WHIP can be used to roughly calculate how effective pitchers do this, I did not use the word “roughly” by accident. While it is impossible to assess any player’s skill with 100% accuracy, saying that WHIP gets closer than any other elementary statistic would be disingenuous. In reality, the metric’s shortcomings can be summed up by its two most glaring issues.</p>
+        <p>WHIP’s first problem is that it does not factor in the number of batters a pitcher has hit. This is admittedly the smaller issue with the metric, but it’s not nothing. Using Baseball-Reference data, the league-wide WHIP from the <a href="https://www.baseball-reference.com/leagues/MLB/2016-standard-pitching.shtml" target="_blank">2016 season</a> (as in all hits allowed plus all walks allowed divided by all innings pitched by any qualified pitcher) was 1.325. If that season’s 1651 hit batsmen were included in this calculation, however, this number would rise to 1.363. In a more specific case, if Chris Sale’s 17 hit batters from that year were included in his WHIP, it would rise from 1.037 (seventh-highest in the league that year) to 1.113—a difference even greater than that between Sale’s actual 1.037 WHIP and first-place Max Scherzer’s 0.968.</p>
+        <p>But focusing too much on the lack of hit batsmen in the WHIP formula detracts our attention from the stat’s biggest issue: the lack of discernment between different kinds of hits. For example, a pitcher who allows four home runs as many innings with no walks would have the same WHIP (1.000) as a pitcher who allowed only four singles. While proponents of defense-independent pitching stats may emphasize (perhaps too much) the role fielders play in inside-the-park hits, the fact that not all hits are created equal is indisputable, making it that much more surprising that one of the most popular sabermetric statistics would ignore it entirely. The idea of nuance in regards to hits is not even new, either—it is the exact idea of slugging percentage, which has been <a href="https://www.baseball-reference.com/bullpen/Slash_line" target="blank">one of the most recognizable hitter stats for decades</a>.</p>
+        <p>For the sake of my next example, let’s create an alternative to WHIP based on the weights of slugging percentage, as seen below:</p>
+        <h4>Alternative WHIP = (1B + (2*2B) + (3*3B) + (4*HR) + BB) / IP</h4>
+        <p>Using MLB.com and <a href="https://baseballsavant.mlb.com/" target="_blank">Baseball Savant</a> data (as Baseball-Reference does not record doubles and triples for pitchers) Justin Verlander’s WHIP in 2019 was 0.803—best in the league by a significant margin and only about 60 percent of the league-wide value of 1.334—but his adjusted WHIP was 1.475, a less impressive 72 percent of the league-wide adjusted WHIP of 2.0349. That would be roughly the equivalent of a 0.960 WHIP in 2019, or about what Jack Flaherty pulled off. Obviously that’s still great, but at almost 0.2 higher than Verlander’s actual number, it’s the same difference between third-place Flaherty and seventeenth-place Mike Soroka.</p>
+        <p>Even though I used Alternative WHIP in this post, alternatives to WHIP certainly do exist. Let’s think, for a second, of what a good substitute for WHIP would be: some metric that assesses how effective a pitcher is at keeping hitters from reaching base while still factoring in both hit batsmen and different kinds of hits. We can find our substitute by looking at stats we use to evaluate hitters, such as OPS. By adding on-base percentage to slugging percentage, we can get an idea of how effective hitters are at reaching base without sacrificing the nuance in how they get there. Therefore, the OPS a pitcher allows should be more effective at measuring a pitcher’s fundamental skill than WHIP.</p>
+        <p>We can compare the effectiveness of WHIP and OPS allowed using Wins Above Replacement, or WAR. While WAR is by no means perfect (no stat is), its <a href="https://library.fangraphs.com/war/calculating-war-pitchers/" target="_blank">long and thorough calculation process</a> ensures that it better measures a pitcher’s skill than both WHIP and OPS, making it a good metric to compare the two. To do this, I decided to look at 2019 pitching data, because that is the last year of “normal” data we have when you account for the shortened season last year and <a href="https://www.nytimes.com/article/no-hitters-2021-season-history.html" target="_blank">what could be the next 1968</a> this year.</p>
+        <img src="whip-vs-war.png" alt="WHIP vs WAR for all 2019 pitchers >=150 IP">
+        <h2>(Data from Baseball-Reference.com)</h2>
+        <p>As you can see above, there certainly is a relationship between Baseball-Reference WAR and WHIP for 2019’s most qualified pitchers. The R-squared value of 0.477 means that at least in this case, about half of a pitcher’s WAR can be predicted by their WHIP, which is not too shabby. How about OPS?</p>
+        <img src="ops-against-vs-war.png" alt="OPS against vs WAR for all 2019 pitchers >=150 IP">
+        <h2>(Data from Baseball-Reference.com)</h2>
+        <p>Well how about that? Even with a handful of outliers, the R-squared value improves significantly when WHIP is substituted with OPS against. Obviously this is not a causal relationship—a pitcher improving their OPS does not specifically cause their WAR to improve as well. But this relationship does show that accounting for factors like batters hit and extra base hits is important when assessing just how effective a pitcher is at preventing runs. Of course, OPS is not perfect either. Adding two fractions together, let alone ones with completely different denominators, is a pretty sketchy calculation that does not make much intuitive sense. But the fact that still seems more reflective of pitcher's skill despite this OPS  really does say a lot about WHIP.</p>
+        <p>I should emphasize that WHIP is not some uniquely evil statistic that deserves to be shamed ad infinitum. If you want to know the rough number (you know, not counting hit batters and all that) of baserunners a pitcher allows per inning, then by all means, use it. But at its heart, WHIP is a fundamentally simple metric with major limitations as a result—so do not make it out to be more than it’s worth.</p>
+        <hr>
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2021-05-21/past-present-future-sabermetrics" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2021-05-21/past-present-future-sabermetrics&title=Baseball%20Analytica%3A%20The%20Past%2c%20Present%2c%20and%20Future%20of%20Sabermetrics" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20The%20Past%2c%20Present%2c%20and%20Future%20of%20Sabermetrics&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2021-05-21/past-present-future-sabermetrics" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/baseballanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+            <h5>Copyright 2021 Baseball Analytica. All rights reserved.</h5>
+    </div>
+</body>
+</html>
