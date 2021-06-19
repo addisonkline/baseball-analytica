@@ -8,7 +8,7 @@
 
  * Baseball Analytica Twitter: https://twitter.com/baseballanalytica/
 
-*To contact me, please email akline@baseball-analytica.com*
+*To contact me, please email addison.k@wustl.edu*
 
 ## Important Dates
 
