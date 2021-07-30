@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Not All Runs are Created Equal, Part 2 | Baseball Analytica</title>
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2021-07-30/not-all-runs-equal-2.html">
+</head>
+<body>
+    <div class="bg">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li><a href="https://baseball-analytica.com">Posts</a></li>
+                        <li><a href="../../about.html">About</a></li>
+                        <li><a href="../../contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>Not All Runs are Created Equal, Part 2</h1>
+            <h3>by A. Kline</h3>
+            <h3>Posted on 07/30/2021</h3>
+            <hr>
+        </section>
+        
+        <p>One of the major appeals of well-known “should have been” metrics for measuring teams, like Pythagorean win-loss record, is that they tend to be better at predicting the number of wins a team will get in the future than—well, the number of wins a team already got. Even the most bare bones of predicted win-loss records, Bill James’s Pythagorean formula, is better correlated with future team performance than a team’s actual record. <a href="https://en.wikipedia.org/wiki/Clay_Davenport" target="_blank">Clay Davenport</a>, the co-founder of <a href="https://www.baseballprospectus.com/" target="_blank">Baseball Prospectus</a>, created <a href=""></a> <a href="https://legacy.baseballprospectus.com/glossary/index.php?mode=viewstat&stat=559" target="_blank">a different version of this formula</a> based on the same concept of run differential that correlates even better, which further inspired David Smyth’s <a href="https://en.wikipedia.org/wiki/Pythagenpat" target="_blank">Pythagenpat</a>.</p>
+        <p>But don’t just take it from me, let’s look at the data. I decided to look at a decade’s worth of data (from the 2011 to 2020 seasons, inclusive) for all MLB teams, specifically their winning percentage, run differential, and strength of schedule. From there, we can calculate each season team’s Pythagorean winning percentage and use linear regression to compare it to the team’s performance the next season (meaning a team’s record in 2011 will be a point’s X value while that team’s record in 2012 will be that point’s Y value, and the team’s record in 2012 will be the X value when the Y value is their record in 2013). I apologize if this is not eloquently worded and still confusing, but hopefully you’ll see what I mean in one second.</p>
+        <img src="winning-pct-vs-winning-pct.png" alt="Winning % vs. the same team's winning % the next season">
+        <h2>There exists a weak yet noticeable relationship between a team’s winning percentage one year and their winning percentage the next. (Data: Baseball-Reference.com)</h2>
+        <p>As you might imagine, there is some correlation between how many games a team will win in a given year and how many they will win in the next, but not a very strong one, as indicated by the r-squared value of 0.277. The standard error of around 0.06539 indicates that the average team’s next-year performance will be off from their predicted winning percentage by about 6.54 percentage points. But that’s just winning percentage, which is influenced by all kinds of luck factors. So if run differential is a better measure of team skill than winning percentage, it should have a stronger correlation with future success, right?</p>
+        <img src="run-differential-vs-winning-pct.png" alt="Run differential vs. the same team's winning % the next season">
+        <h2>The correlation between run differential and winning percentage the next year is indeed stronger, but not by much. (Data: Baseball-Reference.com)</h2>
+        <p>When swapping out winning percentage with run differential per game*, the r-squared value rises to 0.283, while the standard error drops to 6.51 percentage points. Both of these numbers improve further when run differential is swapped out for Pythagorean winning percentage (seen below), which is due to the fact that Pythagorean winning percentage’s formula <a href="https://www.sports-reference.com/blog/baseball-reference-faqs/" target="_blank">has an exponent optimized to maximize its correlation with team skill</a> (sound familiar?)</p>
+        <img src="pyth-winning-pct-vs-winning-pct.png" alt="Pythagorean winning % vs. the same team's winning % the next season">
+        <h2>(Data: Baseball-Reference.com)</h2>
+        <p>With all of this in mind, how does weighted run differential correlate with a team’s future success in comparison to these? Well, as I’ve probably beaten into your head at this point since <a href="https://baseball-analytica.com/posts/2021-07-16/not-all-runs-equal.html" target="_blank">my last post</a>, it depends on what that exponent n is set equal to.</p>
+        <img src="rsquared-wrd-vs-winning-pct.png" alt="R^2 value of weighted run differential vs. the same team's winning % the next season, as a function of exponent n's value">
+        <h2>The R^2 value of the relationship between weighted run differential and winning percentage increases as the value of exponent n approaches 0. (Data: Baseball-Reference.com)</h2>
+        <p>As I speculated in my previous post, a lower value for n is better. Even though the correlation maxes out when n is 0, it’s still significant enough when n is less than 0.2. But then again, R^2 isn’t everything—just as important in this case would be the standard error that we discussed earlier. So let’s take a closer look at the range from n = 0 to n = 0.2, but this time we’ll focus on the standard error instead.</p>
+        <img src="se-wrd-vs-winning-pct.png" alt="Standard error of weighted run differential vs. the same team's winning % the next season, as a function of exponent n's value">
+        <h2>The standard error of the relationship between weighted run differential and winning percentage decreases as the value of exponent n approaches 0. (Data: Baseball-Reference.com)</h2>
+        <p>I will admit this result is not what I expected. The fact that the formula for weighted run differential is the most accurate (as measured by the standard error being the lowest) when n = 0 indicates that the formula is actually no better than raw run differential. But how?</p>
+        <p>Well, this could be due to a variety of reasons, or more likely a concoction of all of them to varying degrees. For one (and I’ll admit I don’t have any hard data in front of me to back this up), but MLB schedules for a given team are usually pretty consistent over two consecutive seasons. Aside from the interleague division matchup alternating each season, the opponents of a given team will be the same year after year, and will probably play about the same as the previous year barring any major collapses or surges of certain teams. If this is the case, then a team’s strength of schedule probably will not change in the span of one year, and as such, it does not make sense to use a weighted formula for a season while always assuming the next season will be average. It makes sense for MLB schedules to be somewhat consistent from year to year—but then again, I don’t have any data in front of me to prove that. At least not yet.</p>
+        <p>But the more pressing culprit might be the formula itself. As useful as strength of schedule is, there is not much nuance to it—for example, did a team have an easier schedule because they benefited disproportionately from 1) weak opposing pitchers their batters could wallop, or 2) weak opposing hitters that made their pitchers’ jobs easy? No way to tell with SOS. The solution would be to weight runs scored based on how skilled the opponents’ pitching is and weight runs allowed based on how skilled the opponent’s hitting is. But then again, this is something to address at a later date.</p>
+        <p>If there’s one thing that I found really interesting about these data, however, it’s that winning percentage and run differential (weighted as well as unweighted) are really not that different. Sure, the correlation and standard error are both better in the case of run differential, but only by a small margin—arguably one too small to even be considered significant. Like many things quantified in baseball, our ability to evaluate team skill may be asymptotic—we can get closer and closer, but can never quite create a 100% accurate metric. I hate to say this, but the metrics we have now are only good for ballpark estimates at a team’s skill. Personally, I don’t believe that we will ever be able to measure a team’s skill with perfect accuracy, but I do think putting their scoring into context will get us just that much closer.</p>
+        
+        <hr>
+
+        <p>*This is where I will admit to a potential source of error in my calculations. For some reason, Baseball Reference doesn’t like listing the specific number of runs each team scores and allows in their expanded season standings—only the number of runs scored and allowed per game to one decimal point. As a result, I had to recalculate each team’s expected run differential by multiplying these values by the number of games they played, meaning a team’s recalculated run differential may be off from their actual one by as many as 15 or so runs. The good news, though, is that this affects unweighted and weighted run differential in the exact same way, meaning it does not introduce bias when comparing those two.</p>
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2021-07-30/not-all-runs-equal-2.html" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2021-07-30/not-all-runs-equal-2.html&title=Baseball%20Analytica%3A%20Not%20All%20Runs%20are%20Created%20Equal%2C%20Part%202" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Not%20All%20Runs%20are%20Created%20Equal%2C%20Part%202&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2021-07-30/not-all-runs-equal-2.html" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
