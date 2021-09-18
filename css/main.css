@@ -56,6 +56,12 @@ body {
     padding: 0 1em 1em 1em;
 }
 
+.posts ul {
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0 0 0.1em 0;
+}
+
 .posts .latest-posts-heading h1 {
     padding: .1em 0 .2em 0;
     font-size: 1.5em;
