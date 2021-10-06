@@ -9,9 +9,10 @@
     <link rel="icon" href="../../images/favicon.ico">
     <link rel="icon" href="../../images/icon.png">
     <link rel="canonical" href="https://baseball-analytica.com/posts/2021-06-18/good-hitting-bad-pitching.html">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
 </head>
 <body>
-    <div class="bg">
+    <div class="bg" id="background">
         <section class="top">
             <div class="very-top">
                 <header>
@@ -30,9 +31,9 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="https://baseball-analytica.com">Posts</a></li>
-                        <li><a href="../../about.html">About</a></li>
-                        <li><a href="../../contact.html">Contact</a></li>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -91,5 +92,8 @@
             </div>
         </section>
     </div>
+
+    <script src="../../background.js"></script>
+
 </body>
 </html>
