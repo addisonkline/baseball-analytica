@@ -13,7 +13,7 @@
     <script src="https://unpkg.com/vue@3.0.2"></script>
 </head>
 <body>
-    <div class="bg">
+    <div class="bg" id="background">
         <section class="top">
             <div class="very-top">
                 <header>
@@ -22,8 +22,8 @@
             </div>
 
             <div class="bg-site-info">
-                <div class="image">
-                    <img src="images/background.png" alt="Background with Logo">
+                <div class="image" id="bg-img">
+                    <img src="images/background.png" alt="Background with Logo" @mousemove="mouseoverBackgroundImage(bg-img)">
                 </div> 
 
                 <h1>Welcome to Baseball Analytica</h1>
@@ -31,10 +31,15 @@
                 <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
             
                 <nav>
-                    <ul>
+                    <!--<ul>
                         <li><a href="#">Posts</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                    </ul>-->
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.url">{{ section.title }}</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -137,6 +142,7 @@
     </div>
 
     <script src="main.js"></script>
+    <script src="background.js"></script>
 
     <script>
 
