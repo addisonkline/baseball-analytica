@@ -3,10 +3,10 @@ const backgroundApp = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             sections: [
-                { title: 'Posts', url: 'index.html', backlinkedUrl: '../../index.html'},
-                { title: 'Tools', url: 'tools.html', backlinkedUrl: '../../tools.html'},
-                { title: 'About', url: 'about.html', backlinkedUrl: '../../about.html'},
-                { title: 'Contact', url: 'contact.html', backlinkedUrl: '../../contact.html'}
+                { title: 'Posts', url: '/index', backlinkedUrl: '../../index'},
+                { title: 'Rankings', url: '/rankings', backlinkedUrl: '../../rankings'},
+                { title: 'About', url: '/about', backlinkedUrl: '../../about'},
+                { title: 'Contact', url: '/contact', backlinkedUrl: '../../contact'}
             ]
         }
     },
