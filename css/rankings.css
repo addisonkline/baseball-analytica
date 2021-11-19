@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;700&display=swap');
+
+/* Custom Properties */
+
+:root {
+    --leading: 2em
+}
+
+body {
+    font-family: 'Source Code Pro', sans-serif;
+    margin: 0;
+}
+
+/* Start of top (Same for every page)*/
+.bg {
+    background: black;
+    background-position: 12% 83%;
+    color: white;
+    text-align: center;
+    padding-bottom: 2em;
+}
+
+.very-top {
+    background: black;
+    padding: 1em 0;
+}
+
+.bg a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.bg a:hover {
+    color: rgb(100 100 100);
+}
+
+.bg .bg-site-info .image img {
+    max-width: 100%;
+}
+
+.bg p {
+    padding: 0 1em 0 1em;
+}
+
+.bg nav li {
+    display: inline;
+    padding: 0 3em 0 3em;
+}
+/* End of top */
+
+.rankings-header {
+    padding: 0 1em 1em 1em;
+}
+
+.rankings-header hr {
+    opacity: .5;
+}
+
+.rankings-header h1 {
+    padding: .1em 0 .2em 0;
+    font-size: 1.5em;
+}
+
+.rankings-header a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.rankings-header a:hover {
+    color: rgb(100 100 100);
+    text-decoration: underline;
+}
+
+.helper {
+    padding: 0em 3em 3em 3em;
+    text-align: center;
+}
+
+.helper button, select {
+    font-family: inherit;
+    padding: 1em;
+    margin: 1em;
+}
+
+.helper .table {
+    margin: auto;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: black;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+}
+
+tbody {
+    font-weight: bold;
+}
+
+th, td {
+    padding: 20px;
+    letter-spacing: 1px;
+}
+
+/* Start of bottom (Same for every page) */
+.bottom {
+    padding: 1em 0 1em 0;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.bottom section {
+    color: white;
+    padding: 0.1em;
+}
+
+.bottom .share-this-page {
+    align-items: center;
+    margin: auto;
+}
+
+.bottom .share-this-page li {
+    display: inline;
+    padding: 0 1em 0 1em;
+}
+
+.bottom .share-this-page a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.bottom .share-this-page a:hover {
+    color: rgb(100 100 100);
+}
+
+.bottom .social-media-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.bottom .social-media-links a:hover {
+    color: rgb(100 100 100);
+}
+
+.bottom h5 {
+    color: white;
+    padding: 0.3em;
+}
+/* End of bottom */
+
+/* Start of size adjustments (Same for every page)*/
+@media (min-width: 360px) {
+    .bg nav li {
+        display: inline;
+        padding: 1em;
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .helper button, select {
+        padding: 1em;
+        margin: 1em;
+    }
+
+    th, td {
+        font-size: 0.8em;
+        padding: 10px;
+        letter-spacing: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    .bg nav li {
+        display: inline;
+        padding: 2em;
+        margin: 0;
+    }
+    .bg-site-info .image {
+        max-width: 85%;
+        max-height: 85%;
+        margin: auto;
+        padding: 0 7.5% 0 7.5%;
+        background: rgb(100 100 100) url('../images/background-formulas.png');
+        background-blend-mode: soft-light;
+        display: flex;
+    }
+}
+
+@media (min-width: 992px) {
+    .bg-site-info .image {
+        max-width: 65%;
+        max-height: 65%;
+        padding: 0 17.5% 0 17.5%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bg-site-info .image {
+        max-width: 45%;
+        max-height: 45%;
+        padding: 0 32.5% 0 32.5%;
+    }
+}
+/* End of size adjustments */
