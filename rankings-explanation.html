@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Explanation of Rankings | Baseball Analytica</title>
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/rankings-explanation">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.url">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="contact-info"> <!-- just called contact info so I don't have to write css just for this -->
+        <h1>Explanation of Rankings</h1>
+        <p>This page is serves as a guide to the Rankings page, which can be found <a href="rankings">here</a>.</p>
+        <hr>
+        <h3>Which players are eligible to be ranked?</h3>
+        <p>For batters, everyone with at least 170 plate appearances in a given full season will appear. For pitchers, everyone with at least 50 innings pitched will appear. For mid-season rankings, these cutoffs are half as high (i.e. 85 plate appearances and 25 innings pitched).</p>
+        <h3>What's the difference between a starting pitcher and a relief pitcher?</h3>
+        <p>For the purpose of these rankings, all qualified pitchers (as in >= 50 IP) who started at least 50 percent of the games they appeared in are considered starters. If they fall below this threshold, they are considered relievers.</p>
+        <h3>What formulas are used to rank players and teams?</h3>
+        <p>The exact formulas used to rank teams, pitchers, and batters are a secret. However, the formulas all attempt to measure the quality of players and teams while factoring in ballparks and the quality of opponents.</p>
+        <h3>What do "Offense Rank" and "Defense Rank" mean?</h3>
+        <p>For a given team, Offense Rank factors in what it takes to score (a mix of batting and baserunning stats, with a bias towards batting). Similarly, Defense Rank factors in what it takes to minimize the opponent's scoring (a mix of pitching and fielding stats, with a bias towards pitching).</p>
+        <h3>How is a team's overall rank determined?</h3>
+        <p>A given team's rank is determined by the combination of their offensive and defensive performance. You may notice that a team's ranking isn't always perfectly correlated with their win-loss record—perhaps indicating that a team did better or worse than they "should" have.</p>
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/contact" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/contact&title=Baseball%20Analytica%3A%20Contact" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Contact&body=https%3A%2F%2Fwww.baseball.analytica.com/contact" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="background.js"></script>
+
+</body>
+</html>
