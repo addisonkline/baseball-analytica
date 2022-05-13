@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Park Factors and the Air | Baseball Analytica</title>
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2022-05-13/park-factors-and-air">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>Park Factors and the Air</h1>
+            <h3>by A. Kline</h3>
+            <h3>Posted on 05/13/2022</h3>
+            <hr>
+        </section>
+        
+        <p>Unlike most other professional sports, there is very little standardization when it comes to baseball fields. While sports like football, basketball, and soccer all have perfectly standardized areas of play that are consistent across all stadiums, baseball stadiums can be very irregular. The famously odd Fenway Park in Boston, for example, has distances of 310 and 302 feet between home plate and its left and right field foul poles, respectively, both the shortest home plate to outfield distances in all of Major League Baseball. However, its left field wall–nicknamed the Green Monster–is over 37 feet tall, which is especially weird considering the right field wall is at times only 3 feet tall. On the other side of the spectrum, Kauffman Stadium in Kansas City is perfectly symmetrical, but its left and right field foul pole distances of 330 feet create a cavernous outfield that frequently results in the ballpark seeing the fewest home runs hit out of any MLB stadium. </p>
+        <p>As you might expect, this drastic variation in stadium shape has resulted in a drastic variation in offensive outcomes by stadium. Comerica Park has a much larger outfield than Yankee Stadium, meaning batted balls that reach the outfield can stay there for much longer before being stopped by the outfield wall. Accordingly, <a href="https://baseballsavant.mlb.com/leaderboard/statcast-park-factors?type=year&year=2021&batSide=&stat=index_wOBA&condition=All&rolling=&sort=0&sortDir=asc" target="_blank">Comerica was almost four times as likely to see a triple being hit than Yankee Stadium</a> between 2019 and 2021. The aforementioned Fenway Park, by virtue of its outfield walls being closer to home, is more likely to see hits leave the ballpark–<a href="https://baseballsavant.mlb.com/leaderboard/statcast-park-factors?type=year&year=2021&batSide=&stat=index_wOBA&condition=All&rolling=&sort=0&sortDir=asc" target="_blank">about 26% more likely than the average MLB stadium over the past three full seasons</a>, to be exact. Keep in mind that both of these numbers account for the differences in home run hitting ability by team. </p>
+        <p>However, this relationship starts to break down the further you look. Coors Field in Denver has one of the largest outfield distances in the league, and as you would expect, it sees a disproportionately large number of doubles and triples. Counterintuitively, however, it also sees one of the largest home run totals of any stadium year after year,<a href="https://www.colorado.edu/today/2021/07/07/its-outta-here-physics-baseball-mile-high" target="_blank">a phenomenon that has been well documented</a>. The biggest reason for this has nothing to do with the stadium itself, but rather the air inside of it. Sitting at an elevation of about 5200 feet, the air at Coors Field is noticeably thinner than air at sea level, meaning flying baseballs face less drag than they would at lower elevations, allowing them to travel farther. If the outfield walls at Coors were not already so far out, then it is likely the ballpark would see home run totals even higher. </p>
+        <p>Coors Field alone is a good example of why environmental factors–and not just the shape of the stadium–are worth studying when it comes to how they can affect baseball. Alongside elevation, which determines thickness of the air, there are a couple other factors that have been determined to influence a baseball’s movements in flight. Research has shown that <a href="https://journals.ametsoc.org/configurable/content/journals$002fwcas$002f5$002f4$002fwcas-d-13-00002_1.xml?t:ac=journals%24002fwcas%24002f5%24002f4%24002fwcas-d-13-00002_1.xml" target="_blank">higher temperature and higher humidity both lead to baseballs traveling farther</a> as well. To test the extent to which these factors influence offensive outcomes at MLB stadiums, I chose to look at the stadiums’ average temperature from April through September (which almost perfectly coincides with the MLB regular season) and the average dew point during that same span (as any meteorologist will tell you, <a href="https://www.kgun9.com/weather/the-difference-between-dew-point-and-humidity" target="_blank">dew point is a much better metric for humidity than relative humidity</a>). To measure offensive outcomes, I decided to account for both home run park factor–how likely any given ballpark is to see a home run hit when accounting for team differences–as well as overall park factor, which takes a more holistic look at offense. Both of these values are the three-year rolling values ending in 2021. Unlike altitude, however, temperature and humidity can be influenced by climate control, meaning only outdoor stadiums can be easily considered. </p>
+        <div class="twoimages">
+            <img src="elev-pf.png" alt="">
+            <img src="elev-hrpf.png" alt="">
+        </div>
+        <h2>Using simple linear regression, there is technically a positive correlation between stadium elevation and both park factors, but both of these are heavily skewed by a single outlier–you can probably guess which park. (Elevation data from Google Earth, park factor data from Baseball Savant)</h2>
+        <p>To alleviate the problem of the outlier, I decided to look at the log of stadium elevation, which smoothed out the data (Both parks with an elevation of 0 feet or below were treated as having an elevation of 1 foot).</p>
+        <div class="twoimages">
+            <img src="logelev-pf.png" alt="">
+            <img src="logelev-hrpf.png" alt="">
+        </div>
+        <h2>After applying the logarithm, the positive relationship remains, though the low R^2 values imply the correlation is quite weak for both park factors.</h2>
+        <p>With that in mind, I then looked at the relationship between average temperature and both park factors.</p>
+        <div class="twoimages">
+            <img src="temp-pf.png" alt="">
+            <img src="temp-hrpf.png" alt="">
+        </div>
+        <h2>As expected, there was a positive relationship between temperature and the park factors, though again not a particularly strong one. (Temperature data from 1991-2020 climate normals, PRISM Climate Group, Oregon State University)</h2>
+        <p>Interestingly, the p-value for the relationship between temperature and home run park factor was 0.0586, just on the doorstep of statistical significance. However, just by the eye test, neither relationship is strong enough to draw a certain conclusion. On to the effect of dew point. </p>
+        <div class="twoimages">
+            <img src="dp-pf.png" alt="">
+            <img src="dp-hrpf.png" alt="">
+        </div>
+        <h2>Any guesses as to what that outlier could be? (Dew point data from 1991-2020 climate normals, PRISM Climate Group, Oregon State University)</h2>
+        <p>This time, let’s remove the outlier completely.</p>
+        <div class="twoimages">
+            <img src="dp-pf-nocoors.png" alt="">
+            <img src="dp-hrpf-nocoors.png" alt="">
+        </div>
+        <h2>Like with temperature, the relationship between dew point and park factor is positive. Also like dew point, it is not statistically significant (p-values of 0.1695 and 0.3722, respectively).</h2>
+        <p>I should mention that the data above does not account for the varying dimensions of the ballparks involved. Instead, the graphs are only to see if the local climate has an effect on the game being played, and if such effects can be seen throughout the various shapes and sizes of Major League ballparks. In conclusion, no conclusion can be drawn. While the data seems to be pointing towards temperature, altitude, and humidity having some effect on the frequency of certain offensive outcomes, particularly home runs, none of the relationships graphed above are strong enough to confidently conclude anything sweeping. All we can say for certain is that Coors Field’s high elevation (which makes home run totals go up) greatly outweighs its very low humidity (which makes home run totals go down), as home runs are very common there. Is that indicative of a lead-wide trend? I’m not sure, but further investigation is warranted.</p>
+
+
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2022-05-13/park-factors-and-air" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2022-05-13/park-factors-and-air&title=Baseball%20Analytica%3A%Park%20Factors%20and%20the%20Air" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%Park%20Factors%20and%20the%20Air&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2022-05-13/park-factors-and-air" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>

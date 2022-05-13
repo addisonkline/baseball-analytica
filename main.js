@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: 'park-factors-and-air', title: 'Park Factors and the Air', author: 'A. Kline', date: '05/15/2022', description: 'The shapes of Major League stadiums have been known to influence game outcomes, but what about the climates where those stadiums are?', url: '/posts/2022-05-13/park-factors-and-air'},
                 { id: '2021-season-in-review', title: '2021: A Season in Review', author: 'A. Kline', date: '01/07/2022', description: '2021 was quite an interesting season. Note like this site has been around for any other seasons, though.', url: '/posts/2022-01-07/2021-season-in-review'},
                 { id: 'not-all-runs-equal-2', title: 'Not All Runs are Created Equal, Part 2', author: 'A. Kline', date: '07/30/2021', description: 'Weighted run differential has the potential to be a useful tool, but how can its potential be reached, and how useful can it get to begin with?', url: '/posts/2021-07-30/not-all-runs-equal-2'},
                 { id: 'not-all-runs-equal', title: 'Not All Runs are Created Equal', author: 'A. Kline', date: '07/16/2021', description: 'Not only do runs determine who wins a baseball game, they have consistently been a cornerstone of sabermetrics. All despite the fact that no two runs are exactly alike.', url: '/posts/2021-07-16/not-all-runs-equal'},
