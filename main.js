@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: 'is-fip-overrated', title: 'Is FIP Overrated?', author: 'A. Kline', date: '07/01/2022', description: 'FIP helps us understand the role of the pitcher on the field in a more complex way, but does so by, ironically, making some big simplifications.', url: '/posts/2022-07-01/is-fip-overrated'},
                 { id: 'park-factors-and-air', title: 'Park Factors and the Air', author: 'A. Kline', date: '05/13/2022', description: 'The shapes of Major League stadiums have been known to influence game outcomes, but what about the climates where those stadiums are?', url: '/posts/2022-05-13/park-factors-and-air'},
                 { id: '2021-season-in-review', title: '2021: A Season in Review', author: 'A. Kline', date: '01/07/2022', description: '2021 was quite an interesting season. Not like this site has been around for any other seasons, though.', url: '/posts/2022-01-07/2021-season-in-review'},
                 { id: 'not-all-runs-equal-2', title: 'Not All Runs are Created Equal, Part 2', author: 'A. Kline', date: '07/30/2021', description: 'Weighted run differential has the potential to be a useful tool, but how can its potential be reached, and how useful can it get to begin with?', url: '/posts/2021-07-30/not-all-runs-equal-2'},
