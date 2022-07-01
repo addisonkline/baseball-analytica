@@ -108,6 +108,31 @@ body {
     color: rgb(100 100 100);
 }
 
+table {
+    margin: auto;
+    table-layout: fixed;
+    width: 67%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: black;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+}
+
+tbody, thead {
+    font-weight: bold;
+}
+
+th, td {
+    padding: 20px;
+    letter-spacing: 1px;
+}
+
 /* Start of bottom (Same for every page) */
 .bottom {
     padding: 1em 0 1em 0;
@@ -182,6 +207,17 @@ body {
         background: rgb(100 100 100) url('../images/background-formulas.png');
         background-blend-mode: soft-light;
         display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    th, td {
+        font-size: 0.8em;
+        padding: 10px;
+        letter-spacing: 0px;
+    }
+    table {
+        width: auto;
     }
 }
 

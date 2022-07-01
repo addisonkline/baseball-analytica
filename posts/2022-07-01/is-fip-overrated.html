@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Is FIP Overrated? | Baseball Analytica</title>
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2022-07-01/is-fip-overrated">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>Is FIP Overrated?</h1>
+            <h3>by A. Kline</h3>
+            <h3>Posted on 07/01/2022</h3>
+            <hr>
+        </section>
+        
+        <p>The Pittsburgh Pirates have been something of a hapless franchise for decades now, but their fans fondly remember that stretch of time in the mid-2010s when they were legitimate contenders. They made the playoffs in 2013–for the first time in over 20 years–thanks in large part to having some of the best pitching in the league. All of Pittsburgh’s primary starters had an ERA of less than 4, a rare sight for any team, even in the National League.</p>
+        <p>That same season, pitcher Edinson Volquez posted a 5.71 ERA for the Padres and Dodgers, and his WAR of -2.3 ranked him in <a href="https://www.baseball-reference.com/leagues/majors/2013-value-pitching.shtml#players_value_pitching::18" target="_blank">678th out of the 679 pitchers to appear that season</a>. Simply put, things were not looking good for him. But then the Pirates signed him to a one-year deal, and in 2014 he became the most valuable starter on their already-impressive staff. Though lay fans might have seen this deal’s success as the Pirates orchestrating some kind of witchcraft, those in the sabermetrics community was not as surprised. After all, Volquez’s FIP was much lower than his ERA, indicating his skills as a pitcher were undervalued.</p>
+        <p>FIP, which stands for field independent pitching, is just one among many examples of what are called defense-independent pitching statistics (DIPS). As the name suggests, this family of metrics looks at pitchers by analyzing what they have most control over: balls that can’t end up in a fielder’s glove, such as home runs, strikeouts, and walks. FIP is arguably the most famous of these metrics, and is calculated by the following formula:</p>
+        <h4>FIP = (13*HR + 3*BB + 3*HBP - 2*K)/IP + C <br><br> where C is a constant added such that leagueAvgFIP = leagueAvgERA</h4>
+        <p>There are a number of variations to this formula, including many without the league adjustment tacked on here. There certainly was thought put into this formula–home runs are obviously more damaging to give up as a pitcher than walks–and despite its overall simplicity, it is surprisingly effective at evaluating pitchers in ways more normal metrics cannot.</p>
+        <p>The reasoning behind DIPS goes that pitchers have little to no effect on balls in play, so using such outcomes to make judgements about a pitcher’s skill, at least on the same level as balls not in play, is about as logical as judging his skill on how high he wears his socks. This, again, makes sense–why should we blame a pitcher for giving up a string of base hits after poor play from his defense as much as we blame him for giving up back-to-back home runs due to his own poor pitching? The idea that different batting outcomes bear different weight is not new–it is the foundation for cornerstones of batting statistics like slugging percentage, OPS, and wOBA, so why should pitching statistics be any different?</p>
+        <p>Indeed, defense-dependent outcomes, much like the creators of DIPS suggested, seem to be unreliable. A pitchers’ stat measuring exactly this, called batting average on balls in play (BABIP), is famously inconsistent from year to year, so much so that it has become almost synonymous with pitcher luck in the sabermetrics community. But just how inconsistent is BABIP? We should expect the luck-based metric to pale in comparison to the skill-based FIP, because a pitcher’s skills are much more consistent over time than their luck. But is this really the case?</p>
+        <p>If we measure the inconsistency of a metric by the average percentage change year-to-year, then the answer, as it turns out, becomes even murkier. There appears to be no significant difference between the inconsistency of FIP and BABIP for the same pitcher, or in other words, they vary at roughly the same magnitude. This contradicts the assertion that FIP, as a skill-based stat, should be more consistent than BABIP over the same time period because a pitcher’s skills are much more consistent over time than their luck. Interestingly, though the difference is of course insignificant, the data does seem to point to FIP actually being more variable than BABIP for a number of pitchers. A sample of data exemplifying this surprising relationship between the volatility of the two metrics is below.</p>
+        <table>
+            <thead>
+                <td>
+                    Pitcher (years 2013-2021)
+                </td>
+                <td>
+                    Avg. Yearly Δ in FIP (%)
+                </td>
+                <td>
+                    St. Dev. (pp)
+                </td>
+                <td>
+                    Avg. Yearly Δ in BABIP (%)
+                </td>
+                <td>
+                    St. Dev. (pp)
+                </td>
+            </thead>
+            <tr>
+                <td>
+                    Gerrit Cole
+                </td>
+                <td>
+                    23.1
+                </td>
+                <td>
+                    13.7
+                </td>
+                <td>
+                    10.0
+                </td>
+                <td>
+                    8.0
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Patrick Corbin
+                </td>
+                <td>
+                    25.1
+                </td>
+                <td>
+                    16.0
+                </td>
+                <td>
+                    7.6
+                </td>
+                <td>
+                    7.9
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Johnny Cueto
+                </td>
+                <td>
+                    18.3
+                </td>
+                <td>
+                    14.9
+                </td>
+                <td>
+                    17.2
+                </td>
+                <td>
+                    12.8
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Kevin Gausman
+                </td>
+                <td>
+                    10.1
+                </td>
+                <td>
+                    8.2
+                </td>
+                <td>
+                    10.2
+                </td>
+                <td>
+                    4.4
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wade Miley
+                </td>
+                <td>
+                    14.7
+                </td>
+                <td>
+                    11.1
+                </td>
+                <td>
+                    7.6
+                </td>
+                <td>
+                    5.3
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Charlie Morton
+                </td>
+                <td>
+                    13.8
+                </td>
+                <td>
+                    8.9
+                </td>
+                <td>
+                    9.7
+                </td>
+                <td>
+                    7.5
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Max Scherzer
+                </td>
+                <td>
+                    13.2
+                </td>
+                <td>
+                    12.3
+                </td>
+                <td>
+                    14.2
+                </td>
+                <td>
+                    9.1
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Adam Wainwright
+                </td>
+                <td>
+                    18.9
+                </td>
+                <td>
+                    27.7
+                </td>
+                <td>
+                    8.6
+                </td>
+                <td>
+                    7.8
+                </td>
+            </tr>
+        </table>
+        <h2>(Data: Baseball-Reference.com)</h2>
+        <p>So strike one for FIP? Well, maybe, but perhaps these results should not be taken too seriously. Firstly, even though using percentage change to compare the volatility of two completely different units is much better than comparing their raw change, it may not be perfect either. For example, an ERA going from 3.2 to 3.6 and a batting average going from .280 to .315 are both increases of 12.5 percent, even though the latter change is much more eye-popping. In other words, changes in batting average can have bigger impacts than changes of the same size in ERA-like statistics (to which FIP belongs), which percentage change does not catch. Secondly, when supporters of FIP call the statistic reliable, they are referring more to its ability to predict future performance than its year-to-year consistency. So let’s call it a half-strike.</p>
+        <p>Proponents of FIP, and DIPS more generally, also love to point to the lack of control pitchers have over balls in play. But how real is this lack of control? If pitchers have no control over balls hit into play, then from a pitching perspective, there is no difference between a single, double, and triple. As it turns out, this is an extremely generous assumption to make.</p>
+        <img src="batter-sweetspot-1b2b.gif" alt="batter-sweetspot-1b2b">
+        <h2>When looking at qualified hitters from all full seasons in the Statcast era (n = 999), a higher sweet spot percentage is correlated with an increase in doubles, but not with singles. (Data: Baseball Savant)</h2>
+        <p>For starters, there does seem to be a difference in the quality of contact made between singles and doubles (because of sample size issues, I did not look at triples in comparison to singles). Since the beginning of the Statcast era (excluding the pandemic-shortened 2020), an increase in batters’ sweet spot percentage sees no significant change in the number of singles hit, but a significant (p < .00001) increase in the number of doubles hit. So if FIP tries to level the playing field (no pun intended) for the pitcher by only considering his one-on-one matches with the batter, then why should it ignore the batter’s significantly better-hit balls that just happen to fall short of the outfield fence? Strike two against FIP.</p>
+        <p>But wait, you might say, how can we nullify the idea that pitchers have no control over balls in play by citing statistics from the batter’s side? After all, years of exhaustive baseball research have shown that the pitcher and batter are indeed two separate people. Fair point, strike half-revoked. So let’s look at sweet spot figures for pitchers instead.</p>
+        <img src="pitcher-sweetspot-1b2b.gif" alt="pitcher-sweetspot-1b2b">
+        <h2>The same data as above, but taken from the pitchers’ perspective instead of the batters’ (n = 429). Interestingly, now singles are negatively correlated with an increase in sweet spot percentage. (Data: Baseball Savant)</h2>
+        <p>As you would imagine, this whittles down the sample size by quite a bit, but now we’re seeing something even more interesting. For pitchers, an increase in sweet spot percentage allowed is significantly correlated (p = .038417) with a decrease in singles allowed, while being significantly correlated (p = .003332) with an increase in doubles. So much for that lack of agency pitchers have on balls in play. Strike three.</p>
+        <p>But wait, you cry, for a pitcher’s sweet spot allowed depends too much on the hitters they face to be truly under their control! Again, that’s actually a fair point, so I'll take back this strike partially as well. At the end of the day, wasting away debating the line between what is and isn’t in the pitcher’s control will likely get us nowhere, so let’s look at something that is under the pitcher’s control by every reasonable definition: how hard they throw.</p>
+        <img src="pitcher-4sfbvelo-1b2b.gif" alt="pitcher-4sfbvelo-1b2b">
+        <h2>The same set of pitchers as above, but now their average 4-seam fastball speed vs. the number of singles and doubles allowed. Both show a negative correlation, but one is stronger than the other. (Data: Baseball Savant)</h2>
+        <p>Admittedly, there is a statistically significant relationship (p = .003332) between harder-thrown 4-seam fastballs and fewer singles allowed. But the negative relationship between those same fastballs and doubles (p < .00001) is the strongest correlation we’ve seen yet. The extent to which pitchers have agency over balls in play is still up for debate, but the argument they have no agency at all in such situations should be dead and buried at this point.</p>
+        <p>But are these low p-values really enough to discredit DIPS entirely? After all, none of these graphs actually show a crystal-clear trend, which is arguably more important in proving a point to the masses when using linear regression. God gives his lowest p-values to his largest sample sizes, I guess. On a more fundamental level, though, just because some level of pitcher control over different hits in play can be proven does not mean stats like FIP cannot have their purpose. As stated earlier, it can be useful to highlight cases of pitchers whose performances are heavily influenced by their defenses in one way or another. And the very existence of FIP serves as a very important reminder that pitchers should not be judged too harshly by what they have little control over. Had Edinson Volquez not been picked up by the Pirates, who back then had one of the best defenses in the league and were well aware his numbers were drastically affected by hapless defense surrounding him, his career may very well have been over.</p>
+        <p>Long-time fans of this blog (of which there are probably about three) might have seen the title of this post and immediately thought back to <a href="https://baseball-analytica.com/posts/2021-05-28/whip-is-overrated" target="_blank">a similar type of post from last May</a>. And that is no coincidence. When I first began brainstorming for this post, I initially planned on calling it “FIP is Overrated” as a more direct homage to the post in question. However, after looking more closely at the data and at how much more redeemable FIP is than WHIP, I knew a more nuanced look was needed. Sure, I may have spent a significant portion of this post attempting to take down FIP (and DIPS in general) through graphs and numbers, but at the end of the day I do not feel fully confident concluding that FIP is overrated, at least not to the extent WHIP is. Do people give it more credit than it’s worth? Absolutely, but that’s par for the course for these sorts of baseball stats. Does its absoluteness cause it to fail at its fundamental purpose? Its lack of park adjustment is a problem, but it's still a breath of fresh air compared to WHIP.</p>
+        <p>In the future, I hope to see not defense-independent pitching statistics, but more holistic defense-aware pitching statistics. The contribution of DIPS to our understanding of pitchers and their effect on the game of baseball is undeniable, and FIP should be used as a foundation on which to build, not something to be thrown away entirely. So calling FIP overrated without any hesitance or nuance makes about as much sense as saying one-and-a-half strikes and you’re out.</p>
+        <hr>
+
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2022-07-01/is-fip-overrated" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2022-07-01/is-fip-overrated&title=Baseball%20Analytica%3A%Is%20Fip%20Overrated%3F" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%Is%20FIP%20Overrated%3F&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2022-07-01/is-fip-overrated" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>
