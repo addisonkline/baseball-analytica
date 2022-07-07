@@ -157,8 +157,14 @@ th, td {
     margin: auto;
 }
 
-.bottom .share-this-page li {
+.bottom .share-this-page ul {
+    padding-left: 0;
+}
+
+.bottom .share-this-page ul li {
+    text-decoration: none;
     display: inline;
+    text-align: center;
     padding: 0 1em 0 1em;
 }
 
