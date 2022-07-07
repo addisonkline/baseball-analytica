@@ -44,8 +44,14 @@ body {
     padding: 0 1em 0 1em;
 }
 
-.bg nav li {
+.bg nav ul {
+    padding-left: 0;
+}
+
+.bg nav ul li {
+    text-decoration: none;
     display: inline;
+    text-align: center;
     padding: 0 3em 0 3em;
 }
 /* End of top */
@@ -131,6 +137,22 @@ body {
         display: inline;
         padding: 1em;
         margin: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .bg nav ul li {
+        padding: 0.5em;
+    }
+
+    .bottom .share-this-page ul li {
+        padding: 0.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    .bg nav ul li {
+        padding: 1.5em;
     }
 }
 
