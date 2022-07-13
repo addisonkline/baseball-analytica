@@ -58,10 +58,7 @@
         </select>
         <label for="playerType">Rank:</label>
         <select name="playerType" id="playerType">
-            <option value="Teams">Teams</option>
-            <option value="Batters">Batters</option>
-            <option value="Starting Pitchers">Starting Pitchers</option>
-            <option value="Relief Pitchers">Relief Pitchers</option>
+            <option v-for="dataOption in dataOptions" :value="dataOption.url">{{ dataOption.title }}</option>
         </select>
         <!--<button @click="setTablePlayer(selectedPlayerType())">
             <span>Set Player Type</span>
