@@ -5,12 +5,8 @@
 // * * * * * * * * * * * * 
 
 // table displayed when page loaded
-const defaultTeamsTable = "data/json-team-data-2021-final.json";
+const defaultTable = "data/json-team-data-2021-final.json";
 
-const teamsTable = "data/json-team-data-2021-final.json";
-const battingTable = "data/json-batter-data-2021-final.json";
-const startingPitchingTable = "data/json-starting-pitcher-data-2021-final.json";
-const reliefPitchingTable = "data/json-relief-pitcher-data-2021-final.json";
 const teamHeaders = ["Team", "Win-Loss", "Offense Rank", "Defense Rank", "Overall Rank"];
 const battingHeaders = ["Name", "Team", "G", "PA", "Ranking"];
 const startingPitchingHeaders = ["Name", "Team", "IP", "GS", "Ranking"];
@@ -102,10 +98,10 @@ const helperApp = Vue.createApp({
             countBatterTables: 0,
             countPitcherTables: 0,
             dataOptions: [
-                { title: 'Teams', url: teamsTable, selected: true},
-                { title: 'Batters', url: battingTable, selected: false },
-                { title: 'Starting Pitchers', url: startingPitchingTable, selected: false },
-                { title: 'Relief Pitchers', url: reliefPitchingTable, selected: false}
+                { title: 'Teams', selected: true},
+                { title: 'Batters', selected: false },
+                { title: 'Starting Pitchers', selected: false },
+                { title: 'Relief Pitchers', selected: false}
             ],
             rankingTimes: [
                 { title: '2022 mid-season', url: "2022-midseason" },
@@ -128,47 +124,11 @@ const helperApp = Vue.createApp({
 
             request.send()
         },
-        // returns player type displayed in table
-        playerTypeSelected(playerType) {
-            if(playerType === 'Batters') {
-                return this.batterDataShown
-            }
-            else if(playerType === 'Starting Pitchers' || playerType === 'Relief Pitchers' || playerType === 'Teams') {
-                return !this.batterDataShown
-            }
-        },
-        // changes player type
-        setTablePlayer(playerType) {
-            if(playerType === 'Batters') {
-                this.batterDataShown = true
-            }
-            else if(playerType === 'Starting Pitchers' || playerType === 'Teams' || playerType === 'Relief Pitchers') {
-                this.batterDataShown = false
-            }
-            console.log("player type set to " + playerType)
-            console.log(this.batterDataShown)
-        },
         selectedPlayerType() {
             return document.getElementById("playerType").value
         },
         selectedRankingTime() {
             return document.getElementById("rankingTimeSelect").value
-        },
-        dataSourceForPlayerType() {
-            playerType = document.getElementById("playerType").value
-
-            if (playerType === 'Teams') {
-                return teamsTable
-            }
-            else if(playerType === 'Batters') {
-                return battingTable
-            }
-            else if(playerType === 'Starting Pitchers') {
-                return startingPitchingTable
-            }
-            else if(playerType === 'Relief Pitchers') {
-                return reliefPitchingTable
-            }
         },
         generateTableUrlFromSelections() {
             const playerType = this.selectedPlayerType()
@@ -190,15 +150,12 @@ const helperApp = Vue.createApp({
             return tableUrl + this.selectedRankingTime() +  ".json"
         },
         getRankingsButtonClicked() {
-            //console.log(this.generateTableUrlFromSelections())
-            this.setTablePlayer(this.selectedPlayerType())
             this.loadTable(this.generateTableUrlFromSelections())
         }
     },
     // generates team rankings when page loads
     created: function() { 
-        this.setTablePlayer('Teams')
-        this.loadTable(teamsTable)
+        this.loadTable(defaultTable)
     },
     computed: {
 
