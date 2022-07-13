@@ -4,6 +4,9 @@
 // Data from Fangraphs.com, Baseball-Reference.com
 // * * * * * * * * * * * * 
 
+// table displayed when page loaded
+const defaultTeamsTable = "data/json-team-data-2021-final.json";
+
 const teamsTable = "data/json-team-data-2021-final.json";
 const battingTable = "data/json-batter-data-2021-final.json";
 const startingPitchingTable = "data/json-starting-pitcher-data-2021-final.json";
@@ -43,7 +46,7 @@ function populateTable(json, table) {
     })  
 
     // populate table header
-    if (table === teamsTable) {
+    if (table.includes("team")) { // if it's a team table
         const tr = document.createElement("tr")
 
         for (i = 0; i < teamHeaders.length; i++) {
@@ -53,7 +56,7 @@ function populateTable(json, table) {
         }
         rankingsHeader.appendChild(tr)
     }
-    else if (table === battingTable) {
+    else if (table.includes("batter")) { // if it's a batter table
         const tr = document.createElement("tr")
 
         for (i = 0; i < battingHeaders.length; i++) {
@@ -63,7 +66,7 @@ function populateTable(json, table) {
         }
         rankingsHeader.appendChild(tr)
     }
-    else if (table === startingPitchingTable) {
+    else if (table.includes("starting-pitcher")) { // if it's a starting pitcher table
         console.log("equality check working")
         const tr = document.createElement("tr")
 
@@ -74,7 +77,7 @@ function populateTable(json, table) {
         }
         rankingsHeader.appendChild(tr)
     }
-    else if (table === reliefPitchingTable) {
+    else if (table.includes("relief-pitcher")) { // if it's a relief pitcher table
         console.log("equality check working")
         const tr = document.createElement("tr")
 
@@ -103,6 +106,10 @@ const helperApp = Vue.createApp({
                 { title: 'Batters', url: battingTable, selected: false },
                 { title: 'Starting Pitchers', url: startingPitchingTable, selected: false },
                 { title: 'Relief Pitchers', url: reliefPitchingTable, selected: false}
+            ],
+            rankingTimes: [
+                { title: '2022 mid-season', url: "2022-midseason" },
+                { title: '2021 end-of-season', url: "2021-final" }
             ]
             
         }
@@ -144,6 +151,9 @@ const helperApp = Vue.createApp({
         selectedPlayerType() {
             return document.getElementById("playerType").value
         },
+        selectedRankingTime() {
+            return document.getElementById("rankingTimeSelect").value
+        },
         dataSourceForPlayerType() {
             playerType = document.getElementById("playerType").value
 
@@ -160,9 +170,29 @@ const helperApp = Vue.createApp({
                 return reliefPitchingTable
             }
         },
+        generateTableUrlFromSelections() {
+            const playerType = this.selectedPlayerType()
+            var tableUrl = "data/json"
+            switch(playerType) {
+                case 'Teams':
+                    tableUrl += "-team-data-"
+                    break
+                case 'Batters':
+                    tableUrl += "-batter-data-"
+                    break
+                case 'Starting Pitchers':
+                    tableUrl += "-starting-pitcher-data-"
+                    break
+                case 'Relief Pitchers':
+                    tableUrl += "-relief-pitcher-data-"
+                    break
+            }  
+            return tableUrl + this.selectedRankingTime() +  ".json"
+        },
         getRankingsButtonClicked() {
+            //console.log(this.generateTableUrlFromSelections())
             this.setTablePlayer(this.selectedPlayerType())
-            this.loadTable(this.dataSourceForPlayerType())
+            this.loadTable(this.generateTableUrlFromSelections())
         }
     },
     // generates team rankings when page loads

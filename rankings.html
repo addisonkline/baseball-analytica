@@ -50,7 +50,12 @@
 
     <div class="helper" id="helper" @load="setTablePlayer('Teams')" @load="loadTable('data/json-team-data-2021-final.json')">
         <!-- dropdown menu for data type selection -->
-        <h3>Ranking Period: 2021 end-of-season</h3>
+        <!--<h3>Ranking Period: 2021 end-of-season</h3> -->
+        <h3>* Despite the dropdown menu indicating otherwise, 2022 midseason rankings are not out just yet. Stay tuned. *</h3>
+        <label for="rankingTimeSelect">Ranking Period:</label>
+        <select name="rankingTimeSelect" id="rankingTimeSelect">
+            <option v-for="rankingTime in rankingTimes" :value="rankingTime.url">{{ rankingTime.title }}</option>
+        </select>
         <label for="playerType">Rank:</label>
         <select name="playerType" id="playerType">
             <option value="Teams">Teams</option>
