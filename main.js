@@ -21,6 +21,12 @@ const app = Vue.createApp({
             window.location.pathname = (url)
             console.log(window.location)
         },
+        getAuthorUrl(authorName) {
+            switch(authorName) {
+                case "A. Kline":
+                    return "writers/kline"
+            }
+        },
         highlightTitle(givenElement) {
             document.getElementById(givenElement).style.color = "#646464" // rgb(100, 100, 100)
             document.getElementById(givenElement).style.textDecoration = "underline"

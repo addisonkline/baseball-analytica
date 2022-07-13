@@ -98,10 +98,10 @@ const helperApp = Vue.createApp({
             countBatterTables: 0,
             countPitcherTables: 0,
             dataOptions: [
-                { title: 'Teams', selected: true},
-                { title: 'Batters', selected: false },
-                { title: 'Starting Pitchers', selected: false },
-                { title: 'Relief Pitchers', selected: false}
+                { title: 'Teams', url: "-team-data-"},
+                { title: 'Batters', url: "-batter-data-" },
+                { title: 'Starting Pitchers', url: "-starting-pitcher-data-" },
+                { title: 'Relief Pitchers', url: "-relief-pitcher-data-" }
             ],
             rankingTimes: [
                 { title: '2022 mid-season', url: "2022-midseason" },
@@ -131,23 +131,7 @@ const helperApp = Vue.createApp({
             return document.getElementById("rankingTimeSelect").value
         },
         generateTableUrlFromSelections() {
-            const playerType = this.selectedPlayerType()
-            var tableUrl = "data/json"
-            switch(playerType) {
-                case 'Teams':
-                    tableUrl += "-team-data-"
-                    break
-                case 'Batters':
-                    tableUrl += "-batter-data-"
-                    break
-                case 'Starting Pitchers':
-                    tableUrl += "-starting-pitcher-data-"
-                    break
-                case 'Relief Pitchers':
-                    tableUrl += "-relief-pitcher-data-"
-                    break
-            }  
-            return tableUrl + this.selectedRankingTime() +  ".json"
+            return "data/json" + this.selectedPlayerType() + this.selectedRankingTime() + ".json"
         },
         getRankingsButtonClicked() {
             this.loadTable(this.generateTableUrlFromSelections())

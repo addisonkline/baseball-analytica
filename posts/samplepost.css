@@ -75,7 +75,7 @@ body {
     color: rgb(100 100 100);
 }
 
-.post-content .post-header hr {
+hr {
     opacity: 0.5;
 }
 /* Bottom of post header */
