@@ -146,9 +146,11 @@ body {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) { 
     .bg nav ul li {
-        padding: 0.5em;
+        padding-left: 0.8em;
+        padding-right: 0.8em;
+        margin: 0;
     }
 
     .bottom .share-this-page ul li {
@@ -156,7 +158,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 420px) and (max-width: 768px) {
     .bg nav ul li {
         padding: 1.5em;
     }
