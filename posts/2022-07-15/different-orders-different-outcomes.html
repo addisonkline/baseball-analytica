@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Different Orders, Different Outcomes | Baseball Analytica</title>
+    <meta name="description" content="Scoring by simply racking up hits is one thing, but what about the effect of sequencing on runs?">
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2022-07-15/different-orders-different-outcomes">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>Different Orders, Different Outcomes</h1>
+            <h3>by A. Kline</h3>
+            <h3>Posted on 07/15/2022</h3>
+            <hr>
+        </section>
+        
+        <article>
+        <p>Earlier this year, the sabermetrics YouTube channel <a href="https://www.youtube.com/c/FoolishBaseball/videos" target="_blank">Foolish Baseball</a> uploaded <a href="https://youtu.be/s_3-nAoa1QE" target="_blank">a video</a> about the 2020 New York Mets. Their offense–which was one of the most productive ever by some metrics–only put up enough runs to rank 13th best in the league that year. As a result, the team with the fifth-best <a href="https://www.mlb.com/glossary/advanced-stats/weighted-runs-created-plus" target="_blank">wRC+</a> of all time had a losing record and missed the playoffs–in a year when over half of the league made it.</p>
+        <p>As Foolish Baseball explains, the Mets offense’s performance varied greatly depending on the circumstances. With the bases empty, the team hit for an eye-popping <a href="https://www.baseball-reference.com/teams/split.cgi?t=b&team=NYM&year=2020#bases" target="_blank">134 OPS+</a>. With men on, however, that number dropped to a pedestrian 101, almost exactly league average. But it gets worse–with runners in scoring position and two outs, the team hit for a nauseating 78 OPS+, over twenty percent worse than league average. In other words, the 2020 Mets rose to the occasion when it mattered the least. However, as their exceptional wRC+ indicates, waving a magic wand to create new hits and putting them in key situations would not have been necessary; they already had plenty of hits to go around. Instead, simply rearranging the hits they already had would have likely been enough to turn their offense into a scoring machine.</p>
+        <p>The idea that order matters is not new to baseball, not even in the slightest. As any fan of the sport knows, just about anything can happen in any given inning, and in almost any order, before the third out is called. A pitcher could allow three singles in the span of an inning, but that could mean single-single-single-strikeout-strikeout-strikeout or single-double play-single-single-flyout, and both of those outcomes would likely lead to different run totals allowed. In other words, a quick glance at the counting stats cannot always tell  you everything you want to know about how well an offense (and defense) performed.</p>
+        <p>So is there a simple yet effective way to measure how well-ordered an offense performs using a given set of plays? There are metrics like <a href="https://library.fangraphs.com/misc/wpa/" target="_blank">win probability added</a> and <a href="https://library.fangraphs.com/misc/clutch/" target="_blank">clutch</a>, but these focus more on circumstances and individual plays than the ordering of them. I came up with a possible solution to this problem, but I’ll first start by guiding you through my thought process.</p>
+        <p>From any given set of plays, there are many possible permutations, all of which can be assessed and compared by the number of runs scored. In the example earlier, three consecutive singles would likely result in a run scoring, but the sequence single-double play-single-single most likely would not (this of course depends on, among other factors, the speed of the runners, but scoring from first on a single is incredibly rare). This means that for a given finite set of plays (say those in a single inning), there must be a maximum number of runs possible to score, and this number can be quantified.</p>
+        <h4>Potential Runs = The maximum # of runs possible to score given a set of plays</h4>
+        <p>In a finite span of plays, the number of runs scored (or allowed) may be less than the potential number of runs scored (or allowed), or the two values may be equal, but the number of runs can never be greater than the number of potential runs because you obviously cannot score more runs than is possible. We can compare the two values by creating a simple ratio.</p>
+        <h4>Run Sequence Optimality = Runs / Potential Runs</h4>
+        <p>With all this in mind, we should probably flesh out some of the rules and exceptions for potential runs to ensure we have a standardized system. Firstly, some events are necessarily tied to others, meaning they cannot logically be split up. For instance, a stolen base, pickoff, double play, and sacrifice all require a batter on base. However, there is a bit more nuance to this. A stolen base could be placed at any time while a runner is on base and not necessarily right after they get on base. This means what was originally a runner on first stealing second could become a runner on third stealing home if third base is occupied at any point, bolstering the potential run total. On the other hand, a double play can only occur with a runner on base and when there are zero or one outs, which is much more constricting for both the number of permutations and the inning’s potential run total.</p>
+        <p>Runner advancement is also a factor to consider when looking at potential runs. Should runners always advance X number of bases, or should it depend on their speed? I decided on a blanket three-base rule: for a hit with a runner on base, the runner will always score. Yes, this means that two singles in a row scores a run, and that a single with the bases loaded scores three. It’s not what you would expect to see in a normal baseball game, sure, but since we are looking at the maximum possible number of runs to score in a given situation, I would argue it’s the most logical choice for a rule.</p>
+        <p>We should also decide the time intervals on which potential runs can be calculated. I would argue innings are the only rational choice for this, as each inning is a completely discrete set of events, and evaluating a game (or more) on potential runs would be much easier by seeing them as a set of innings versus as a much larger, individual set of events. In other words, a game can just be seen as 9+ innings and a season as about 1500, which makes larger-scale potential run calculations easier.</p>
+        <p>With all that in mind, let’s put this to the test and see what we get. We’ll start with this Yankees-Red Sox game from just shy of eight years ago.</p>
+        <div class="table-label">Yankees @ Red Sox, Fenway Park, August 1, 2014</div>
+        <table>
+            <thead><td>Team</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>R</td></thead>
+            <tr><td>NYY</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>3</td></tr>
+            <tr><td>BOS</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>-</td><td>4</td></tr>
+        </table>
+        <h2>(Box score and play-by-play data from Baseball-Reference.com)</h2>
+        <p>The game itself was rather uneventful, at least in terms of what actually happened, but what about all that could have happened? In the top of the third inning, a walk and steal of second by Brett Gardner was followed by a single that led him to third base. In terms of potential runs, however, this would equate to a run scoring (the fact that Gardner, known for his speed, didn’t score from second on a single is actually rather surprising). In the bottom half of that inning, four hits (starting with a Brock Holt triple) led to two runs, but could have potentially been three. Fast forward to the top of the eighth. Derek Jeter hits a lead-off home run, so of course nobody is on base. However, these were followed later on by a ground-rule double and walk, so in an alternate universe, the Yankees would have scored three runs this inning instead of one.</p>
+        <table>
+            <thead><td>Team</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>PR</td></thead>
+            <tr><td>NYY</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>3</td><td>0</td><td>6</td></tr>
+            <tr><td>BOS</td><td>0</td><td>0</td><td>3</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>-</td><td>5</td></tr>
+        </table>
+        <p>All in all, New York’s offense put together six potential runs compared to Boston’s five. The Red Sox had a run sequence optimality of 0.8 in comparison to the Yankees’ 0.5, indicating that the former did a better job at living up to their offensive potential as a team in this game. That’s not to say the Yankees deserved to win per se, just that had their team’s at bats occurred in a better order they very well could have come out victorious.</p>
+        <p>Potential runs do not always favor the underdogs, however. In this next example, let’s take this Nationals-Mets game from 2017.</p>
+        <div class="table-label">Nationals @ Mets, Citi Field, June 15, 2017</div>
+        <table>
+            <thead><td>Team</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>R</td></thead>
+            <tr><td>WSH</td><td>1</td><td>0</td><td>0</td><td>1</td><td>5</td><td>1</td><td>0</td><td>0</td><td>0</td><td>8</td></tr>
+            <tr><td>NYM</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>3</td></tr>
+        </table>
+        <h2>(Box score and play-by-play data from Baseball-Reference.com)</h2>
+        <p>Unlike the previous game, both teams lived up to their run-scoring potential quite well, with the Nationals having a run sequence optimality of 0.89 and the Mets a perfect 1.0. The only discrepancy I calculated came in the top of the second inning, when a Daniel Murphy single and Anthony Rendon double were followed by three outs. Even though the double only pushed Murphy to third, it would have scored him in the potential run universe.</p>
+        <table>
+            <thead><td>Team</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>PR</td></thead>
+            <tr><td>WSH</td><td>1</td><td>1</td><td>0*</td><td>1</td><td>5</td><td>1</td><td>0</td><td>0</td><td>0</td><td>9</td></tr>
+            <tr><td>NYM</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>3</td></tr>
+        </table>
+        <p>I can see potential runs, and run sequence optimality in particular, as a useful tool to evaluate the extent to which offenses live up to their potential as measured by what plays occurred. The only real issue with the stat on a conceptual level I can think of is that it completely ignores batting order and the effects that may have, as well as the fact that some players are just more likely to see different plate appearance outcomes than others. And that is certainly correct, but I would argue that a sequence of events being less likely than it may seem because batting order is not accounted for is besides the point. Potential runs, if you recall, are the maximum possible number of runs to score given a set of plays, not the maximum number of runs likely to score. In other words, just because something is absurdly unlikely does not mean it is impossible.</p>
+        <p>In my mind, the bigger issue is on the computational side. Simply put, potential runs, especially over a long interval of time, would be a nightmare to calculate. It is certainly possible, but an algorithm that could easily sift through mounds of team data and spit out detailed potential run information is a long way away, not the least because said formula probably requires a ton of exceptions and special cases that would have a disastrous effect on computation time.</p>
+        <p>However, all is not lost. Even though I didn’t go over examples in this post, I think this metric has serious potential in evaluating pitchers. In comparison to teams, the variation in run sequence optimality among pitchers is probably quite great, and it likely has a more tangible effect on short-term performance of pitchers than teams. And although I have no data in front of me to back this up, I have a strong hunch that a pitcher’s run sequence optimality allowed is both poorly correlated with skill and highly variable from year to year, meaning it could have potential to be a luck isolator much like BABIP (i.e. if a pitcher is allowing a lot of runs but has a very high run sequence optimality allowed, he is likely experiencing bad luck). Though this of course depends on whether or not you believe “clutch” is actually luck, <a href="https://www.beyondtheboxscore.com/2019/8/22/20827555/yankees-clutch-eric-hosmer-david-freese-harrison-david-ortiz-bellinger-harrison" target="_blank">still a topic of debate in the sabermetrics community</a>.</p>
+        <p>That being said, I think it’s pretty clear that the predicament of the 2020 Mets was just plain old bad luck. Most sequencing luck probably evens out over the course of a 162-game season, but in only 60 games, it’s a different story. There are plenty of teams that have great talent and manage to capitalize on that; you usually see several of those every year. Any team could do that. But having one of the most productive offenses ever only to score an average number of runs and miss the playoffs entirely? That’s a Mets moment if I’ve ever seen one.</p>
+        <hr>
+        <p>*By all means, pause your reading to check this out. In the top of the third, after two outs, back-to-back walks were issued to Bryce Harper and Ryan Zimmerman. Then Murphy hits a single to center and Harper is thrown out at home. In my opinion, Washington probably should have scored this inning, but given the rules I’ve laid out for potential runs and the fact that the single and out were part of the same play, I am cautiously putting the potential run count here at 0. But maybe I’m wrong.</p>
+        </article>
+        
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2022-07-01/is-fip-overrated" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2022-07-01/is-fip-overrated&title=Baseball%20Analytica%3A%Is%20Fip%20Overrated%3F" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%Is%20FIP%20Overrated%3F&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2022-07-01/is-fip-overrated" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>

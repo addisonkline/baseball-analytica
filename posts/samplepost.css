@@ -114,6 +114,14 @@ hr {
     color: rgb(100 100 100);
 }
 
+.table-label {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
 table {
     margin: auto;
     table-layout: fixed;
