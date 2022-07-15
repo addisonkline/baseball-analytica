@@ -257,6 +257,9 @@ th, td {
     table {
         width: auto;
     }
+    .table-label {
+        font-size: 0.75em;
+    }
 }
 
 @media (min-width: 992px) {
