@@ -108,6 +108,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody {
+    box-sizing: border-box;
     font-weight: bold;
 }
 
@@ -183,6 +184,10 @@ th, td {
 }
 
 @media (max-width: 420px) { 
+    thead, tbody {
+        font-size: 0.8em;
+    }
+
     .helper {
         padding-left: 1em;
         padding-right: 1em;
