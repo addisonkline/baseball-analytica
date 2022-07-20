@@ -183,6 +183,11 @@ th, td {
 }
 
 @media (max-width: 420px) { 
+    .helper {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
     .bg nav ul li {
         padding-left: 0.8em;
         padding-right: 0.8em;

@@ -11,8 +11,8 @@ const backgroundApp = Vue.createApp({
         }
     },
     methods: {
-        mouseoverBackgroundImage(givenElement) {
-            document.getElementById(givenElement).style.cursor = "pointer"
+        backgroundImageClicked(givenElement) {
+            console.log("image clicked")
         }
     }
 })

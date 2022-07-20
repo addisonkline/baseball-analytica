@@ -5,7 +5,7 @@
 // * * * * * * * * * * * * 
 
 // table displayed when page loaded
-const defaultTable = "data/json-team-data-2021-final.json";
+const defaultTable = "data/json-team-data-2022-midseason.json";
 
 const teamHeaders = ["Team", "Win-Loss", "Offense Rank", "Defense Rank", "Overall Rank"];
 const battingHeaders = ["Name", "Team", "G", "PA", "Ranking"];
