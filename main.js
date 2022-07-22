@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: '2022-midseason-review', title: '2022 Midseason Review', author: 'A. Kline', date: '07/22/2022', description: 'The first half of the 2022 Major League Baseball season is now over. How do players and teams stack up?', url: '/posts/2022-07-22/2022-midseason-review' },
                 { id: 'different-orders-different-outcomes', title: 'Different Orders, Different Outcomes', author: 'A. Kline', date: '07/15/2022', description: 'Scoring by simply racking up hits is one thing, but what about the effect of sequencing on runs?', url: '/posts/2022-07-15/different-orders-different-outcomes' },
                 { id: 'is-fip-overrated', title: 'Is FIP Overrated?', author: 'A. Kline', date: '07/01/2022', description: 'FIP helps us understand the role of the pitcher on the field in a more complex way, but does so by, ironically, making some big simplifications.', url: '/posts/2022-07-01/is-fip-overrated'},
                 { id: 'park-factors-and-air', title: 'Park Factors and the Air', author: 'A. Kline', date: '05/13/2022', description: 'The shapes of Major League stadiums have been known to influence game outcomes, but what about the climates where those stadiums are?', url: '/posts/2022-05-13/park-factors-and-air'},

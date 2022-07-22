@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2022 Midseason Review | Baseball Analytica</title>
+    <meta name="description" content="The first half of the 2022 Major League Baseball season is now over. How do players and teams stack up?">
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2022-07-15/different-orders-different-outcomes">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>2022 Midseason Review</h1>
+            <h3>by A. Kline</h3>
+            <h3>Posted on 07/22/2022</h3>
+            <hr>
+        </section>
+        
+        <article>
+        <p>Two very important events in the sport of baseball happened a couple days ago. The first is that the American League won the All-Star Game, which has happened every year since 2013. The second important occurrence was the release of the Baseball Analytica Mid-Season Rankings, which has happened every year since 2022. I’m joking about the importance of course, but I still feel that the update in the rankings deserves a post of its own.</p>
+        <p>The <a href="https://baseball-analytica.com/rankings" target="_blank">“Rankings” page of this site</a> includes four distinct categories: teams, batters, starting pitchers, and relief pitchers. I have a page describing who is ranked and how in greater detail <a href="https://baseball-analytica.com/rankings-explanation" target="_blank">here</a>. In this post, I will go through each set of rankings one by one and talk about whatever I find interesting. Let’s start with the team rankings. A list of each team’s overall ranking, coupled with their change from the 2021 end-of-season rankings, can be found below.</p>     
+        <div class="table-label">2022 Mid-Season Team Overall Rankings</div>       
+        <table>
+            <thead><td>Team</td><td>Ranking</td><td>Change (from end of 2021)</td></thead>
+            <tr><td>Yankees</td><td>1</td><td><div class="arrow-up">▲5</div></td></tr>
+            <tr><td>Astros</td><td>2</td><td><div class="arrow-up">▲1</div></td></tr>
+            <tr><td>Dodgers</td><td>3</td><td><div class="arrow-down">▼2</div></td></tr>
+            <tr><td>Braves</td><td>4</td><td><div class="arrow-up">▲4</div></td></tr>
+            <tr><td>Phillies</td><td>5</td><td><div class="arrow-up">▲10</div></td></tr>
+            <tr><td>Blue Jays</td><td>6</td><td><div class="arrow-down">▼1</div></td></tr>
+            <tr><td>Mariners</td><td>7</td><td><div class="arrow-up">▲10</div></td></tr>
+            <tr><td>Red Sox</td><td>8</td><td><div class="arrow-up">▲1</div></td></tr>
+            <tr><td>Mets</td><td>9</td><td><div class="arrow-up">▲9</div></td></tr>
+            <tr><td>Rays</td><td>10</td><td><div class="arrow-down">▼6</div></td></tr>
+            <tr><td>Cardinals</td><td>11</td><td><div class="arrow-up">▲2</div></td></tr>
+            <tr><td>Angels</td><td>12</td><td><div class="arrow-up">▲2</div></td></tr>
+            <tr><td>Orioles</td><td>13</td><td><div class="arrow-up">▲15</div></td></tr>
+            <tr><td>Giants</td><td>14</td><td><div class="arrow-down">▼12</div></td></tr>
+            <tr><td>Twins</td><td>15</td><td><div class="arrow-up">▲6</div></td></tr>
+            <tr><td>Rangers</td><td>16</td><td><div class="arrow-up">▲10</div></td></tr>
+            <tr><td>Brewers</td><td>17</td><td><div class="arrow-down">▼7</div></td></tr>
+            <tr><td>Padres</td><td>18</td><td><div class="arrow-down">▼2</div></td></tr>
+            <tr><td>White Sox</td><td>19</td><td><div class="arrow-down">▼12</div></td></tr>
+            <tr><td>Guardians</td><td>20</td><td>-</td></tr>
+            <tr><td>Marlins</td><td>21</td><td><div class="arrow-up">▲3</div></td></tr>
+            <tr><td>D-backs</td><td>22</td><td><div class="arrow-up">▲7</div></td></tr>
+            <tr><td>Rockies</td><td>23</td><td><div class="arrow-down">▼4</div></td></tr>
+            <tr><td>Cubs</td><td>24</td><td><div class="arrow-up">▲3</div></td></tr>
+            <tr><td>Royals</td><td>25</td><td><div class="arrow-down">▼3</div></td></tr>
+            <tr><td>Tigers</td><td>26</td><td><div class="arrow-down">▼3</div></td></tr>
+            <tr><td>A's</td><td>27</td><td><div class="arrow-down">▼16</div></td></tr>
+            <tr><td>Reds</td><td>28</td><td><div class="arrow-down">▼16</div></td></tr>
+            <tr><td>Nationals</td><td>29</td><td><div class="arrow-down">▼4</div></td></tr>
+            <tr><td>Pirates</td><td>30</td><td>-</td></tr>
+        </table>
+        <p>The formula that determines team rankings works by estimating the number of runs each team should have scored and allowed, based on a number of indicators, while factoring in both the parks they played in and the difficulty of their opponents. As a result of these factors, some teams do not land where most would probably put them.</p>
+        <p>The number one spot is probably no surprise, but what’s interesting is that according to the formula, the Yankees have scored more runs than expected while also allowing fewer runs than expected. In other words, New York’s actual run differential is bigger than this ranking system believes it should be by a not insignificant amount–yet they are still the number one team by a wide margin, a testament to the power of this year’s Yankees. What’s more surprising is that the Dodgers are number 3, with the Astros taking the number 2 spot. This is primarily because their offense got dinged. Despite scoring the second-most runs out of any team, the Dodgers have played in a more hitter-friendly environment and have benefitted from <a href="https://www.baseball-reference.com/leagues/MLB-standings.shtml#expanded_standings_overall::9" target="_blank">one of the easiest schedules in baseball</a>, which knocks their offense down to eighth in the league.</p>
+        <p>What’s harder to pinpoint is why the Mets are ranked as low as they are. Their offense and defense are both ranked 10th, meaning they are not getting weighed down by one particular category. Though they are overperforming their run differential, they are still ranked fourth in the league by that metric. And it’s not like they have beneficiaries of an easy schedule, either–their opponents have been <a href="https://www.baseball-reference.com/leagues/MLB-standings.shtml#expanded_standings_overall::9" target="_blank">exactly average</a>. The most likely culprit for the Mets’ woes would be that, like their New York counterparts, they over-scored and under-allowed when it came to their run differential, according to the formula. However, the gap between their runs scored and runs allowed was not nearly as cavernous as the Yankees’, meaning other teams were able to leapfrog them in the rankings. A similar outlier in the opposite way would be the Mets’ divisional rivals in Philadelphia. Despite being only six games over .500, they are ranked fifth in the league. Their offense and defense are ranked fourth and seventh, respectively, meaning that like the Mets, they are not being weighed heavily by one particular factor. However, their run differential is <a href="https://www.baseball-reference.com/leagues/MLB-standings.shtml#expanded_standings_overall::8" target="_blank">the sixth-best in the league</a>, meaning their win-loss record has likely been tainted by bad luck. They have also had a slightly-harder-than-average schedule, further giving them an edge.</p>
+        <p>The biggest winner since the previous team rankings came out would be the Orioles (28th to 13th place), who have clawed back to .500 after dwelling in the basement since 2018. This achievement is even more impressive when you remember that they are playing in the toughest division in baseball. The biggest losers are the A’s and Reds, who have both fallen 16 places from 11th and 12th to 27th and 28th, respectively. We’ve all heard of tanking, but tanking in lockstep? I can’t say I’ve ever seen that before.</p>
+        <p>I would say there are not any major surprises in the batter rankings, as most players are around where you’d expect them to be. The Yankees’ top-ranked offense has four bats in the top 20, including the number one hitter Matt Carpenter. Only one other team has that many in the top 50 (the Rays). Interestingly, though the Blue Jays have the second-best offense per these rankings, their best hitter is George Springer at number 48. Paul Goldschmidt, currently leading the league in offensive WAR, is ranked fourth. This is primarily due to the fact that WAR is a cumulative stat while the one used to rank hitters here is not.</p>
+        <p>For starting pitchers, however, this discrepancy does not exist. Sandy Alcantara is both the league leader in pitching WAR and the number one starter. The Astros’ top-ranked defense has four starters in the top 50, as do the second-place Dodgers. Interestingly, the third-place Yankees do not have any starters in the top 30–Nestor Cortes, their best, comes in at number 31. Kevin Gausman, the league leader in FIP and home runs per nine innings among qualified starters by a wide margin, only comes in at number 40.</p>
+        <p>In the reliever rankings, the Orioles lead the charge with six pitchers in the top 50. They also <a href="https://www.baseball-reference.com/leagues/majors/2022.shtml#team_output::4" target="_blank">lead the league in WAR among relief pitchers</a>, so go figure. While they have also been quite successful in terms of fielding, their poor starting pitching means that their overall defense only ranks 12th in baseball. The top reliever so far in 2022 is Ryan Helsley of the Cardinals. Other names near the top include Clay Holmes, Emmanuel Clase, A.J. Minter, and Devin Williams.</p>
+        <p>In regards to future rankings, I’m considering moving the release date for end-of-season ones to after the regular season finishes, not after the World Series. I think it would be fun to see how regular season rankings correlate with playoff performance, and releasing them after the playoffs conclude takes away a lot of that fun. I should also note that the formulas used in the current set of rankings are by no means final, and are certainly subject to modification. I want this site to constantly improve with time, and the ranking system is no exception. That being said, no matter how much the ranking system changes over time, past rankings will not be altered. The past cannot be changed, but through our actions we can change the future.</p>
+        <p>What will the second half of the 2022 season bring? There are a couple divisions still up for grabs, but then again, no divisional lead is completely safe just yet. Some teams currently atop their divisions, namely the Mets and Brewers, seem to be overperforming. Many more, like the Phillies, Braves, Cardinals, and over half of the AL East, seem to be underperforming (and are frankly undervalued as contenders). How long will Matt Carpenter be able to sustain his current momentum? What about Sandy Alcantara? What about the entire Baltimore bullpen? We have about two-and-a-half months left to see.</p>
+        <hr>
+        </article>
+        
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2022-07-22/2022-midseason-review" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2022-07-22/2022-midseason-review&title=Baseball%20Analytica%3A%2022%20Midseason%20Review" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%2022%20Midseason%20Review&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2022-07-22/2022-midseason-review" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>

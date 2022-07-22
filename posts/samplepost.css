@@ -127,6 +127,7 @@ table {
     table-layout: fixed;
     width: 67%;
     border-collapse: collapse;
+    text-align: center;
 }
 
 thead {
@@ -145,6 +146,14 @@ tbody, thead {
 th, td {
     padding: 20px;
     letter-spacing: 1px;
+}
+
+.arrow-up {
+    color: green;
+}
+
+.arrow-down {
+    color: red;
 }
 
 /* Start of bottom (Same for every page) */
