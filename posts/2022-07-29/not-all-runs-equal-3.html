@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Not All Runs are Created Equal, Part 3 | Baseball Analytica</title>
+    <meta name="description" content="The first half of the 2022 Major League Baseball season is now over. How do players and teams stack up?">
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2022-07-29/not-all-runs-equal-3">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>Not All Runs are Created Equal, Part 3</h1>
+            <h3>by A. Kline</h3>
+            <h3>Posted on 07/29/2022</h3>
+            <hr>
+        </section>
+        
+        <article>   
+        <table>
+            <p>I have wanted to revisit this post series for quite some time now, but until recently I had no idea how I would do so. After re-reading the previous two “Not All Runs are Created Equal” posts, I realized I made a pretty glaring error in the formula for weighted run differential, serious to the point where the original formula no longer made any real mathematical sense.</p>
+            <p>The weighted run differential formula that I created in <a href="https://baseball-analytica.com/posts/2021-07-16/not-all-runs-equal" target="_blank"> the first post</a>, and later used in <a href="https://baseball-analytica.com/posts/2021-07-30/not-all-runs-equal-2" target="_blank">the second post</a>, used a metric called strength of schedule (SOS), which is simply the number of runs per game better or worse a team’s average opponent is compared to league average. Since using the SOS value alone as the run weight would often be way too extreme, I decided to moderate the weights by using an exponent between 0 and 1. The formula in question is listed below.</p>
+            <h4>Weighted Runs Scored (SOS) = ((SOS + 1)^n)(RS)</h4>
+            <h4>Weighted Runs Allowed (SOS) = ((-SOS + 1)^n)(RA)</h4>
+            <h4>where SOS = the team’s strength of schedule, n = some value between 0 and 1 that moderates the weight and maximizes weighted differential’s correlation with team skill</h4>
+            <p>The second post was dedicated to evaluating how effective the SOS-weighted run differential is at measuring team skill, as well as what exponent n would be the best at doing so. The data showed that an exponent of 0 (meaning both weights are exactly 1) would be best. In other words, the weights did not improve run differential’s correlation with skill at all. Of course, the very idea of “measuring skill” is very vague and impossible to really do numerically, but putting that aside I was quite discouraged regarding weighted run differential. But it never occurred to me that the issues could be caused by the formula itself, not the famously nebulous question of just how skill should be measured.</p>
+            <p>Then a couple weeks ago, it hit me: SOS is measured in the difference in runs per game, so why wasn’t I dividing by the total runs per game? That way, we can determine the percentage above or below average a team’s opponents are and weight runs accordingly, making for a much more mathematically sound formula. In other words, runs scored and allowed should be weighted as follows:</p>
+            <h4>Weighted Runs Scored (SOS) = ((SOS/lgRunsPerGame) + 1)(RS)</h4>
+            <h4>Weighted Runs Allowed (SOS) = ((-SOS/lgRunsPerGame) + 1)(RA)</h4>
+            <h4>where lgRunsPerGame = the average number of runs scored per team per game in the league</h4>
+            <p>This also has environmental adjustment baked right in, since the league average runs per game is usually a pretty good proxy for how hitter or pitcher-friendly a league is at any given time. However, the keen-eyed among you may have noticed a problem with the formula above: it double counts SOS. You see, strength of schedule measures the number of runs per game better or worse a given team’s opponents are compared to league average, as stated earlier. But the phrase “runs per game” includes both the offensive and defensive side. What this means is that SOS is the number of runs per game a team’s opposing offense is better or worse than average plus the number of runs per game their opposing defense is better or worse, but it unfortunately does not distinguish between the two. A team could face offenses and defenses that are both 0.15 runs per game better than average, giving them an SOS of 0.3. However, that would be seen as identical to the team that faces offenses 0.3 runs per game above average yet defenses that are exactly average.</p>
+            <p>For now, we’ll have to make the assumption that a team’s SOS is always spread evenly across both categories. Obviously there are times when this is not the case, but I doubt this assumption would have a detrimental effect on the overwhelming majority of run weights. Remember, a lot of schedule luck evens out over the course of a full season anyway. With that in mind, we arrive at a new weighted run formula:</p>
+            <h4>Weighted Runs Scored (SOS) = ((SOS/(2*lgRunsPerGame)) + 1)(RS)</h4>
+            <h4>Weighted Runs Allowed (SOS) = ((-SOS/(2*lgRunsPerGame)) + 1)(RA)</h4>
+            <p>Given that weighted runs are just supposed to be runs in a schedule-neutral environment, we can use these values in the formula for Pythagorean win-loss percentage to create what I’ll call an opponent-neutralized Pythagorean win-loss percentage (try saying that ten times fast). Since an exponent of 1.81 was found to be more optimal by Baseball Reference, I will use that instead of the original exponent of 2:</p>
+            <h4>Opponent-Neutralized PythW-L% = (wRS)^1.81/((wRS)^1.81 + (wRA)^1.81)</h4>
+            <h4>where wRS = weighted runs scored, wRA = weighted runs allowed</h4>
+            <p>For those who are curious, I decided to calculate the opponent-neutralized Pythagorean records for all teams as of July 26. The results, as well as each team’s win-loss record and unaltered Pythagorean record, are below.</p>
+            <div class="table-label">Team Opponent-Neutralized Pythagorean Records (2022 season through July 26)</div>
+            <thead><td>Team</td><td>Win-Loss</td><td>PythW-L</td><td>OppAdjPythW-L</td></thead>
+            <tr><td>Yankees</td><td>66-32</td><td>69-29</td><td>70-28</td></tr>
+            <tr><td>Dodgers</td><td>64-32</td><td>66-30</td><td>66-33</td></tr>
+            <tr><td>Astros</td><td>64-34</td><td>61-37</td><td>62-36</td></tr>
+            <tr><td>Mets</td><td>60-37</td><td>58-39</td><td>58-39</td></tr>
+            <tr><td>Blue Jays</td><td>54-43</td><td>55-42</td><td>57-40</td></tr>
+            <tr><td>Mariners</td><td>53-45</td><td>51-46</td><td>54-44</td></tr>
+            <tr><td>Braves</td><td>59-40</td><td>57-42</td><td>54-45</td></tr>
+            <tr><td>Rays</td><td>52-45</td><td>51-46</td><td>53-44</td></tr>
+            <tr><td>Phillies</td><td>50-47</td><td>53-44</td><td>53-44</td></tr>
+            <tr><td>Cardinals</td><td>51-47</td><td>55-43</td><td>53-45</td></tr>
+            <tr><td>Twins</td><td>52-45</td><td>53-44</td><td>52-45</td></tr>
+            <tr><td>Orioles</td><td>49-48</td><td>48-49</td><td>51-47</td></tr>
+            <tr><td>Padres</td><td>55-44</td><td>52-47</td><td>51-48</td></tr>
+            <tr><td>Red Sox</td><td>49-49</td><td>48-50</td><td>51-48</td></tr>
+            <tr><td>Rangers</td><td>43-53</td><td>49-47</td><td>49-47</td></tr>
+            <tr><td>Giants</td><td>48-49</td><td>52-46</td><td>50-47</td></tr>
+            <tr><td>Guardians</td><td>49-47</td><td>49-47</td><td>48-48</td></tr>
+            <tr><td>White Sox</td><td>49-48</td><td>47-50</td><td>49-48</td></tr>
+            <tr><td>Angels</td><td>49-47</td><td>49-47</td><td>48-49</td></tr>
+            <tr><td>Brewers</td><td>54-44</td><td>52-46</td><td>48-50</td></tr>
+            <tr><td>Marlins</td><td>46-51</td><td>46-51</td><td>45-52</td></tr>
+            <tr><td>D-backs</td><td>44-53</td><td>46-51</td><td>45-52</td></tr>
+            <tr><td>Cubs</td><td>40-57</td><td>42-55</td><td>41-56</td></tr>
+            <tr><td>Rockies</td><td>44-54</td><td>43-55</td><td>41-57</td></tr>
+            <tr><td>Reds</td><td>37-59</td><td>39-57</td><td>39-57</td></tr>
+            <tr><td>Royals</td><td>39-58</td><td>38-59</td><td>39-58</td></tr>
+            <tr><td>Tigers</td><td>39-59</td><td>35-63</td><td>36-62</td></tr>
+            <tr><td>Nationals</td><td>34-65</td><td>35-64</td><td>35-64</td></tr>
+            <tr><td>Pirates</td><td>40-58</td><td>34-64</td><td>32-66</td></tr>
+        </table> 
+        <h2>(Win-loss, run, and schedule data: Baseball-Reference.com)</h2>
+        <p>Opponent-neutralized (or opponent-adjusted like the table says, really either name works) Pythagorean win-loss record is much like, though not identical to, a metric called Simple Rating System (SRS) on Baseball Reference. A team’s SRS is simply its run differential per game plus its SOS, meaning a value of 0 would be average. As similar as these two metrics are, I cross-checked the table above with the SRS leaderboard and the match was not a perfect one. However, this could be due to the fact that I could not extract any more nuance out of SOS than “runs better or worse per game” (i.e. how much of that difference is from opposing pitchers vs. hitters), as well as the fact that Baseball Reference refuses to publish SOS figures beyond a single decimal point for whatever reason. If these issues were both resolved, it’s very well possible the leaderboards for opponent-neutralized Pythagorean record and SRS would be consistently identical.</p>
+        <p>In that case, what’s the point of ranking teams by a stat based on run differential with schedule difficulty accounted for when such a stat already exists? Well, a couple reasons. One is that weighted runs allow for more nuance than just SRS. For example, offenses and defenses can be compared in an opponent-neutral environment using weighted runs scored and allowed, which the all-encompassing SRS cannot do. The other is that opponent-neutralized Pythagorean record, based on weighted run differential, is simply more digestible than the alternative. Every baseball fan knows what a win-loss record looks like, and where most good and bad teams fall in that column, making it a very friendly and familiar benchmark to use. In the minds of fans, an average team should be .500, not 0.</p>
+        <p>Then again, the SOS version of this formula is not ideal. As stated earlier, it combines opponent skill into one number when two would be preferable. Ideally, we can use the average number of runs allowed per game by a team’s opponents as well as their average number of runs scored per game. In other words, the ideal weighted runs formula should look like this:</p>
+        <h4>Weighted Runs Scored = (lgRunsPerGame/oppRunsAllowedPerGame)(RS)</h4>
+        <h4>Weighted Runs Allowed = (lgRunsPerGame/oppRunsScoredPerGame)(RA)</h4>
+        <h4>where oppRunsAllowedPerGame = the average number of runs allowed per game by a team’s opponents, oppRunsScoredPerGame = the same but for runs scored</h4>
+        <p>Both of the above opponent run figures would be park-adjusted. The good news is that one of these metrics already exists as it turns out. Baseball Reference’s pitcher value leaderboards include a category called “RA9opp,” which measures a pitcher’s average opponent’s scoring rate per nine innings adjusted to a league-average context. Baseball Reference also tracks it for teams, not just pitchers, making it useful for this context. The downside would be that a nine-inning span is not always the same as a game, but we’ll have to make do with what we’ve got.</p>
+        <p>Of course, both of the opponent run values can be found through rote computation. But that will be for a later time. For now, though, I’m glad I revisited this old topic and got to clear some things up. This is the first time in Baseball Analytica history that three posts have come out in three weeks, and plenty more content is on the way. So stay tuned.</p>
+        <hr>
+        </article>
+        
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2022-07-29/not-all-runs-equal-3" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2022-07-29/not-all-runs-equal-2&title=Baseball%20Analytica%3A%20Not%20All%20Runs%20are%20Created%20Equal%2C%20Part%203" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Not%20All%20Runs%20are%20Created%20Equal%2C%20Part%203&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2022-07-29/not-all-runs-equal-3" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>
