@@ -28,6 +28,8 @@ const app = Vue.createApp({
             switch(authorName) {
                 case "A. Kline":
                     return "writers/kline"
+                case "A. Carreno":
+                    return "writers/carreno"
             }
         },
         highlightTitle(givenElement) {
