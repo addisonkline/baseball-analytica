@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: 'analyzing-orioles-surprising-season', title: 'The Little Bird That Could: Analyzing the Orioles’ Surprising Season', author: 'A. Carreno', date: '08/26/2022', description: 'The Orioles shocked the baseball world by going from basement dwellers to legitimate contenders in less than one season, all in the toughest division in baseball. How?', url: '/posts/2022-08-26/analyzing-orioles-surprising-season'}, 
                 { id: 'not-all-runs-equal-3', title: 'Not All Runs are Created Equal, Part 3', author: 'A. Kline', date: '07/29/2022', description: 'How can the formula for weighted run differential, a metric designed for comparing teams across different environments, be improved upon?', url: '/posts/2022-07-29/not-all-runs-equal-3' },
                 { id: '2022-midseason-review', title: '2022 Midseason Review', author: 'A. Kline', date: '07/22/2022', description: 'The first half of the 2022 Major League Baseball season is now over. How do players and teams stack up?', url: '/posts/2022-07-22/2022-midseason-review' },
                 { id: 'different-orders-different-outcomes', title: 'Different Orders, Different Outcomes', author: 'A. Kline', date: '07/15/2022', description: 'Scoring by simply racking up hits is one thing, but what about the effect of sequencing on runs?', url: '/posts/2022-07-15/different-orders-different-outcomes' },
