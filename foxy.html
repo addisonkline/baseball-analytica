@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FOXY Projections | Baseball Analytica</title>
+    <meta name="description" content="FOXY Projections predict cumulative performance of players and teams through the rest of the season.">
+    <link rel="stylesheet" href="css/rankings.css">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/foxy">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.url">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="rankings-header">
+        <h1>FOXY Projections</h1>
+        <hr>
+        <p>Welcome to Baseball Analytica's homepage for FOXY (<b>F</b>amily of <b>O</b>ptimized <b>Ex</b>pectations for the <b>Y</b>ear) projections, which predict cumulative performance through the rest of the season. More information on the models, as well as the full FOXY changelog, can be found <a href="foxy-changelog">here</a>. These projections update daily unless otherwise noted.</p>
+    </div>
+
+    <div class="helper" id="helper" @load="setTablePlayer('Teams')" @load="loadTable('data/json-team-data-2021-final.json')">
+        <!-- dropdown menu for data type selection -->
+        <h3>Model(s): FOXY v1.0</h3>
+        <h3>Valid as of 08/30/2022</h3>
+        <label for="playerType">Project:</label>
+        <select name="playerType" id="playerType">
+            <option v-for="dataOption in dataOptions" :value="dataOption.url">{{ dataOption.title }}</option>
+        </select>
+        <!--<button @click="setTablePlayer(selectedPlayerType())">
+            <span>Set Player Type</span>
+        </button>-->
+        <button @click="getRankingsButtonClicked()">See Projections</button>
+
+        <!--<p>This is a test to see if "mount" is working</p>-->
+
+        <!-- the table to be filled -->
+        <table id="rankingsTable" class="table">
+            <thead>
+                <!-- to be filled by JavaScript -->
+            </thead>
+            <tbody id="rankingsBody">
+                <!-- to be filled by JavaScript -->
+            </tbody>
+        </table>
+        
+    </div>
+
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/foxy" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/contact&title=Baseball%20Analytica%3A%20FOXY%20Projections" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20FOXY%20Projections&body=https%3A%2F%2Fwww.baseball.analytica.com/foxy" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="foxyLoader.js"></script>
+<script src="background.js"></script>
+</html>
