@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FOXY Guide and Changelog | Baseball Analytica</title>
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/rankings-explanation">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.url">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="contact-info" id="contact-info"> <!-- just called contact info so I don't have to write css just for this -->
+        <h1>FOXY Guide and Changelog</h1>
+        <p>This page is serves as a guide and changelog to the FOXY projection system, whose page can be found <a href="foxy">here</a>.</p>
+        <hr>
+        <p>FOXY (<b>F</b>amily of <b>O</b>ptimized <b>Ex</b>pectations for the <b>Y</b>ear) is a family of models used to project cumulative performance for players and teams through the end of the current season. The system itself, which is proprietary, was created by Addison Kline in 2022 and has been in use since August 29 of that season.</p>
+        <h3>How are teams projected?</h3>
+        <p>A team's final regular-season record is estimated using a number of factors, including every team's current strength as well as their schedule for the rest of the season. A team's strengh is determined by a number of peripheral factors and is adjusted to their schedule (e.g. a team of a given performance level with a difficult schedule to date will be treated more favorably than a team of the same performance that had an easier schedule).</p>
+        <h3>How are players projected?</h3>
+        <p>Similarly to teams, both batters and pitchers are evaluated in the context of the teams they faced. While opponent quality typically skews pitcher performance more than batter performance due to the latter's smaller sample size, it nonetheless has a nonnegligible affect on both and is treated as such.</p>
+        <h3>How do these projections compare to rankings?</h3>
+        <p>Though there is frequently an overlap between ranking and projected performance (a player doing well over a long period of time will be more likely to finish the season well), the two tools measure fundametally different things. Rankings solely evaluate past performance with no consideration of the future. Projections, on the other hand, estimate future performance.</p>
+        <hr>
+        <h3>Changelog</h3>
+        <ul>
+            <li v-for="version in versions">
+                <h4>{{ version.ver }} ({{ version.date }}): {{ version.desc }}</h4>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/rankings-explanation" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/contact&title=Baseball%20Analytica%3A%20Rankings%20Explanation" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Rankings%20Explanation&body=https%3A%2F%2Fwww.baseball.analytica.com/rankings-explanation" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="background.js"></script>
+    <script src="foxyChangelog.js"></script>
+
+</body>
+</html>

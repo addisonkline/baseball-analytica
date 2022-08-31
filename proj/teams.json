@@ -1,0 +1,212 @@
+[
+    {
+        "team": "Dodgers",
+        "projectedW": 109.2,
+        "projectedL": 52.8,
+        "currentW": "89",
+        "currentL": "38"
+    },
+    {
+        "team": "Astros",
+        "projectedW": 100.7,
+        "projectedL": 61.3,
+        "currentW": "82",
+        "currentL": "47"
+    },
+    {
+        "team": "Mets",
+        "projectedW": 100.1,
+        "projectedL": 61.9,
+        "currentW": "82",
+        "currentL": "47"
+    },
+    {
+        "team": "Braves",
+        "projectedW": 97.4,
+        "projectedL": 64.6,
+        "currentW": "79",
+        "currentL": "50"
+    },
+    {
+        "team": "Yankees",
+        "projectedW": 96.4,
+        "projectedL": 65.6,
+        "currentW": "78",
+        "currentL": "51"
+    },
+    {
+        "team": "Cardinals",
+        "projectedW": 93.7,
+        "projectedL": 68.3,
+        "currentW": "75",
+        "currentL": "54"
+    },
+    {
+        "team": "Phillies",
+        "projectedW": 89.7,
+        "projectedL": 72.3,
+        "currentW": "72",
+        "currentL": "57"
+    },
+    {
+        "team": "Mariners",
+        "projectedW": 88.0,
+        "projectedL": 74.0,
+        "currentW": "70",
+        "currentL": "58"
+    },
+    {
+        "team": "Blue Jays",
+        "projectedW": 87.0,
+        "projectedL": 75.0,
+        "currentW": "69",
+        "currentL": "58"
+    },
+    {
+        "team": "Rays",
+        "projectedW": 86.8,
+        "projectedL": 75.2,
+        "currentW": "70",
+        "currentL": "57"
+    },
+    {
+        "team": "Padres",
+        "projectedW": 86.3,
+        "projectedL": 75.7,
+        "currentW": "71",
+        "currentL": "59"
+    },
+    {
+        "team": "Brewers",
+        "projectedW": 86.3,
+        "projectedL": 75.7,
+        "currentW": "68",
+        "currentL": "59"
+    },
+    {
+        "team": "Guardians",
+        "projectedW": 85.4,
+        "projectedL": 76.6,
+        "currentW": "67",
+        "currentL": "59"
+    },
+    {
+        "team": "Orioles",
+        "projectedW": 84.3,
+        "projectedL": 77.7,
+        "currentW": "67",
+        "currentL": "60"
+    },
+    {
+        "team": "Twins",
+        "projectedW": 84.0,
+        "projectedL": 78.0,
+        "currentW": "66",
+        "currentL": "61"
+    },
+    {
+        "team": "White Sox",
+        "projectedW": 79.9,
+        "projectedL": 82.1,
+        "currentW": "63",
+        "currentL": "65"
+    },
+    {
+        "team": "Giants",
+        "projectedW": 78.3,
+        "projectedL": 83.7,
+        "currentW": "61",
+        "currentL": "66"
+    },
+    {
+        "team": "Red Sox",
+        "projectedW": 78.3,
+        "projectedL": 83.7,
+        "currentW": "62",
+        "currentL": "67"
+    },
+    {
+        "team": "Diamondbacks",
+        "projectedW": 76.2,
+        "projectedL": 85.8,
+        "currentW": "60",
+        "currentL": "67"
+    },
+    {
+        "team": "Rangers",
+        "projectedW": 75.0,
+        "projectedL": 87.0,
+        "currentW": "58",
+        "currentL": "69"
+    },
+    {
+        "team": "Angels",
+        "projectedW": 72.4,
+        "projectedL": 89.6,
+        "currentW": "56",
+        "currentL": "73"
+    },
+    {
+        "team": "Marlins",
+        "projectedW": 71.2,
+        "projectedL": 90.8,
+        "currentW": "55",
+        "currentL": "73"
+    },
+    {
+        "team": "Cubs",
+        "projectedW": 71.1,
+        "projectedL": 90.9,
+        "currentW": "55",
+        "currentL": "74"
+    },
+    {
+        "team": "Rockies",
+        "projectedW": 70.0,
+        "projectedL": 92.0,
+        "currentW": "55",
+        "currentL": "74"
+    },
+    {
+        "team": "Royals",
+        "projectedW": 67.5,
+        "projectedL": 94.5,
+        "currentW": "52",
+        "currentL": "77"
+    },
+    {
+        "team": "Reds",
+        "projectedW": 65.7,
+        "projectedL": 96.3,
+        "currentW": "50",
+        "currentL": "77"
+    },
+    {
+        "team": "Tigers",
+        "projectedW": 65.2,
+        "projectedL": 96.8,
+        "currentW": "50",
+        "currentL": "78"
+    },
+    {
+        "team": "Pirates",
+        "projectedW": 62.5,
+        "projectedL": 99.5,
+        "currentW": "48",
+        "currentL": "80"
+    },
+    {
+        "team": "Athletics",
+        "projectedW": 62.4,
+        "projectedL": 99.6,
+        "currentW": "48",
+        "currentL": "81"
+    },
+    {
+        "team": "Nationals",
+        "projectedW": 56.8,
+        "projectedL": 105.2,
+        "currentW": "43",
+        "currentL": "85"
+    }
+]
