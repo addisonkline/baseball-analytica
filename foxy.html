@@ -52,7 +52,7 @@
     <div class="helper" id="helper" @load="setTablePlayer('Teams')" @load="loadTable('data/json-team-data-2021-final.json')">
         <!-- dropdown menu for data type selection -->
         <h3>Model(s): FOXY v1.0</h3>
-        <h3>Valid as of 08/30/2022</h3>
+        <h3>Valid as of {{ projDate }}</h3>
         <label for="playerType">Project:</label>
         <select name="playerType" id="playerType">
             <option v-for="dataOption in dataOptions" :value="dataOption.url">{{ dataOption.title }}</option>
