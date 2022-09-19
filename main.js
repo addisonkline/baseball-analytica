@@ -34,6 +34,13 @@ const app = Vue.createApp({
                     return "writers/carreno"
             }
         },
+        isMostRecentPostByAuthor(post, author) { 
+            for(var i = 0; i < this.posts.length; i++) {
+                if(this.posts[i].author == author) {
+                    return this.posts[i] == post
+                }
+            }
+        },
         highlightTitle(givenElement) {
             document.getElementById(givenElement).style.color = "#646464" // rgb(100, 100, 100)
             document.getElementById(givenElement).style.textDecoration = "underline"
@@ -48,3 +55,4 @@ const app = Vue.createApp({
 })
 
 app.mount('#posts-section')
+app.mount('#bio')

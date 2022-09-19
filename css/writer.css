@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400;700&display=swap');
+
+/* Custom Properties */
+
+:root {
+    --leading: 2em
+}
+
+body {
+    font-family: 'Source Code Pro', sans-serif;
+    margin: 0;
+}
+
+/* Start of top (Same for every page)*/
+.bg {
+    background: black;
+    background-position: 12% 83%;
+    color: white;
+    text-align: center;
+    padding-bottom: 2em;
+}
+
+.very-top {
+    background: black;
+    padding: 1em 0;
+}
+
+.bg a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.bg a:hover {
+    color: rgb(100 100 100);
+}
+
+.bg .bg-site-info .image img {
+    max-width: 100%;
+}
+
+.bg p {
+    padding: 0 1em 0 1em;
+}
+
+.bg nav ul {
+    padding-left: 0;
+}
+
+.bg nav ul li {
+    text-decoration: none;
+    display: inline;
+    text-align: center;
+    padding: 0 3em 0 3em;
+}
+/* End of top */
+
+.bio {
+    padding: 0 1em 1em 1em;
+}
+
+.bio hr {
+    opacity: .5;
+}
+
+.bio h1 {
+    padding: .1em 0 .2em 0;
+    margin-bottom: 0;
+    font-size: 1.5em;
+}
+
+.bio h4 {
+    margin: 0;
+    padding-bottom: 0.5em;
+}
+
+.bio h5 {
+    margin: 0.1em 0 0.1em 0;
+    color: rgb(100 100 100);
+}
+
+.bio a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.bio ul {
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0 0 0.1em 0;
+}
+
+.bio a:hover {
+    color: rgb(100 100 100);
+    text-decoration: underline;
+}
+
+.posts-list h3 {
+    margin: 0;
+    padding: .1em 0 .1em 0;
+    font-size: 1.2em;
+}
+
+.posts-list h5 {
+    margin: 0.1em 0 0.1em 0;
+    color: rgb(100 100 100);
+}
+
+.posts-list p {
+    font-size: 0.8em;
+}
+
+.posts-list a {
+    padding: 0 0 0 0;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.posts-list a:hover {
+    color: rgb(100 100 100);
+    text-decoration: underline;
+}
+
+/* Start of bottom (Same for every page) */
+.bottom {
+    padding: 1em 0 1em 0;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.bottom section {
+    color: white;
+    padding: 0.1em;
+}
+
+.bottom .share-this-page {
+    align-items: center;
+    margin: auto;
+}
+
+.bottom .share-this-page ul {
+    padding-left: 0;
+}
+
+.bottom .share-this-page ul li {
+    text-decoration: none;
+    display: inline;
+    text-align: center;
+    padding: 0 1em 0 1em;
+}
+
+.bottom .share-this-page a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.bottom .share-this-page a:hover {
+    color: rgb(100 100 100);
+}
+
+.bottom .social-media-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.bottom .social-media-links a:hover {
+    color: rgb(100 100 100);
+}
+
+.bottom h5 {
+    color: white;
+    padding: 0.3em;
+}
+/* End of bottom */
+
+/* Start of size adjustments (Same for every page)*/
+@media (min-width: 360px) {
+    .bg nav li {
+        display: inline;
+        padding: 1em;
+        margin: 0;
+    }
+}
+
+@media (max-width: 420px) { 
+    .bg nav ul li {
+        padding-left: 0.8em;
+        padding-right: 0.8em;
+        margin: 0;
+    }
+
+    .bottom .share-this-page ul li {
+        padding: 0.5em;
+    }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+    .bg nav ul li {
+        padding: 1.5em;
+    }
+}
+
+@media (min-width: 768px) {
+    .bg nav li {
+        display: inline;
+        padding: 2em;
+        margin: 0;
+    }
+    .bg-site-info .image {
+        max-width: 85%;
+        max-height: 85%;
+        margin: auto;
+        padding: 0 7.5% 0 7.5%;
+        background: rgb(100 100 100) url('../images/background-formulas.png');
+        background-blend-mode: soft-light;
+        display: flex;
+    }
+}
+
+@media (min-width: 992px) {
+    .bg-site-info .image {
+        max-width: 65%;
+        max-height: 65%;
+        padding: 0 17.5% 0 17.5%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bg-site-info .image {
+        max-width: 45%;
+        max-height: 45%;
+        padding: 0 32.5% 0 32.5%;
+    }
+}
+/* End of size adjustments */
