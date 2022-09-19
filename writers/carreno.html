@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Albert Carreno | Baseball Analytica</title>
+    <link rel="stylesheet" href="../css/writer.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <link rel="icon" href="../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/writers/carreno">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.url">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="bio" id="bio">
+        <h1>Albert Carreno</h1>
+        <h4>bertcar1412@gmail.com</h4>
+        <h5>2022 - present</h5>
+        <hr>
+        <p>Albert Carreno is a writer and analyst for Baseball Analytica. His interets lie in player and team evaluation, sabermetrics, and explaining interesting phenomena through statistical discoveries. Carreno is an undergraduate at UCLA looking to major in statistics with a minor in accounting.</p>
+        <hr>
+        <h3>Most recent post from Albert Carreno</h3>
+        <div class="posts-list">
+            <ul>
+                <li v-for="post in posts">
+                    <h3 v-show="isMostRecentPostByAuthor(post, 'A. Carreno')" :id="post.id" @click="goToUrl(post.url)" @mousemove="highlightTitle(post.id)" @mouseleave="unHighlightTitle(post.id)">{{ post.title }}</h3>
+                    <h5 v-show="isMostRecentPostByAuthor(post, 'A. Carreno')">by {{ post.author }} </h5>
+                    <h5 v-show="isMostRecentPostByAuthor(post, 'A. Carreno')">Posted on {{ post.date }}</h5>
+                    <p v-show="isMostRecentPostByAuthor(post, 'A. Carreno')">{{ post.description }}</p>
+                    <a v-show="isMostRecentPostByAuthor(post, 'A. Carreno')" :href="post.url">Read full post >></a>
+                </li>
+            </ul>
+        </div>
+        <hr>
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/writers/carreno" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/contact&title=Albert%20Carreno%3A%20Baseball%20Analytica" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Albert%20Carreno%3A%20Baseball%20Analytica&body=https%3A%2F%2Fwww.baseball.analytica.com/writers/carreno" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../background.js"></script>
+    <script src="../main.js"></script>
+
+</body>
+</html>
