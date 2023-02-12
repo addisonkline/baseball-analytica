@@ -5,7 +5,7 @@
 // * * * * * * * * * * * * 
 
 // table displayed when page loaded
-const defaultTable = "data/json-team-data-2022-midseason.json";
+const defaultTable = "data/json-team-data-2022-final.json";
 
 const teamHeaders = ["Team", "Win-Loss", "Offense Rank", "Defense Rank", "Overall Rank"];
 const battingHeaders = ["Name", "Team", "G", "PA", "Ranking"];
@@ -104,6 +104,7 @@ const helperApp = Vue.createApp({
                 { title: 'Relief Pitchers', url: "-relief-pitcher-data-" }
             ],
             rankingTimes: [
+                { title: '2022 end-of-season', url: "2022-final" },
                 { title: '2022 mid-season', url: "2022-midseason" },
                 { title: '2021 end-of-season', url: "2021-final" }
             ]

@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: 'what-new-rule-change-means-for-baseball', title: 'A Seismic Shift: What the New Rule Change Means for Baseball', author: 'A. Carreno', date: '12/02/2022', description: 'The 2023 MLB season will see a number of new changes, but one of them stands out.', url: '/posts/2022-12-02/what-new-rule-change-means-for-baseball'}, 
                 { id: 'who-deserves-nl-cy-young', title: 'Who Deserves the NL Cy Young Award?', author: 'A. Carreno', date: '09/09/2022', description: "This year's NL Cy Young race is shaping up to be one of baseball's most interesting award races in recent memory. Who, if anyone, is most deserving?", url: '/posts/2022-09-09/who-deserves-nl-cy-young'},
                 { id: 'analyzing-orioles-surprising-season', title: 'The Little Bird That Could: Analyzing the Orioles’ Surprising Season', author: 'A. Carreno', date: '08/26/2022', description: 'In less than a year, the Orioles have gone from basement dwellers to legitimate contenders in the toughest division in baseball. How?', url: '/posts/2022-08-26/analyzing-orioles-surprising-season'},
                 { id: 'not-all-runs-equal-3', title: 'Not All Runs are Created Equal, Part 3', author: 'A. Kline', date: '07/29/2022', description: 'How can the formula for weighted run differential, a metric designed for comparing teams across different environments, be improved upon?', url: '/posts/2022-07-29/not-all-runs-equal-3' },

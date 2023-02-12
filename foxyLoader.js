@@ -8,8 +8,8 @@
 const defaultTable = "proj/teams.json";
 
 const teamHeaders = ["Team", "Projected W", "Projected L", "Current W", "Current L"];
-const battingHeaders = ["Name", "Team", "pG", "pPA", "pAB", "pH", "p1B", "p2B", "p3B", "pHR", "pBB", "pHBP", "pK", "pSB", "pCS", "pAVG", "pOBP", "pSLG", "pOPS"];
-const pitchingHeaders = ["Name", "Team", "pG", "pIP", "pH", "pER", "pHR", "pK", "pBB", "pHBP", "pERA", "pWHIP", "pK/9", "pBB/9"];
+const battingHeaders = ["Name", "Team", "G", "PA", "AB", "H", "1B", "2B", "3B", "HR", "BB", "HBP", "K", "SB", "CS", "AVG", "OBP", "SLG", "OPS"];
+const pitchingHeaders = ["Name", "Team", "G", "IP", "H", "ER", "HR", "K", "BB", "HBP", "ERA", "WHIP", "K/9", "BB/9"];
 
 // this function only works when outside the vue app... oh well
 function populateTable(json, table) {
@@ -82,8 +82,8 @@ const helperApp = Vue.createApp({
     data() {
         return {
             url: 'https://baseball-analytica.com',
-            projDate: '09/19/2022',
-            projVersion: '1.01',
+            projDate: '10/06/2022',
+            projVersion: '1.03',
             batterDataShown: true,
             countBatterTables: 0,
             countPitcherTables: 0,
