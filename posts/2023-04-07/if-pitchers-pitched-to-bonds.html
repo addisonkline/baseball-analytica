@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What if Pitchers Actually Pitched to Barry Bonds? | Baseball Analytica</title>
+    <meta name="description" content="Barry Bonds has more intentional walks than any other player in MLB history. But what if he actually got a chance to bat?">
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2023-04-07/if-pitchers-pitched-to-bonds">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>What if Pitchers Actually Pitched to Barry Bonds?</h1>
+            <h3>by <a href="../../writers/kline">A. Kline</a></h3>
+            <h3>Posted on 04/07/2023</h3>
+            <hr>
+        </section>
+        
+        <article>   
+            <p>I’ve wanted to write a Barry Bonds post for quite some time now. However, I soon ran into a problem–wanting to write a “Barry Bonds post” is almost like wanting to write a “baseball post.” There is so much that can be written about that you really need to narrow your topic down before you can fit it into a concise blog post. It could be about <a href="https://www.baseball-reference.com/players/b/bondsba01.shtml#2001-2004-sum:batting_standard" target="_blank">the oft-cited stretch from 2001 to 2004</a> when he had a .559 on-base percentage, a 1.368 OPS, a 256 OPS+, and averaged 50 home runs and 11 WAR per season. Or it could be about how he did all of that while still striking an average of only 60 times per season, something especially eye-popping nowadays. And as crazy as all of that is, it’s already been covered in great detail. But a few months ago I had an idea.</p>
+            <p>Barry Bonds is famously the all-time career home run leader, but slightly less famously the all-time career intentional walk leader. Over the course of his 22-year MLB career, he accrued 688 of them–over twice as many as the second-best player in that category, Albert Pujols. But this isn’t too surprising. After all, pitchers were absolutely terrified of Barry Bonds. His presence stoked more fear into pitchers than any player we’ve seen since (and quite possibly any other player before).</p>
+            <p>It therefore follows that pitchers did not want to pitch in the zone to Bonds, particularly later in his career when he combined the plate discipline of a seasoned veteran with the power of someone twenty years younger. In 2004 alone, Barry Bonds was issued 120 intentional walks. This level of pitcher fear is doubly impressive considering <a href="https://youtu.be/JwMfT2cZGHg" target="_blank">he didn’t even have a bat</a>. In data science, it is considered unwise to make sweeping conclusions with 100% certainty, but I’ll just come out and say it: barring fundamental changes in the MLB rulebook or schedule, 120 intentional walks in a single season will never be seen again.</p>
+            <p>My point is that since pitchers were so reluctant to pitch to him, Barry Bonds potentially missed out on even more home runs he would have otherwise had if pitchers gave him a fair chance to bat.* So what if Bonds was actually allowed a proper plate appearance for all the times he was actually denied one?</p>
+            <p>First, let’s look at Bonds’ relevant career counting stats below (where NIBB = BB - IBB, or non-intentional bases on balls):</p>
+            <div class="table-label">Barry Bonds’ Career PA, HR, NIBB, and IBB</div>
+            <table>
+                <thead><td>Season</td><td>PA</td><td>HR</td><td>NIBB</td><td>IBB</td></thead>
+                <tr><td>1986</td><td>484</td><td>16</td><td>63</td><td>2</td></tr>
+                <tr><td>1987</td><td>611</td><td>25</td><td>51</td><td>3</td></tr>
+                <tr><td>1988</td><td>614</td><td>24</td><td>58</td><td>14</td></tr>
+                <tr><td>1989</td><td>679</td><td>19</td><td>71</td><td>22</td></tr>
+                <tr><td>1990</td><td>621</td><td>33</td><td>78</td><td>15</td></tr>
+                <tr><td>1991</td><td>634</td><td>25</td><td>82</td><td>25</td></tr>
+                <tr><td>1992</td><td>612</td><td>34</td><td>95</td><td>32</td></tr>
+                <tr><td>1993</td><td>674</td><td>46</td><td>83</td><td>43</td></tr>
+                <tr><td>1994</td><td>474</td><td>37</td><td>56</td><td>18</td></tr>
+                <tr><td>1995</td><td>635</td><td>33</td><td>98</td><td>22</td></tr>
+                <tr><td>1996</td><td>675</td><td>42</td><td>121</td><td>30</td></tr>
+                <tr><td>1997</td><td>690</td><td>40</td><td>111</td><td>34</td></tr>
+                <tr><td>1998</td><td>697</td><td>37</td><td>101</td><td>29</td></tr>
+                <tr><td>1999</td><td>434</td><td>34</td><td>64</td><td>9</td></tr>
+                <tr><td>2000</td><td>607</td><td>49</td><td>95</td><td>22</td></tr>
+                <tr><td>2001</td><td>664</td><td>73</td><td>142</td><td>35</td></tr>
+                <tr><td>2002</td><td>612</td><td>46</td><td>130</td><td>68</td></tr>
+                <tr><td>2003</td><td>550</td><td>45</td><td>87</td><td>61</td></tr>
+                <tr><td>2004</td><td>617</td><td>45</td><td>112</td><td>120</td></tr>
+                <tr><td>2005</td><td>52</td><td>5</td><td>6</td><td>3</td></tr>
+                <tr><td>2006</td><td>493</td><td>26</td><td>77</td><td>38</td></tr>
+                <tr><td>2007</td><td>477</td><td>28</td><td>89</td><td>43</td></tr>
+                <tr><td>Career</td><td>12606</td><td>762</td><td>1870</td><td>688</td></tr>
+            </table>
+            <h2>(Data: Fangraphs)</h2>
+            <p>Using the numbers above, I calculated the total number of home runs and non-intentional walks Bonds missed out on throughout his career due to cowardly pitching. Before we get to those numbers, however, I’ll guide you through the steps of my analysis.</p>
+            <p>First, we need to separate the plate appearances Bonds had a say in from the ones in which he did not. This is simple:</p>
+            <h4>Intentional Plate Appearances (IPA) = PA - IBB</h4>
+            <h4>Non-Intentional Plate Appearances = IBB</h4>
+            <p>From there, I decided to estimate the number of home runs/non-intentional walks missed out on by multiplying his home run/non-intentional walk rates per IPA by the number of non-intentional plate appearances (or the number of intentional walks), as seen below:</p>
+            <h4>Home Runs Missed = (HR/IPA)*(IBB)</h4>
+            <h4>Non-Intentional Walks Missed = (NIBB/IPA)*(IBB)</h4>
+            <p>It does seem generous to assume Bonds would maintain his high home run/non-intentional walk rates through all of his extra simulated plate appearances, so I decided to create lower and upper bounds for the number of home runs/non-intentional walks missed. The lower bound assumes that Bonds would maintain a league-average rate per IPA in both stats throughout the simulated plate appearances, which works because Bonds was never a below-average player.</p>
+            <h4>Lower Bound:</h4>
+            <h4>HR Missed = (Lg HR/IPA)*(IBB)</h4>
+            <h4>NIBB Missed = (Lg NIBB/IPA)*(IBB)</h4>
+            <p>For the upper bound, I decided to use Bonds’ home run/non-intentional walk rates per IPA for each given season, because by the same reasoning as above, it would be too generous to assume Bonds maintains those rates at minimum.</p>
+            <h4>Upper Bound:</h4> 
+            <h4>HR Missed = (Bonds HR/IPA)*(IBB)</h4> 
+            <h4>NIBB Missed = (Bonds NIBB/IPA)*(IBB)</h4>
+            <p>Given that Bonds was robbed of enough IPAs to put a craft brewery out of business, I expected to see a not insignificant increase in his career home run and non-intentional walk totals. For what it’s worth, I would actually consider these bounds to both be relatively pessimistic (I’ll come back to this later). But without further ado, here are the numbers I calculated**.</p>
+            <div class="table-label">HR and NIBB Barry Bonds Missed Out On (Lower Bound)</div>
+            <table>
+                <thead><td>Season</td><td>Lg HR/IPA</td><td>Lg NIBB/IPA</td><td>HR Missed</td><td>NIBB Missed</td></thead>
+                <tr><td>1986</td><td>0.023896</td><td>0.081081</td><td>0.05</td><td>0.16</td></tr>
+                <tr><td>1987</td><td>0.027752</td><td>0.081564</td><td>0.08</td><td>0.24</td></tr>
+                <tr><td>1988</td><td>0.020125</td><td>0.073519</td><td>0.28</td><td>1.03</td></tr>
+                <tr><td>1989</td><td>0.019441</td><td>0.076179</td><td>0.43</td><td>1.68</td></tr>
+                <tr><td>1990</td><td>0.020871</td><td>0.078449</td><td>0.31</td><td>1.18</td></tr>
+                <tr><td>1991</td><td>0.021208</td><td>0.079960</td><td>0.61</td><td>2.00</td></tr>
+                <tr><td>1992</td><td>0.019079</td><td>0.077668</td><td>1.00</td><td>2.49</td></tr>
+                <tr><td>1993</td><td>0.023283</td><td>0.078764</td><td>0.48</td><td>3.39</td></tr>
+                <tr><td>1994</td><td>0.026775</td><td>0.081984</td><td>0.48</td><td>1.48</td></tr>
+                <tr><td>1995</td><td>0.026228</td><td>0.084416</td><td>0.58</td><td>1.86</td></tr>
+                <tr><td>1996</td><td>0.028206</td><td>0.083856</td><td>0.85</td><td>2.52</td></tr>
+                <tr><td>1997</td><td>0.026610</td><td>0.083138</td><td>0.90</td><td>2.83</td></tr>
+                <tr><td>1998</td><td>0.027049</td><td>0.082151</td><td>0.78</td><td>2.38</td></tr>
+                <tr><td>1999</td><td>0.029313</td><td>0.089000</td><td>0.26</td><td>0.80</td></tr>
+                <tr><td>2000</td><td>0.030114</td><td>0.090066</td><td>0.66</td><td>1.98</td></tr>
+                <tr><td>2001</td><td>0.029409</td><td>0.077708</td><td>1.03</td><td>2.72</td></tr>
+                <tr><td>2002</td><td>0.027322</td><td>0.079897</td><td>1.86</td><td>5.43</td></tr>
+                <tr><td>2003</td><td>0.027975</td><td>0.078293</td><td>1.71</td><td>4.78</td></tr>
+                <tr><td>2004</td><td>0.029125</td><td>0.079297</td><td>3.50</td><td>9.52</td></tr>
+                <tr><td>2005</td><td>0.027107</td><td>0.075595</td><td>0.08</td><td>0.23</td></tr>
+                <tr><td>2006</td><td>0.028854</td><td>0.078783</td><td>1.10</td><td>2.94</td></tr>
+                <tr><td>2007</td><td>0.026466</td><td>0.080396</td><td>1.14</td><td>3.39</td></tr>
+                <tr><td>Career</td><td>-</td><td>-</td><td>18.22</td><td>55.00</td></tr>
+            </table>
+            <h2>Note: Due to rounding, the columns may not add up to the stated sum. This is because the rounding was done after the sum was calculated, so the career value is still accurate. (Data: Fangraphs)</h2>
+            <p>As you can see, I allowed for the home run and walk totals to be decimals. This is obviously impossible in the real world, but at the same time it would be statistically dishonest to round to the nearest whole number since we are dealing with such a small range of values.</p>
+            <p>If Bonds was given a chance to bat all the times he intentionally walked and performed the same as a league-average player during those appearances, he would have hit a bit over 18 extra home runs, and would have walked about 55 more times on his own accord. However, these values are not dispersed evenly–about 3.5 homers would come from 2004 alone, over 43 times the amount calculated for Bonds’ injury-shortened 2005. Of course, this is much more a function of the number of times Bonds intentionally walked than it is of the league rates. Bonds had 40 times as many intentional walks in 2004 as he did in 2005, but the league home run and non-intentional walk rates both only changed by a couple tenths of a percentage point.</p>
+            <p>But again, that’s just the lower bound. If we replace the league home run/non-intentional walk rates with Bonds’ rates, we get the following:</p>
+            <div class="table-label">HR and NIBB Barry Bonds Missed Out On (Upper Bound)</div>
+            <table>
+                <thead><td>Season</td><td>Bonds HR/IPA</td><td>Bonds NIBB/IPA</td><td>HR Missed</td><td>NIBB Missed</td></thead>
+                <tr><td>1986</td><td>0.033195</td><td>0.130705</td><td>0.07</td><td>0.26</td></tr>
+                <tr><td>1987</td><td>0.041118</td><td>0.083882</td><td>0.12</td><td>0.25</td></tr>
+                <tr><td>1988</td><td>0.040000</td><td>0.096667</td><td>0.56</td><td>1.35</td></tr>
+                <tr><td>1989</td><td>0.028919</td><td>0.108067</td><td>0.64</td><td>2.38</td></tr>
+                <tr><td>1990</td><td>0.054455</td><td>0.128713</td><td>0.82</td><td>1.93</td></tr>
+                <tr><td>1991</td><td>0.041051</td><td>0.134647</td><td>1.03</td><td>3.37</td></tr>
+                <tr><td>1992</td><td>0.058621</td><td>0.163793</td><td>1.88</td><td>5.24</td></tr>
+                <tr><td>1993</td><td>0.072900</td><td>0.131537</td><td>3.13</td><td>5.66</td></tr>
+                <tr><td>1994</td><td>0.081140</td><td>0.122807</td><td>1.46</td><td>2.21</td></tr>
+                <tr><td>1995</td><td>0.053834</td><td>0.159869</td><td>1.18</td><td>3.52</td></tr>
+                <tr><td>1996</td><td>0.065116</td><td>0.187597</td><td>1.95</td><td>5.63</td></tr>
+                <tr><td>1997</td><td>0.060976</td><td>0.169207</td><td>2.07</td><td>5.75</td></tr>
+                <tr><td>1998</td><td>0.055389</td><td>0.151198</td><td>1.61</td><td>4.38</td></tr>
+                <tr><td>1999</td><td>0.080000</td><td>0.150588</td><td>0.72</td><td>1.36</td></tr>
+                <tr><td>2000</td><td>0.083761</td><td>0.162393</td><td>1.84</td><td>3.57</td></tr>
+                <tr><td>2001</td><td>0.116057</td><td>0.225755</td><td>4.06</td><td>7.90</td></tr>
+                <tr><td>2002</td><td>0.084559</td><td>0.238971</td><td>5.75</td><td>16.25</td></tr>
+                <tr><td>2003</td><td>0.092025</td><td>0.177914</td><td>5.61</td><td>10.85</td></tr>
+                <tr><td>2004</td><td>0.090543</td><td>0.225352</td><td>10.87</td><td>27.04</td></tr>
+                <tr><td>2005</td><td>0.102041</td><td>0.122449</td><td>0.31</td><td>0.37</td></tr>
+                <tr><td>2006</td><td>0.057143</td><td>0.169231</td><td>2.17</td><td>6.43</td></tr>
+                <tr><td>2007</td><td>0.064516</td><td>0.205069</td><td>2.77</td><td>8.82</td></tr>
+                <tr><td>Career</td><td>-</td><td>-</td><td>50.62</td><td>124.52</td></tr>
+            </table>
+            <h2>Note: Due to rounding, the columns may not add up to the stated sum. This is because the rounding was done after the sum was calculated, so the career value is still accurate. (Data: Fangraphs)</h2>
+            <p>Amazingly, if Bonds kept his numbers up for all the plate appearances he had no say in, he would have about 51 more home runs and 125 non-intentional walks for his career–that’s about the same as one, uh, 2002 Barry Bonds. Even more astonishingly, over 30 of those would be from between 2000 and 2007, after Bonds’ 35th birthday.</p>
+            <p>With these bounds we can therefore estimate that had he never intentionally walked, Barry Bonds would have likely had between 780 and 813 career home runs, and between 1925 and 1995 non-intentional walks. Given that Bonds received far more intentional walks than any other player in history, his status as the all-time home run leader would remain. His new walk total would drop him from first on the all-time leaderboard to fifth (of course keeping in mind that everyone else’s intentional walks are still counted).</p>
+            <p>I would like to reiterate my claim that the bounds used (particularly for home runs) are somewhat pessimistic. It only accounts for the times he was intentionally walked by the standards of the MLB rulebook, after all. It does not account for all the times he was unintentionally walked because pitchers were too afraid to pitch over the plate. It does not account for the fact that across all his plate appearances, he saw <a href="https://www.beyondtheboxscore.com/2014/3/6/5475550/bondsian-plate-discipline-and-batted-ball-tendencies" target="_blank">a significantly lower proportion of pitches in the strike zone than league average</a>. Put simply, pitchers gave him way fewer opportunities to hit than his intentional walk total implies, particularly later in his career.</p>
+            <p>There is a great deal of irony in this situation. In Bonds’ quest to break home run records late in his career by eating well-balanced breakfasts supplemented with flaxseed oil, he was almost a detriment to his own cause. He became so good at hitting home runs that pitchers no longer wanted to pitch to him, and you can’t blame them. In his pursuit of 756, Bonds may have single-handedly robbed himself of dozens.</p>
+        <hr>
+            <p><b>*</b> This is admittedly the case for all power hitters to some degree (think Aaron Judge towards the end of last season). However, as stated previously, Bonds was the source of this fear more than just about anyone else in baseball, so it’s therefore highly likely he missed out on more fair plate appearances than any other player.</p>
+            <p><b>**</b> I kept my calculation process relatively simple here for two main reasons. Firstly, Barry Bonds retired in 2007, so there is simply not as much advanced data on his plate appearances as there would be if he played today. Secondly, doing any extra number crunching (see: Monte Carlo simulations) would be a lot of extra work for comparatively little reward. That’s the thing about keeping statistical analysis simple: Your numbers are probably at least 85% as accurate as they would be with a state-of-the-art model, but the time savings are much more than 15%.</p>
+        </article>
+        
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2023-04-07/if-pitchers-pitched-to-bonds" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2023-04-07/if-pitchers-pitched-to-bonds&title=Baseball%20Analytica%3A%20What%20if%20Pitchers%20Actually%20Pitched%20to%20Barry%20Bonds?" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20%Baseball%20Analytica%3A%20What%20if%20Pitchers%20Actually%20Pitched%20to%20Barry%20Bonds?&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2023-04-07/if-pitchers-pitched-to-bonds" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>

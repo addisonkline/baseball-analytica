@@ -82,8 +82,8 @@ const helperApp = Vue.createApp({
     data() {
         return {
             url: 'https://baseball-analytica.com',
-            projDate: '10/06/2022',
-            projVersion: '1.03',
+            projDate: '04/01/2023',
+            projVersion: '1.04',
             batterDataShown: true,
             countBatterTables: 0,
             countPitcherTables: 0,
