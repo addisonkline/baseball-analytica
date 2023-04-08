@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: 'if-pitchers-pitched-to-bonds', title: 'What if Pitchers Actually Pitched to Barry Bonds?', author: 'A. Kline', date: '04/07/2023', description: 'Barry Bonds has more intentional walks than any other player in MLB history. But what if he actually got a chance to bat?', url: '/posts/2023-04-07/if-pitchers-pitched-to-bonds'}, 
                 { id: 'what-new-rule-change-means-for-baseball', title: 'A Seismic Shift: What the New Rule Change Means for Baseball', author: 'A. Carreno', date: '12/02/2022', description: 'The 2023 MLB season will see a number of new changes, but one of them stands out.', url: '/posts/2022-12-02/what-new-rule-change-means-for-baseball'}, 
                 { id: 'who-deserves-nl-cy-young', title: 'Who Deserves the NL Cy Young Award?', author: 'A. Carreno', date: '09/09/2022', description: "This year's NL Cy Young race is shaping up to be one of baseball's most interesting award races in recent memory. Who, if anyone, is most deserving?", url: '/posts/2022-09-09/who-deserves-nl-cy-young'},
                 { id: 'analyzing-orioles-surprising-season', title: 'The Little Bird That Could: Analyzing the Orioles’ Surprising Season', author: 'A. Carreno', date: '08/26/2022', description: 'In less than a year, the Orioles have gone from basement dwellers to legitimate contenders in the toughest division in baseball. How?', url: '/posts/2022-08-26/analyzing-orioles-surprising-season'},
