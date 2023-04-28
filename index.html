@@ -59,7 +59,7 @@
             <!-- new functionality for displaying posts -->
             <ul>
                 <li v-for="post in posts">
-                    <h3 :id="post.id" @click="goToUrl(post.url)" @mousemove="highlightTitle(post.id)" @mouseleave="unHighlightTitle(post.id)">{{ post.title }}</h3>
+                    <h3><a :href="post.url">{{ post.title }}</a></h3>
                     <h5>by <a :href="getAuthorUrl(post.author)">{{ post.author }}</a> </h5>
                     <h5>Posted on {{ post.date }}</h5>
                     <p>{{ post.description }}</p>
