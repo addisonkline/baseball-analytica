@@ -7,7 +7,7 @@
 // table displayed when page loaded
 const defaultTable = "proj/teams.json";
 
-const teamHeaders = ["Team", "Projected W", "Projected L", "Current W", "Current L"];
+const teamHeaders = ["Team", "Proj W", "Proj L", "Proj Rdiff", "Curr W", "Curr L", "Div%"];
 const battingHeaders = ["Name", "Team", "G", "PA", "AB", "H", "1B", "2B", "3B", "HR", "BB", "HBP", "K", "SB", "CS", "AVG", "OBP", "SLG", "OPS"];
 const pitchingHeaders = ["Name", "Team", "G", "IP", "H", "ER", "HR", "K", "BB", "HBP", "ERA", "WHIP", "K/9", "BB/9"];
 
@@ -82,8 +82,8 @@ const helperApp = Vue.createApp({
     data() {
         return {
             url: 'https://baseball-analytica.com',
-            projDate: '04/01/2023',
-            projVersion: '1.04',
+            projDate: '04/28/2023',
+            projVersion: '1.11',
             batterDataShown: true,
             countBatterTables: 0,
             countPitcherTables: 0,
