@@ -101,8 +101,45 @@ const helperApp = Vue.createApp({
             const request = new XMLHttpRequest()
 
             request.open("get", table)
+            console.log(request)
             request.onload = () => {
-                const json = JSON.parse(request.responseText)
+                var reviver = function(key, value) {
+                    if (((key === "projectedW") || (key === "projectedL") || (key === "div%")) && (typeof value === "number") && (value % 1 == 0)) {
+                        return value.toString() + ".0" // wins, playoff probability need to be rounded to 1 decimal point
+                    }
+                    else if (((key === "projectedAVG") || (key === "projectedOBP") || (key === "projectedSLG") || (key === "projectedOPS") || (key === "projectedWHIP")) && (typeof value === "number")) {
+                        stringAfterDecimal = value.toString().split(".")[1]
+                        if (!stringAfterDecimal) {
+                            return value.toString() + ".000"
+                        }
+                        else if (stringAfterDecimal.length == 1) {
+                            return value.toString() + "00"
+                        }
+                        else if (stringAfterDecimal.length == 2) {
+                            return value.toString() + "0"
+                        }
+                        else {
+                            return value // all of these stats should be rounded to 3 decimal places
+                        }
+                    }
+                    else if (((key === "projectedERA") || (key === "projectedK9") || (key === "projectedBB9")) && (typeof value === "number")) {
+                        stringAfterDecimal = value.toString().split(".")[1]
+                        if (!stringAfterDecimal) {
+                            return value.toString() + ".00"
+                        }
+                        else if (stringAfterDecimal.length == 1) {
+                            return value.toString() + "0"
+                        }
+                        else {
+                            return value // all of these stats should be rounded to 2 decimal places
+                        }
+                    }
+                    else {
+                        return value
+                    }
+                }
+
+                const json = JSON.parse(request.responseText, reviver)
                 populateTable(json, table)
             }
 
