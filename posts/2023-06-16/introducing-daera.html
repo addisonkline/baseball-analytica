@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Introducing Defense-Aware ERA | Baseball Analytica</title>
-    <meta name="description" content="Defense-independent pitching statistics (DIPS), though revolutionary when they were introduced, have long overstayed their welcome in the sabermetrics community. Can there be a modern-day replacement that doesn\'t just ignore batted balls?">
+    <meta name="description" content="Defense-independent pitching statistics (DIPS), though revolutionary when they were introduced, have long overstayed their welcome in the sabermetrics community. Can there be a modern-day replacement that doesn't just ignore batted balls?">
     <link rel="stylesheet" href="../samplepost.css">
     <link rel="icon" href="../../images/favicon.ico">
     <link rel="icon" href="../../images/icon.png">
-    <link rel="canonical" href="https://baseball-analytica.com/posts/2023-06-09/introducing-daera">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2023-06-16/introducing-daera">
     <script src="https://unpkg.com/vue@3.0.2"></script>
 </head>
 <body>
@@ -53,7 +53,7 @@
             <p>Eleven months ago I wrote <a href="https://baseball-analytica.com/posts/2022-07-01/is-fip-overrated" target="_blank">a post</a> about defense-independent pitching statistics, in particular fielding-independent pitching (which I mistakenly referred to as field-independent pitching, though in my defense, the latter is much smoother off the tongue). In summary, I articulated my belief that although FIP was instrumental for its time in highlighting some of the issues with evaluating pitchers by more results-oriented stats like ERA, it comes with its fair share of problems, and nowadays there are definitely alternatives that can (and frankly should) be used in its place.</p>
             <p>My biggest issue with FIP (and DIPS in general) is that it attempts to address the issue of batted ball randomness by ignoring it completely. In a world where balls in play were no more common than hit batsmen, this would not be a major issue, but contrary to all indications from recent rule changes, balls in play are still a massive part of the game of baseball and will not be disappearing anytime soon. There have been some <a href="https://blogs.fangraphs.com/the-case-against-a-case-against-fip/" target="_blank">defenders of FIP</a> as well as critics of critics of it, and to their credit, a not insignificant minority of their points are valid. At the same time, though, sticking with FIP in 2023 seems a bit strange when significantly better options are available.</p>
             <p>Skill-interactive ERA (<a href="https://www.mlb.com/glossary/advanced-stats/skill-interactive-earned-run-average" target="_blank">SIERA</a>) addresses the batted ball issue by looking at the proportion of batted balls each pitcher allows that are scored as ground balls, fly balls, and line drives. As a result of this, <a href="https://www.pitcherlist.com/going-deep-the-relative-value-of-fip-xfip-and-siera/" target="_blank">it has been shown to be a better predictor of future ERA than FIP</a> by a not insignificant margin. However, SIERA still has its problems. For one, there is not a ton of consistency in which batted balls are considered fly balls vs. ground balls vs. line drives, especially prior to the Statcast era. Also, the formula for SIERA is, to put it kindly, not the prettiest thing I’ve ever seen.</p>
-            <p>So what exactly is my goal here? In the FIP post, I talked about my wish to see defense-independent pitching statistics with “defense-aware pitching statistics,” though never proposed any specific solutions. Here, I want to create a pitching statistic that has the following traits: 1) the simplicity and ease of calculation of FIP, 2) the predictive ability of future ERA at least on par with SIERA, and 3) the incorporation of modern Statcast batted-ball data. Checking all three of these boxes may not even be possible, but I will try. Starting with point number 1, I envisioned my formula being linear, following the general structure seen below:</p>
+            <p>So what exactly is my goal here? In the FIP post, I talked about my wish to see defense-independent pitching statistics replaced by “defense-aware pitching statistics,” though never proposed any specific solutions. Here, I want to create a pitching statistic that has the following traits: 1) the simplicity and ease of calculation of FIP, 2) the predictive ability of future ERA at least on par with SIERA, and 3) the incorporation of modern Statcast batted-ball data. Checking all three of these boxes may not even be possible, but I will try. Starting with point number 1, I envisioned my formula being linear, following the general structure seen below:</p>
             <h4>Defense-Aware ERA (DAERA) = β_0 + β_1*(K%) + β_2*(BB%)+ β_3*(f(AvgEV)) + β_4*(g(AvgLA)),</h4>
             <h4>where AvgEV = the avg exit velocity on batted balls allowed and AvgLA = the avg launch angle; f,g = functions such that the overall formula can be written linearly; and β_0,...,β_4 are constants</h4>
             <p>My next step was to find the functions f and g such that the final stat could achieve what SIERA never could: a linear formula. To do this, I analyzed the relationship between average exit velocity/average launch angle with ERA/xERA.</p>
@@ -107,10 +107,10 @@
             <h3>Share this page</h3>
             <div class="share-this-page">
                 <ul>
-                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2023-06-09/introducing-daera" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2023-06-16/introducing-daera" target="_blank">Facebook</a></li>
                     <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
-                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2023-06-09/introducing-daera&title=Baseball%20Analytica%3A%20Introducing%20Defense%2DAware%20ERA" target="_blank">Reddit</a></li>
-                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Introducing%20Defense%2DAware%20ERA&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2023-06-09/introducing-daera" target="_blank">Email</a></li>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2023-06-16/introducing-daera&title=Baseball%20Analytica%3A%20Introducing%20Defense%2DAware%20ERA" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Introducing%20Defense%2DAware%20ERA&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2023-06-16/introducing-daera" target="_blank">Email</a></li>
                 </ul>
             </div>
             <div class="social-media-links">
