@@ -1,15 +1,15 @@
 // * * * * * * * * * * * * 
-// FOXY Loader, based off rankings/fantasy helper file
-// Created by Addison Kline, 2022
-// Data from FOXY Projections
+// Leaderboard Loader, based off rankings/fantasy helper file
+// Created by Addison Kline, 2023
+// Data from Baseball Analytica Leaderboards
 // * * * * * * * * * * * * 
 
 // table displayed when page loaded
-const defaultTable = "proj/teams.json";
+const defaultTable = "lb/teams.json";
 
-const teamHeaders = ["Team", "Proj W", "Proj L", "Proj Rdiff", "Curr W", "Curr L", "Div%"];
-const battingHeaders = ["Name", "Team", "G", "PA", "AB", "H", "1B", "2B", "3B", "HR", "BB", "HBP", "K", "SB", "CS", "AVG", "OBP", "SLG", "OPS"];
-const pitchingHeaders = ["Name", "Team", "G", "IP", "H", "ER", "HR", "K", "BB", "HBP", "ERA", "WHIP", "K/9", "BB/9"];
+const teamHeaders = ["Team", "W", "L", "W%", "W%_2", "W%_3", "Rdiff", "wRdiff", "oppOff", "oppDef", "oppQual"];
+const battingHeaders = ["Name", "Team", "G", "PA", "AB", "OPS", "wOBA", "EV", "LA", "RV", "OP", "WAR"];
+const pitchingHeaders = ["Name", "Team", "G", "GS", "IP", "K/9", "BB/9", "LAO", "DAERA", "W%", "xW%", "xW%lg", "WAR"];
 
 // this function only works when outside the vue app... oh well
 function populateTable(json, table) {
@@ -104,10 +104,10 @@ const helperApp = Vue.createApp({
             console.log(request)
             request.onload = () => {
                 var reviver = function(key, value) {
-                    if (((key === "projectedW") || (key === "projectedL") || (key === "div%")) && (typeof value === "number") && (value % 1 == 0)) {
+                    if (((key === "oppOff") || (key === "oppDef") || (key === "EV") || (key === "LA") || (key === "RV") || (key === "WAR")) && (typeof value === "number") && (value % 1 == 0)) {
                         return value.toString() + ".0" // wins, playoff probability need to be rounded to 1 decimal point
                     }
-                    else if (((key === "projectedAVG") || (key === "projectedOBP") || (key === "projectedSLG") || (key === "projectedOPS") || (key === "projectedWHIP")) && (typeof value === "number")) {
+                    else if (((key === "W%") || (key === "W%_2") || (key === "W%_3") || (key === "xW%") || (key === "xW%lg") || (key === "oppQual") || (key === "OPS") || (key === "wOBA") || (key === "OP") || (key === "LAO")) && (typeof value === "number")) {
                         stringAfterDecimal = value.toString().split(".")[1]
                         if (!stringAfterDecimal) {
                             return value.toString() + ".000"
@@ -122,7 +122,7 @@ const helperApp = Vue.createApp({
                             return value // all of these stats should be rounded to 3 decimal places
                         }
                     }
-                    else if (((key === "projectedERA") || (key === "projectedK9") || (key === "projectedBB9")) && (typeof value === "number")) {
+                    else if (((key === "IP") || (key === "K/9") || (key === "BB/9") || (key === "DAERA") || (key === "div%")) && (typeof value === "number")) {
                         stringAfterDecimal = value.toString().split(".")[1]
                         if (!stringAfterDecimal) {
                             return value.toString() + ".00"
@@ -152,7 +152,7 @@ const helperApp = Vue.createApp({
             return document.getElementById("rankingTimeSelect").value
         },
         generateTableUrlFromSelections() {
-            return "proj/" + this.selectedPlayerType() + ".json"
+            return "lb/" + this.selectedPlayerType() + ".json"
         },
         getRankingsButtonClicked() {
             this.loadTable(this.generateTableUrlFromSelections())
