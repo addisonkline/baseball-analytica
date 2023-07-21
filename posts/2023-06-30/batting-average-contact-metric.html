@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Batting Average as a Contact Metric | Baseball Analytica</title>
+    <meta name="description" content="Batting average is far from a perfect stat, but according to the data, it could be more useful than you think. So does batting average deserve as much grief as it gets?">
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2023-06-30/batting-average-contact-metric">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>Batting Average as a Contact Metric</h1>
+            <h3>by <a href="../../writers/kline">A. Kline</a></h3>
+            <h3>Posted on 06/30/2023</h3>
+            <hr>
+        </section>
+        
+        <article>
+            <p>You don’t have to be a sabermetrics nerd to have noticed the sharp decline in prominence of batting average over the past couple decades. Despite being baseball’s most famous statistic (and perhaps the most famous player statistic in all of sports), batting average has fallen out of favor due to its reductiveness and inaccuracy in relation to the broader idea of batter performance. Simply Googling “batting average flaws” yields several articles about this exact subject, such as <a href="https://library.fangraphs.com/stats-to-avoid-batting-average/" target="_blank">this one</a> from Fangraphs. And critiquing batting average is by no means limited to the fringes of the baseball community, either–thanks in no small part to <i>Moneyball</i>, the more holistic substitute known as on-base percentage has entered the public lexicon.</p>
+            <p>Curiously, however, batting average remains one of the most omnipresent stats in the game. It’s one of the first stats you see on any website publishing them for players. And every baseball fan intuitively knows what a .300 hitter looks like in comparison to a .250 one. Indeed, most fans still care a fair bit about it, whether or not they would actually admit it–I think everyone can agree that <a href="https://www.nytimes.com/2023/06/27/sports/baseball/luis-arraez-400-ted-williams.html" target="_blank">Luis Arraez’s quest to hit .400</a> is one of the biggest stories to watch in baseball this year.</p>
+            <p>In fact, it was Luis Arraez’s performance this season that inspired me to think seriously about batting average again for the first time in several years. I’m not suggesting that it should be used as a holistic measurement for batter performance in the same way that OPS and wOBA are now. It’s not even close to that valuable. But that’s not to say it serves absolutely zero purpose.</p>
+            <p>Let me pose to the reader a question–prior to Statcast, what was the best way to measure a hitter’s contact ability? Was it strikeout rate? Maybe, but that does not necessarily correlate well with the ability to put the bat on the ball–two fouls and no swing at a pitch in the zone is identical to three swings and misses as far as the scoreboard is concerned. Maybe it was contact percentage instead–but good luck getting any of that data prior to 2002. My hypothesis is that for most of baseball’s history, the best metric readily available to determine how effective at making contact a given hitter is would be their batting average, and that it still serves as a pretty good composite measure for contact ability even in today’s league. Of course, contact is only one part of what makes a good hitter good. The hitting triangle, as I like to call it*, consists of contact, power, and plate discipline, and any elite hitter must be good in all three of these categories.</p>
+            <p>To test my hypothesis, I decided to look at all qualified hitters in the Statcast era and see how well their batting averages correlated with their more peripheral metrics that can be easily categorized as being a measure of contact, power, or plate discipline. As per usual, you can see my dataset <a href="https://www.kaggle.com/datasets/addisonkline/baseball-analytica-batting-averageperipherals" target="_blank">here</a>. Let’s start by looking at how batting average correlates with measures of power.</p>
+            <p>Our first target is <a href="https://www.mlb.com/glossary/statcast/barrel" target="_blank">barrel percentage</a>. Since barrels are simply batted balls with an expected batting average over .500 and an expected slugging percentage of over 1.500, they are almost always well-struck balls, and as a result barrel percentage leaderboards are a great way to pick out power hitters.</p>
+            <img src="avg-vs-barrelpctg.png" alt="Batting Average vs. Barrel Percentage">
+            <h2>There is no clear relationship between barrel percentage and batting average for hitters in this sample. (Data: Baseball Savant)</h2>
+            <p>As is clear above, the relationship between barrel percentage and batting average for qualified hitters is tenuous at best. However, barrel percentage is not the only metric for a hitter’s power–average exit velocity may be even better for that purpose. So how does it correlate with batting average?</p>
+            <img src="avg-vs-ev.png" alt="Batting Average vs. Average Exit Velocity">
+            <h2>There is no clear relationship between average exit velocity and batting average either. (Data: Baseball Savant)</h2>
+            <p>Much like barrel percentage, average exit velocity seems to have no bearing on a hitter’s batting average. But as any statistics student will tell you, averages can be skewed, meaning average exit velocity may not be the best thing to use here. So as one last measure of power, let’s look at the percentage of all batted balls with an exit velocity of above 95 miles per hour–a stat called <a href="https://www.mlb.com/glossary/statcast/hard-hit-rate" target="_blank">hard-hit rate</a>.</p>
+            <img src="avg-vs-hardhitpctg.png" alt="Batting Average vs. Hard Hit Percentage">
+            <h2>Somehow, the relationship between hard-hit rate and batting average is even less apparent. (Data: Baseball Savant)</h2>
+            <p>With that, I think we can reach a conclusion that you probably already made long before reading this post anyway–a hitter’s batting average has seemingly no correlation with their power. Now, let’s look at another leg of the hitting triangle: plate discipline.</p>
+            <p>The first measure of plate discipline we’ll look at is <a href="https://library.fangraphs.com/offense/plate-discipline/" target="_blank">O-Swing%</a>–the percentage of pitches outside the strike zone a batter swings at. How does that correlate with batting average?</p>
+            <img src="avg-vs-oswingpctg.png" alt="Batting Average vs. O-Swing Percentage">
+            <h2>There appears to be no correlation between O-Swing% and batting average. (Data: Fangraphs)</h2>
+            <p>Of course, plate discipline also encompasses how hitters respond to pitches within the strike zone. Z-Swing% is the complement to O-Swing% that only looks at pitches in the strike zone.</p>
+            <img src="avg-vs-zswingpctg.png" alt="Batting Average vs. Z-Swing Percentage">
+            <h2>It doesn’t look like there’s any relationship between Z-Swing% and batting average either. (Data: Fangraphs)</h2>
+            <p>As measured by the two stats used above, there appears to be no meaningful relationship between batting average and plate discipline–so that’s two whole legs of the hitting triangle that batting average does not mesh with. The last leg of the hitting triangle is, of course, contact. So how well does batting average correlate with contact metrics? Despite the limitations I mentioned earlier, strikeout percentage serves as a generally good peripheral stat to measure a hitter’s contact ability**, so let’s start with that.</p>
+            <img src="avg-vs-kpctg.png" alt="Batting Average vs. Strikeout Percentage">
+            <h2>There is a noticeable negative relationship between strikeout percentage and batting average. (Data: Fangraphs)</h2>
+            <p>This is the first graph in this post that actually needs a trendline. The R^2 value of 0.21 indicates that there is an imperfect yet noticeable correlation between batting average and strikeout percentage among qualified hitters in the Statcast era. Another (more reliable) way to measure a hitter’s contact ability is their swinging strike rate–the percentage of total pitches they see that result in a swing and miss. How does that correlate with average?</p>
+            <img src="avg-vs-swstrpctg.png" alt="Batting Average vs. Swinging Strike Percentage">
+            <h2>There is a noticeable negative relationship between swinging strike rate and batting average. (Data: Fangraphs)</h2>
+            <p>This relationship is admittedly weaker than the one above, but a relationship it still is. The final metric we’ll look at is contact percentage–the proportion of all swings a hitter makes in which contact is made. It might be the best peripheral measure of a hitter’s contact ability for, well, obvious reasons. Its relationship with batting average is as follows:</p>
+            <img src="avg-vs-contactpctg.png" alt="Batting Average vs. Contact Percentage">
+            <h2>There is a clear positive relationship between contact rate and batting average for qualified hitters. (Data: Fangraphs)</h2>
+            <p>It is not surprising that the percentage of swings in which contact is made is positively correlated with batting average. On a fundamental level, this is exactly what any baseball fan would expect–yet it’s also the single strongest piece of evidence towards my original hypothesis. As shown above, batting average is correlated only to the contact leg of the hitting triangle–at least for qualified hitters in the Statcast era. Of course, we’ve only looked at graphs and trendlines thus far. However, with the sample size and R^2 values known, we can reverse engineer the p-values for each graph–a.k.a. the probability that a given relationship occurs by chance alone.</p>
+            <div class="table-label">Relationship Between Each Metric and Batting Average (using sample above)</div>
+            <table>
+                <thead><td>Metric</td><td>Category</td><td>R^2</td><td>p-value</td></thead>
+                <tbody>
+                    <tr><td>Barrel%</td><td>Power</td><td>0.0080</td><td>2.86e-3</td></tr>
+                    <tr><td>AvgEV</td><td>Power</td><td>0.0081</td><td>2.69e-3</td></tr>
+                    <tr><td>HardHit%</td><td>Power</td><td>0.0024</td><td>1.03e-1</td></tr>
+                    <tr><td>O-Swing%</td><td>Discipline</td><td>0.0058</td><td>1.11e-2</td></tr>
+                    <tr><td>Z-Swing%</td><td>Discipline</td><td>0.0023</td><td>1.10e-1</td></tr>
+                    <tr><td>K%</td><td>Contact**</td><td>0.2128</td><td>&lt;1e-5</td></tr>
+                    <tr><td>SwStr%</td><td>Contact</td><td>0.0765</td><td>&lt;1e-5</td></tr>
+                    <tr><td>Contact%</td><td>Contact</td><td>0.1324</td><td>&lt;1e-5</td></tr>
+                </tbody>
+            </table>
+            <p>Interestingly, most of these p-values are statistically significant down to the 0.01 level. That being said, the statistically significant results do not mean much in the case of barrel percentage, average exit velocity, and O-Swing% when a) the p-values still dwarf those of the three contact stats and b) the linear trends in question all fail the eye test. Also, using p-values can be a problem when the sample size is as high as it is in this sample–the more datapoints you have, the lower the threshold is for statistical significance in a linear relationship.</p>
+            <p>Even I was surprised to see just how well batting average correlated with measures of contact for hitters. This result should serve as a pretty clear indicator that batting average can be used as a proxy metric for a batter’s contact ability, and in a surprisingly holistic way. Of course, in today’s league we have a number of more advanced metrics readily available that can be used for this exact purpose. Statcast’s xBA, for instance, is a good example of this–in fact, it’s probably better at measuring the contact ability of a hitter than actual batting average because it attempts to correct for the inherent luck in what results in a hit. But as a Statcast metric, xBA has only been available since 2015–meaning it has only been around for about 5 percent of Major League Baseball’s existence***. And as stated earlier, plate discipline metrics like O-Swing%, Z-Swing%, and Contact% have only been around since 2002, which is not much better.</p>
+            <p>This is a harsh reality we sabermetrics nerds must face. Yes, baseball has easily the most advanced analytics and metrics out of any professional sport in existence, and the stats around today are the best and most accurate baseball stats that have ever been invented. But so many of those metrics have only been available for a couple decades at most. There’s no way to calculate the xBA, swinging strike rate, or contact rate for a player 100 years ago, and there never will be. We will never be able to evaluate that same player’s contact ability in the same ways we would for a player today. But we will have that player’s batting average–and that’s a pretty darn good start.</p>
+            <hr>
+            <p><b>*</b> And by “I like to call it,” I mean “I just made up right now.” Regardless, I am definitely not the first person to come up with this idea. But regardless, I am pretty proud of this name.</p>
+            <p><b>**</b> Strikeout percentage is a less straightforward case than I implied since it also works as a measure of plate discipline. That being said, if I treated it as such, it would be the only discipline metric used to at all correlate with batting average.</p>
+            <p><b>***</b> If you choose 1876 (when the National League was founded) as the founding date for Major League Baseball.</p>
+        </article>
+        
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2023-06-30/batting-average-contact-metric" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2023-06-30/batting-average-contact-metric&title=Baseball%20Analytica%3A%20Batting%20Average%20as%20a%20Contact%20Metric" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Batting%20Average%20as%20a%20Contact%20Metric&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2023-06-30/batting-average-contact-metric" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>
