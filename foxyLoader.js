@@ -7,9 +7,28 @@
 // table displayed when page loaded
 const defaultTable = "proj/teams.json";
 
-const teamHeaders = ["Team", "Proj W", "Proj L", "Proj Rdiff", "Curr W", "Curr L", "Div%"];
+const teamHeaders = ["Team", "W", "L", "Rdiff", "Curr W", "Curr L", "Div%", "WC%", "Post%"];
 const battingHeaders = ["Name", "Team", "G", "PA", "AB", "H", "1B", "2B", "3B", "HR", "BB", "HBP", "K", "SB", "CS", "AVG", "OBP", "SLG", "OPS"];
 const pitchingHeaders = ["Name", "Team", "G", "IP", "H", "ER", "HR", "K", "BB", "HBP", "ERA", "WHIP", "K/9", "BB/9"];
+
+var dt;
+
+/*
+$(document).ready( function () {
+    dt = $('#rankingsTable').DataTable({
+        "columnDefs": [
+            {
+                "targets": "_all",
+                "className": "dt-head-center",
+            }
+        ],
+        "order": [[1, 'desc']],
+        "pageLength": 100,
+        "stripeClasses": ['odd', 'even'],
+
+    });
+} );
+*/
 
 // this function only works when outside the vue app... oh well
 function populateTable(json, table) {
@@ -25,7 +44,7 @@ function populateTable(json, table) {
     while (rankingsBody.firstChild) {
         rankingsBody.removeChild(rankingsBody.firstChild)
     }
-
+    
     // populate table body
     for (var i = 0; i < json.length; i++) {
         const thisRow = json[i]
@@ -62,7 +81,7 @@ function populateTable(json, table) {
         rankingsHeader.appendChild(tr)
     }
     else if (table.includes("pitchers")) { // if it's a pitcher table
-        console.log("equality check working")
+        //console.log("equality check working")
         const tr = document.createElement("tr")
 
         for (i = 0; i < pitchingHeaders.length; i++) {
@@ -82,8 +101,8 @@ const helperApp = Vue.createApp({
     data() {
         return {
             url: 'https://baseball-analytica.com',
-            projDate: '04/28/2023',
-            projVersion: '1.11',
+            projDate: '07/21/2023',
+            projVersion: '1.17',
             batterDataShown: true,
             countBatterTables: 0,
             countPitcherTables: 0,
@@ -101,10 +120,9 @@ const helperApp = Vue.createApp({
             const request = new XMLHttpRequest()
 
             request.open("get", table)
-            console.log(request)
             request.onload = () => {
                 var reviver = function(key, value) {
-                    if (((key === "projectedW") || (key === "projectedL") || (key === "div%")) && (typeof value === "number") && (value % 1 == 0)) {
+                    if (((key === "projectedW") || (key === "projectedL") || (key === "div%") || (key === "wc%") || (key === "post%")) && (typeof value === "number") && (value % 1 == 0)) {
                         return value.toString() + ".0" // wins, playoff probability need to be rounded to 1 decimal point
                     }
                     else if (((key === "projectedAVG") || (key === "projectedOBP") || (key === "projectedSLG") || (key === "projectedOPS") || (key === "projectedWHIP")) && (typeof value === "number")) {
@@ -139,7 +157,7 @@ const helperApp = Vue.createApp({
                     }
                 }
 
-                const json = JSON.parse(request.responseText, reviver)
+                json = JSON.parse(request.responseText, reviver)
                 populateTable(json, table)
             }
 
@@ -155,7 +173,28 @@ const helperApp = Vue.createApp({
             return "proj/" + this.selectedPlayerType() + ".json"
         },
         getRankingsButtonClicked() {
+            //dt.clear().destroy();
             this.loadTable(this.generateTableUrlFromSelections())
+            //new Promise(r => setTimeout(r, 200));
+            /* dt = $('#rankingsTable').DataTable({
+                "columnDefs": [
+                    {
+                        "targets": "_all",
+                        "className": "dt-head-center",
+                    }
+                ],
+                "order": [[1, 'desc']],
+                "pageLength": 100,
+                "stripeClasses": ['odd', 'even'],
+        
+            });
+            /*
+            data = JSON.parse(this.generateTableUrlFromSelections);
+            console.log(data);
+            dt.clear().draw();
+            dt.rows.add(data); // Add new data
+            dt.columns.adjust().draw(); // Redraw the DataTable
+            */
         }
     },
     // generates team rankings when page loads
@@ -168,4 +207,3 @@ const helperApp = Vue.createApp({
 })
 
 const vm = helperApp.mount('#helper')
-

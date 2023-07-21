@@ -7,12 +7,14 @@
     <title>FOXY Projections | Baseball Analytica</title>
     <meta name="description" content="FOXY Projections predict cumulative performance of players and teams through the rest of the season.">
     <link rel="stylesheet" href="css/rankings.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="icon" href="images/favicon.ico">
     <link rel="icon" href="images/icon.png">
     <link rel="canonical" href="https://baseball-analytica.com/foxy">
     <script src="https://unpkg.com/vue@3.0.2"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
     <div class="bg" id="background">
@@ -47,7 +49,6 @@
         <h1>FOXY Projections</h1>
         <hr>
         <p>Welcome to Baseball Analytica's homepage for FOXY (<b>F</b>amily of <b>O</b>ptimized <b>Ex</b>pectations for the <b>Y</b>ear) projections, which predict cumulative performance through the rest of the season. More information on the models, as well as the full FOXY changelog, can be found <a href="foxy-changelog">here</a>. These projections update daily unless otherwise noted.</p>
-        <p><b>Note as of April 2023:</b> Only team projections are currently available. Early-season projections are still a work in progress, particularly for players. Projections this early in the season should be taken with a grain of salt in any context, but especially here.</p>
     </div>
 
     <div class="helper" id="helper" @load="setTablePlayer('Teams')" @load="loadTable('data/json-team-data-2021-final.json')">
