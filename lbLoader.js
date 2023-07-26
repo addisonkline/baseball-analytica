@@ -6,15 +6,26 @@
 
 // table displayed when page loaded
 const defaultTable = "lb/teams.json";
+const timesTable = "generation_times.json";
 
 const teamHeaders = ["Team", "W", "L", "W%", "W%_2", "W%_3", "Rdiff", "wRdiff", "oppOff", "oppDef", "oppQual"];
 const battingHeaders = ["Name", "Team", "G", "PA", "AB", "OPS", "wOBA", "EV", "LA", "RV", "OP", "WAR"];
 const pitchingHeaders = ["Name", "Team", "G", "GS", "IP", "K/9", "BB/9", "LAO", "DAERA", "W%", "xW%", "xW%lg", "WAR"];
 
+var items = [];
+
+$.getJSON(timesTable, function( data ) {
+    $.each( data, function( key, val ) {
+        items.push(val);
+    });
+});
+
 // this function only works when outside the vue app... oh well
 function populateTable(json, table) {
     const rankingsBody = document.querySelector("#rankingsTable > tbody")
     const rankingsHeader = document.querySelector("#rankingsTable > thead")
+
+    dateText = document.getElementById('date') // element to add date text to
 
     // clears table header
     while (rankingsHeader.firstChild) {
@@ -50,6 +61,8 @@ function populateTable(json, table) {
             tr.appendChild(th)
         }
         rankingsHeader.appendChild(tr)
+
+        itemsIndex = 3
     }
     else if (table.includes("batters")) { // if it's a batter table
         const tr = document.createElement("tr")
@@ -60,6 +73,8 @@ function populateTable(json, table) {
             tr.appendChild(th)
         }
         rankingsHeader.appendChild(tr)
+
+        itemsIndex = 4
     }
     else if (table.includes("pitchers")) { // if it's a pitcher table
         console.log("equality check working")
@@ -71,10 +86,14 @@ function populateTable(json, table) {
             tr.appendChild(th)
         }
         rankingsHeader.appendChild(tr)
+
+        itemsIndex = 5
     }
     else {
         console.warn("equality check not working, table header can't be loaded")
     }
+
+    dateText.textContent = "Valid as of " + items[itemsIndex] // changes date on "Valid as of"
 }
 
 const helperApp = Vue.createApp({
@@ -82,7 +101,7 @@ const helperApp = Vue.createApp({
     data() {
         return {
             url: 'https://baseball-analytica.com',
-            projDate: '07/21/2023',
+            projDate: '07/25/2023',
             projVersion: '1.0',
             batterDataShown: true,
             countBatterTables: 0,

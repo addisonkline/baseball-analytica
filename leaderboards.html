@@ -51,7 +51,7 @@
 
     <div class="helper" id="helper" @load="setTablePlayer('Teams')" @load="loadTable('data/json-team-data-2021-final.json')">
         <!-- dropdown menu for data type selection -->
-        <h3>Valid as of {{ projDate }}</h3>
+        <h3 id="date">Valid as of </h3>
         <label for="playerType">See Leaders:</label>
         <select name="playerType" id="playerType">
             <option v-for="dataOption in dataOptions" :value="dataOption.url">{{ dataOption.title }}</option>

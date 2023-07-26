@@ -6,6 +6,7 @@
 
 // table displayed when page loaded
 const defaultTable = "proj/teams.json";
+const timesTable = "generation_times.json";
 
 const teamHeaders = ["Team", "W", "L", "Rdiff", "Curr W", "Curr L", "Div%", "WC%", "Post%"];
 const battingHeaders = ["Name", "Team", "G", "PA", "AB", "H", "1B", "2B", "3B", "HR", "BB", "HBP", "K", "SB", "CS", "AVG", "OBP", "SLG", "OPS"];
@@ -30,10 +31,21 @@ $(document).ready( function () {
 } );
 */
 
+var items = [];
+
+$.getJSON(timesTable, function( data ) {
+    $.each( data, function( key, val ) {
+        items.push(val);
+    });
+});
+
 // this function only works when outside the vue app... oh well
 function populateTable(json, table) {
     const rankingsBody = document.querySelector("#rankingsTable > tbody")
     const rankingsHeader = document.querySelector("#rankingsTable > thead")
+
+    //console.log(items)
+    dateText = document.getElementById('date') // element to add date text to
 
     // clears table header
     while (rankingsHeader.firstChild) {
@@ -69,6 +81,8 @@ function populateTable(json, table) {
             tr.appendChild(th)
         }
         rankingsHeader.appendChild(tr)
+
+        itemsIndex = 0 // used to determine which date to use
     }
     else if (table.includes("batters")) { // if it's a batter table
         const tr = document.createElement("tr")
@@ -79,6 +93,8 @@ function populateTable(json, table) {
             tr.appendChild(th)
         }
         rankingsHeader.appendChild(tr)
+
+        itemsIndex = 1 // used to determine which date to use
     }
     else if (table.includes("pitchers")) { // if it's a pitcher table
         //console.log("equality check working")
@@ -90,10 +106,14 @@ function populateTable(json, table) {
             tr.appendChild(th)
         }
         rankingsHeader.appendChild(tr)
+
+        itemsIndex = 2 // used to determine which date to use
     }
     else {
         console.warn("equality check not working, table header can't be loaded")
     }
+
+    dateText.textContent = "Valid as of " + items[itemsIndex] // changes date on "Valid as of"
 }
 
 const helperApp = Vue.createApp({
@@ -101,7 +121,7 @@ const helperApp = Vue.createApp({
     data() {
         return {
             url: 'https://baseball-analytica.com',
-            projDate: '07/21/2023',
+            projDate: '07/25/2023',
             projVersion: '1.17',
             batterDataShown: true,
             countBatterTables: 0,
@@ -172,7 +192,20 @@ const helperApp = Vue.createApp({
         generateTableUrlFromSelections() {
             return "proj/" + this.selectedPlayerType() + ".json"
         },
+        getTimeFromSelections() {
+            type = this.selectedPlayerType()
+            if (type == 'teams') {
+                return "foxyTeams"
+            }
+            if (type == 'batters') {
+                return "foxyBatters"
+            }
+            if (type == 'pitchers') {
+                return "foxyPitchers"
+            }
+        },
         getRankingsButtonClicked() {
+            //console.log(genTimes)
             //dt.clear().destroy();
             this.loadTable(this.generateTableUrlFromSelections())
             //new Promise(r => setTimeout(r, 200));
