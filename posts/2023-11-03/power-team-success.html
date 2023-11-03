@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>How Important is Power to a Team's Success? | Baseball Analytica</title>
+    <meta name="description" content='Power hitting is an admirable trait in a baseball player, but does a team really need it to win a lot of games?'>
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2023-11-03/power-team-success">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>How Important is Power to a Team's Success?</h1>
+            <h3>by <a href="../../writers/carreno">A. Carreno</a></h3>
+            <h3>Posted on 11/03/2023</h3>
+            <hr>
+        </section>
+            <p>Home runs are among the most exciting plays in baseball. When people go to watch a game, they’re often selfishly hoping for home runs to be hit. There’s a certain beauty to watching the ball soar high in the air and the sound of a baseball hitting the sweet spot of the bat is music to the ears. Home runs are also the only hit that will add a run to the scoreboard no matter what, making them even more special. It’s because of this unique feature that teams often try to have at least one power hitter on their team that is a consistent threat to hit home runs. The sheer offensive potential of home runs can often outweigh the high strikeout rates most of these power hitters tend to have. As people often say, Babe Ruth may have led the league in strikeouts multiple times, but nobody cared because of all the runs he batted in, games he won, and pitchers he terrorized with his consistent home run hitting. Still, are home runs and power hitting in general really that vital to a team’s success? Let’s conduct some research and analysis to find out.</p>
+            <p>In evaluating a team’s success the first thing that comes to mind is how many wins they had in the regular season. It is at the end of the day what determines whether or not a team will make it into the playoffs and give themselves a shot at winning the World Series. To see how much bearing home runs have on wins, I simply ran a linear regression analysis to see how correlated they are. To do this, I took the regular season home run totals for every team the last six full seasons along with their regular season wins. Here’s how it turned out:</p>
+            <img src="team-hr-vs-wins.png" alt="Team HR Total vs. Wins, Past Six Full Seasons">
+            <h2>In the last six full seasons, there does exist a noticeable correlation between team home run total and wins, and that correlation is positive.</h2>
+            <p>As we can see from this plot, there does seem to be a positive correlation between the amount of home runs they hit and the number of games they win. Teams with a lot of home runs hit seem to have more wins than those that don’t. We can confirm this conclusion by finding the R and R^2 of the plot, which happen to be about 0.54 and 0.29, respectively. The R of 0.54 signifies a moderate positive correlation and indeed indicates that, in general, more home runs can improve the number of wins a team has. The R^2 of 0.29 tells us the regression line fits the data somewhat well, but does not explain most of the variability in the data. The R^2 is sensitive to outliers, however, and the considerable number of them in this plot may bring it down a bit. That said, the important takeaway here is that both the R and R^2 give us at least some confidence and evidence that home run totals directly affect win totals.</p>
+            <p>However, we can assure ourselves that this is true by running an analysis of variance (ANOVA) test by splitting the observations into groups. An ANOVA test compares the means of multiple groups of a dataset and determines whether the difference in the means between groups is statistically significant or due to random chance according to the resulting F-statistic and p-value. To run the ANOVA test, I created three groups: low power, average power, and high power. Depending on how many home runs a team hit, I put the number of wins that team got into one of these categories. If a team hit over 200 home runs, they were placed in the “high power” group; between 159 and 200 home runs meant they were placed in the “average power” group; and less than 159 home runs meant they were placed in the “low power” group. The mean win totals for the groups were 70.44 for low power teams, 75.4 for average power teams, and 89.12 for high power teams. From the outset, we can see that there appears to be a huge difference in wins between average and high power teams. Running the ANOVA test gives us an F-statistic of 19.69 and a p-value of 7.42e-08. The F-statistic is quite large, indicating that the difference between at least one group mean is significantly different as it is a ratio of the variability between the groups and the variability within the groups. The p-value fully backs up the assertion that the group means are significantly different as it is astronomically small; it tells us that the odds that these differences in means are simply because of random chance are about 1 in 13.47 million. You’ve probably got a better chance of being struck by lightning twice in one day to put that into perspective. All told, we can safely reject the claim that the ability of a team to hit for power has no impact on their overall success.</p>
+            <p>To get one more piece of supporting evidence, I wanted to see whether being a high power team translated to making the playoffs more often than not. I took every playoff team over the past six seasons and put their home run totals into a frequency histogram. It turned out like this:</p>
+            <img src="playoff-team-hr-histogram.png" alt="Histogram of Home Run Totals for Playoff Teams">
+            <h2>Though variance does exist in this distribution, playoff teams seem to hit homers at a noticeably higher clip than the overall average for all teams.</h2>
+            <p>As we can see, it looks like the vast majority of playoff teams are above average in power. And upon further inspection, 75% of these playoff teams hit at least 198 home runs on their way to the postseason. The mean amount of home runs hit by any team, including non playoff teams, over the last six full seasons is 194.5. The mean amount of home runs hit by playoff teams over those seasons is 215.5. That is a massive difference and does seem to signify that power plays an important role in a team’s success. A 21 home run difference in playoff versus non playoff teams is no accident. Moreover, thinking about it from strictly a baseball perspective, these results also make sense. The general consensus is that the best teams in baseball limit the amount of runs they give up and that they score more than most teams on average. In order to score runs consistently though, teams cannot always rely on singles, doubles, and triples. Depending on how good the defense of the opposing team is and the positioning of opposing fielders, balls put in play that have high odds of becoming say doubles or triples can become victim to incredible plays by fielders who are in the right place at the right time. I can’t entirely prove this, but if you have seen any baseball at all, you know that there are always at least a couple of plays each game where a batter gets robbed off a hit by an amazing play. However, what almost never gets robbed? Home runs. Therefore, it is reasonable to say that the best and safest way to consistently score runs is by hitting home runs, thus, it makes sense that many of the most successful teams hit a lot of them.</p>
+            <p>From what we’ve seen so far, power hitting does seem to be important for a team to be successful. However, there is one more test I’d like to run to truly solidify this conclusion: determining how the average exit velocity of a team affects their success (win total). The exit velocity is how fast the ball comes off the bat when a batter makes contact. As you can imagine, extra base hits like home runs tend to have higher exit velocities than singles. In fact, <a href="https://baseballsavant.mlb.com/statcast_search?hfPTM=&hfPT=&hfAB=single%7C&hfGT=R%7C&hfPR=&hfZ=&hfStadium=&hfBBL=&hfNewZones=&hfPull=&hfC=&hfSea=2023%7C2022%7C2021%7C2020%7C2019%7C2018%7C2017%7C2016%7C2015%7C2014%7C2013%7C2012%7C2011%7C2010%7C2009%7C2008%7C&hfSit=&player_type=batter&hfOuts=&hfOpponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=&game_date_lt=&hfMo=&hfTeam=&home_road=&hfRO=&position=&hfInfield=&hfOutfield=&hfInn=&hfBBT=&hfFlag=is%5C.%5C.remove%5C.%5C.bunts%7C&metric_1=&group_by=league&min_pitches=0&min_results=0&min_pas=0&sort_col=launch_speed&player_event_sort=api_p_release_speed&sort_order=desc&chk_stats_launch_speed=on#results" target="_blank">singles come off the bat at 90.5 mph on average</a>, and <a href="https://baseballsavant.mlb.com/statcast_search?hfPTM=&hfPT=&hfAB=home%5C.%5C.run%7C&hfGT=R%7C&hfPR=&hfZ=&hfStadium=&hfBBL=&hfNewZones=&hfPull=&hfC=&hfSea=2023%7C2022%7C2021%7C2020%7C2019%7C2018%7C2017%7C2016%7C2015%7C2014%7C2013%7C2012%7C2011%7C2010%7C2009%7C2008%7C&hfSit=&player_type=batter&hfOuts=&hfOpponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=&game_date_lt=&hfMo=&hfTeam=&home_road=&hfRO=&position=&hfInfield=&hfOutfield=&hfInn=&hfBBT=&hfFlag=is%5C.%5C.remove%5C.%5C.bunts%7C&metric_1=&group_by=league&min_pitches=0&min_results=0&min_pas=0&sort_col=launch_speed&player_event_sort=api_p_release_speed&sort_order=desc&chk_stats_launch_speed=on#results" target="_blank">home runs come off the bat at 103.7 mph on average</a> according to Statcast. Harder hit balls are often harder to field and travel further on average. As such, it would make sense to assume that if a team’s batters produce higher exit velocities on average than most teams, they are likely hitting more extra base hits, especially home runs. To be sure though, let’s do another linear regression analysis for the last six full seasons.</p>
+            <img src="wins-vs-avg-ev.png" alt="Team Average Exit Velocity vs. Wins">
+            <p>As we can see, the correlation between average exit velocity and wins does not seem as strong as it was for team home runs and wins. That said, this plot does have an R of about 0.42 and an R^2 of 0.176. These results still indicate a moderate positive correlation between the two variables, it just isn’t as strong. As a result, we are unable to conclude that win totals are unaffected by average exit velocity, clearly there is at least a minor impact. To determine the size of this impact though, let’s return to the reliable ANOVA test.</p>
+            <p>For this test, I split the observations into three groups based on their average exit velocities and put that team’s wins for the season into a new dataset. If a team’s average exit velocity was lower than 88.2 mph, I placed them in the “soft” group; if the average exit velocity was between 88.2 and 88.9 mph, teams were placed in the “average” group; and if it was higher than 88.9 mph, the team was placed in the “powerful” group. The mean win totals for the soft, average, and powerful groups were 76.79, 79.17, and 89.16, respectively. Upon running an ANOVA test with these three groups, we get a resulting F-statistic of 15.49 and a p-value of 6.31e-07. This p-value tells us the odds the discrepancies in these group means are because of random chance are roughly 1 in 1.58 million, which are again, insanely slim odds. Most statisticians reject the null hypothesis at the 0.05 or 0.01 level, so we are definitely in the clear here. We can safely claim it’s not a coincidence that teams with higher exit velocities tend to have more wins than those with lower exit velocities. And the reasoning behind this goes back to what we discussed earlier: more hard hit balls usually equals more extra base hits and more extra base hits usually equals more runs, which leads to more wins.</p>
+            <p>Through linear regression and ANOVA testing, we were able to see the significance of home runs and average exit velocity when it comes to a team’s win totals. We determined that on average, more victorious teams hit the ball harder and out of the park more on average. Power hitting usually comes with its own set of drawbacks including more strikeouts, less consistent base runners, and poorer plate discipline, but it pays in the amount of offense it can contribute and the games it can single handedly win. Contextualizing this in the setting of today, it’s hard to think of a contending team that doesn’t feature at least one consistent power threat. The Braves have Matt Olson, the Dodgers have Mookie Betts, the Rangers have Adolis Garcia, the Phillies have Kyle Schwarber, and the list goes on and on. Regardless, the bottom line is this: power hitting might be risky, but without it, teams would be hard pressed to find reliable sources of offense to win games.</p>
+        <article>
+            
+            <hr>
+        </article>
+        
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2023-10-27/2023-schedule" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2023-10-27/2023-schedule&title=Baseball%20Analytica%3A%20Was%20the%202023%20MLB%20Schedule%20Actually%20Fairer?" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Was%20the%202023%20MLB%20Schedule%20Actually%20Fairer?&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2023-10-27/2023-schedule" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>
