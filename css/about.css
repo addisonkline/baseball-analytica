@@ -162,7 +162,7 @@ body {
         padding-bottom: 0;
     }
     
-    .bg .bg-site-info h1, p {
+    .bg .bg-site-info h1, .bg-site-info p {
         display: none;
     }
 
