@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: 'american-league-harder', title: 'Is the American League Harder?', author: 'A. Kline', date: '04/05/2024', description: 'Evidence suggests that AL teams have harder schedules on average than NL teams. Is this true? And if so, why?', url: '/posts/2024-04-05/american-league-harder'}, 
                 { id: 'schedule-difficulty-by-team', title: 'How Does Schedule Difficulty Vary by Team?', author: 'A. Kline', date: '03/22/2024', description: 'No two teams have the same schedule. How much can they vary, and how much does this matter?', url: '/posts/2024-03-22/schedule-difficulty-by-team'}, 
                 { id: 'power-team-success', title: 'How Important is Power to a Team\'s Success?', author: 'A. Carreno', date: '11/03/2023', description: 'Power hitting is an admirable trait in a baseball player, but does a team really need it to win a lot of games?', url: '/posts/2023-11-03/power-team-success'},
                 { id: '2023-schedule', title: 'Was the 2023 MLB Schedule Actually Fairer?', author: 'A. Kline', date: '10/27/2023', description: 'This season, MLB introduced a new "well-balanced" schedule in which every team plays every other team at least once. But is this actually fairer than the schedule it replaced?', url: '/posts/2023-10-27/2023-schedule'}, 

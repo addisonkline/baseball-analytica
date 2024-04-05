@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Is the American League Harder? | Baseball Analytica</title>
+    <meta name="description" content='Evidence suggests that AL teams have harder schedules on average than NL teams. Is this true? And if so, why?'>
+    <link rel="stylesheet" href="../samplepost.css">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/posts/2024-04-05/american-league-harder">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="../../images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.backlinkedUrl">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="post-content">
+        <section class="post-header">
+            <h1>Is the American League Harder?</h1>
+            <h3>by <a href="../../writers/kline">A. Kline</a></h3>
+            <h3>Posted on 04/05/2024</h3>
+            <hr>
+        </section>
+        <article>
+            <p>In <a href="https://baseball-analytica.com/posts/2024-03-22/schedule-difficulty-by-team" target="_blank">my previous post</a>, I noticed that in the last 20 seasons, 9 of the 10 hardest divisions to play in (by both average opponent winning percentage and schedule rank) were in the American League. In contrast, only 3 of the 10 easiest divisions were. I ran a quick-and-dirty statistical test to determine that the probability of the former occurring by chance was only about 1 percent. However, I knew that this warranted a much more in-depth analysis–which I needed to put in a post of its own.</p>
+            <p>There are two main questions I want to answer here. Firstly, is there enough evidence to suggest that over the last 20 seasons, the American League has been tougher to play in than the National League? And if so, why? To answer the first question, I decided to reexamine the two datasets from last time, focusing on the differences between the two leagues. I then created graphs to visualize the data and get a clear idea of any such difference between the two leagues, if it exists.</p>
+            <h2>From 2004 through 2023, divisions in the American League are on average slightly harder than their National League counterparts.</h2>
+            <p>Even though I suspected there was an underlying difference in difficulty between the two leagues, I was surprised to see just how much it pops out on this graph. Of course, whether or not this difference is statistically significant is another question entirely–which we’ll get to later. But it gets even more interesting when you look at divisions within the two leagues.</p>
+            <h2>Across all regions, the American League divisions seem to be consistently more difficult than their National League counterparts on average, as measured by opponent winning percentage. Note the dots here represent divisions (e.g. the 2022 NL Central), not individual teams.</h2>
+            <p>As you can see above, this interleague difference in difficulty is apparent across all regions–though it ranges in magnitude from slight in the central to immense in the east and west. But that’s just average opponent winning percentage, which has plenty of imperfections when it comes to measuring schedule difficulty. So now let’s look at schedule rank, which is functionally the same as average opponent winning percentage, but looks at opponent Pythagorean winning percentage (a slightly more robust measure of team skill) instead.</p>
+            <h2>As measured by schedule rank, the trend continues to stand–the AL has a higher average difficulty than the NL over the last 20 seasons.</h2>
+            <p>Replacing the metric used to measure schedule difficulty does not change our findings. If anything, it makes the hypothesis that the American League is more difficult even more likely. Like before, let’s now look at the distribution across regions as well as leagues.</p>
+            <h2>Across all regions, the American League divisions seem to be consistently more difficult than their National League counterparts on average, as measured by schedule rank. Note the dots here represent divisions (e.g. the 2022 NL Central), not individual teams.</h2>
+            <p>Again, replacing the metric used does not change our underlying findings here–American League divisions still seem to be harder across the board, especially in the east and west. So this trend is clearly apparent–but is it statistically meaningful? To find out, I decided to perform a two-tailed t-test on the AL and NL means for both opponent winning percentage and schedule rank, using the null hypothesis that the league means are equal for both metrics. There are the results:</p>
+            <div class="table-label">t-test for Opponent W% and Schedule Rank, AL vs. NL</div>
+            <table>
+                <thead>
+                    <td>Metric</td><td>AL Mean</td><td>NL Mean</td><td>AL SD</td><td>NL SD</td><td>AL n</td><td>NL n</td><td>t</td><td>p</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>oppw%</td><td>.5028</td><td>.4974</td><td>.0061</td><td>.0058</td><td>57</td><td>57</td><td>4.844</td><td><.0001</td>
+                    </tr>
+                    <tr>
+                        <td>sr</td><td>.5033</td><td>.4980</td><td>.0060</td><td>.0058</td><td>57</td><td>57</td><td>4.795</td><td><.0001</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The p-value of less than 0.0001 for both the opponent winning percentages and schedule rank t-test implies that if the true AL and NL means were in fact equal, then the odds of seeing sample means this different would be less than one in ten thousand. In other words, this is no coincidence–the American League was harder than the National League in this time period by a statistically significant margin.</p>
+            <p>But that leads directly into our second question. Why, exactly, would the American League have harder schedules? To answer this, I decided to look at a handful of team performance metrics across the two leagues–namely, winning percentage (both traditional and Pythagorean), runs scored per game, and runs allowed per game. Since American League teams play the vast majority of their games against other AL teams, then we should expect the AL to outplay the NL in at least one of these ways, leading to a harder schedule on average than the NL. First, let’s look at winning percentage in the two leagues.</p>
+            <h2>When looking at all MLB teams from 2004 through 2023, there is no clear difference in average winning percentage between the American and National Leagues.</h2>
+            <p>Even though the American League seems to have a slightly higher average win percentage than the NL, this pattern is not nearly as apparent as the graphs before. Furthermore, the difference in average seems to be offset by the fact that the AL has a larger cluster of ultra-low-performing teams (teams with winning percentages below around .300), while the NL has a larger cluster of ultra-high-performing teams (winning percentages above around .650). I was curious to see how the data looked upon being broken down by region, like before.</p>
+            <h2>Winning percentage has been relatively consistent by division, though the bulk of ultra-low outliers belonged to the AL. (Note that dots here represent individual team seasons–such as the 2014 Dodgers–not division seasons like before.)</h2>
+            <p>Interestingly, American League teams do not seem to be any better at winning than their National League counterparts. So why, then, are their schedules significantly harder? Of course, winning percentage is only one way to measure team skill, and as I’ve said numerous times before, it has its flaws. So how does Pythagorean winning percentage vary between the two leagues?</p>
+            <h2>Pythagorean winning percentage seems to follow the same pattern as regular winning percentage here.</h2>
+            <p>Like before, there seems to be no apparent difference in performance between the teams of either league. This is further substantiated by taking a look at the breakdown by region:</p>
+            <h2>On average, team performance does not vary significantly by region, as measured by Pythagorean winning percentage.</h2>
+            <p>Of course, Pythagorean winning percentage is determined by two factors: runs scored and runs allowed per team. So what if we looked at each of these factors individually, to see if the AL has an edge that could explain the difference in opponent difficulty?</p>
+            <h2>The bulk of teams that scored over 5 runs per game in this timeframe were in the American League.</h2>
+            <p>As you can see above, there is an apparent (if slight) difference in run scoring distribution between the two leagues, with the AL taking the advantage. This, I argue, makes sense–keep in mind only the American League had the designated hitter prior to just a couple years ago. Like before, let’s break this graph up by region, and see how all six divisions look like in terms of scoring.</p>
+            <h2>When broken down by region, American League teams can be seen to make up the bulk of high-scoring teams across all divisions.</h2>
+            <p>However, if the DH hypothesis is the true reason why AL teams score more, we should likewise expect them to allow more runs as well–which may go against our hypothesis that teams in the AL played better, because scoring more runs doesn’t mean as much when you allow more runs as well.</p>
+            <h2>There does appear to be a slight difference in runs allowed on average, with AL teams allowing more per game on average.</h2>
+            <p>Just as the designated hitter hypothesis implies, we can see American League teams allow more runs per game–however slight the difference–just as they score more. When breaking this graph down by region, we get the following:</p>
+            <h2>American League teams make up the bulk of ball clubs that allowed more than 5.5 runs per game over the course of a season.</h2>
+            <p>To be clear, none of the trends in these graphs are super apparent. But that’s not to say they can’t be statistically significant. So once again, I decided to perform a two-sided t-test on each of the performance metrics. Here are the results:</p>
+            <div class="table-label">t-test for Various Team Performance Metrics, AL vs. NL</div>
+            <table>
+                <thead>
+                    <td>Metric</td><td>AL Mean</td><td>NL Mean</td><td>AL SD</td><td>NL SD</td><td>AL n</td><td>NL n</td><td>t</td><td>p</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>W%</td><td>.5034</td><td>.4968</td><td>.0768</td><td>.0706</td><td>276</td><td>294</td><td>1.069</td><td>.2855</td>
+                    </tr>
+                    <tr>
+                        <td>pythW%</td><td>.5041</td><td>.4968</td><td>.0724</td><td>.0685</td><td>276</td><td>294</td><td>1.237</td><td>.2166</td>
+                    </tr>
+                    <tr>
+                        <td>RS/G</td><td>4.601</td><td>4.417</td><td>0.508</td><td>0.454</td><td>276</td><td>294</td><td>4.565</td><td><.0001</td>
+                    </tr>
+                    <tr>
+                        <td>RA/G</td><td>4.563</td><td>4.453</td><td>0.528</td><td>0.533</td><td>276</td><td>294</td><td>2.474</td><td>.0137</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Looking at the p-values, and using a significance threshold of 0.05, we can see that American League teams scored runs at a significantly higher rate from 2004 to 2023, and also allowed them at a slightly less apparent, yet still-significant rate over the same time period. As a result, American League teams did not perform significantly better than National League teams–despite the slight difference in mean winning percentage and mean Pythagorean winning percentage between the two leagues.</p>
+            <p>So, what should we make of this? Well, we can conclude with a good level of confidence that the American League was a more offense-heavy environment than the National League over the past 20 years, but we cannot conclude with confidence that this is why the AL had a harder schedule–at least with this data. One potential source of error on my end was that when looking at the differences between AL and NL team performance, I look at team data, not division data like I did before. I did this simply because I already had that data on hand, and did not want to go back and regenerate a version of the division dataset that includes performance data such as average winning percentage. Therefore, it is possible that by not aggregating team performance into divisional averages, there are trends or correlations that I might be missing. I wouldn’t necessarily count on this possibility being the case, though.</p>
+            <p>But if it was, in fact, the DH rule (and the discrepancy in offensive performance by league resulting from it) that caused AL teams to have harder schedules, then we should expect this trend to evaporate over time since both leagues have a DH now. However, given how recent this change was, the amount of data to work with is too small to instill enough confidence in any conclusion. Therefore, only time will tell if this trend continues. But one thing’s for sure: for much of the 21st century, for whatever reason, American League teams have had it harder.</p>
+            <hr>
+            <p><b>*</b>Note: All data here is sourced from Fangraphs and Baseball Reference unless otherwise stated.</p>
+            <p><b>**</b>I decided to exclude the 2020 season from this analysis.</p>
+        </article>
+        
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/posts/2024-04-05/american-league-harder" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/posts/2024-04-05/american-league-harder&title=Baseball%20Analytica%3A%20Is%20the%20American%20League%20Harder?" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Is%20the%20American%20League%20Harder?&body=https%3A%2F%2Fwww.baseball.analytica.com/posts/2024-04-05/american-league-harder" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../background.js"></script>
+
+</body>
+</html>
