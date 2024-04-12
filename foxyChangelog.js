@@ -5,6 +5,7 @@ const changelogApp = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             versions: [
+                { ver: 'v1.18', date: '04/07/2024', desc: 'Adjusted interal weights and coefficients'},
                 { ver: 'v1.17', date: '07/18/2023', desc: 'Minor internal bug fixes'}, 
                 { ver: 'v1.16', date: '07/06/2023', desc: 'Improved method for data collection'}, 
                 { ver: 'v1.15', date: '06/27/2023', desc: 'Fixed issue with playoff probabilities not being between 0 and 100%'}, 
