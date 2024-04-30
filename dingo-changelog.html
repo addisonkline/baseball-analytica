@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DINGO Guide and Changelog | Baseball Analytica</title>
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/icon.png">
+    <link rel="canonical" href="https://baseball-analytica.com/rankings-explanation">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div class="bg" id="background">
+        <section class="top">
+            <div class="very-top">
+                <header>
+                    <a href="https://baseball-analytica.com">baseball-analytica.com</a>
+                </header>
+            </div>
+
+            <div class="bg-site-info">
+                <div class="image">
+                    <img src="images/background.png" alt="Background with Logo">
+                </div> 
+    
+                <h1>Welcome to Baseball Analytica</h1>
+    
+                <p>The premier sabermetrics blog discussing the latest statistics and showcasing the most interesting tidbits since 2021</p>
+                
+                <nav>
+                    <ul>
+                        <li v-for="section in sections">
+                            <a :href="section.url">{{ section.title }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <div class="contact-info" id="contact-info"> <!-- just called contact info so I don't have to write css just for this -->
+        <h1>DINGO Guide and Changelog</h1>
+        <p>This page is serves as a guide and changelog to the DINGO game odds model, whose page can be found <a href="dingo">here</a>.</p>
+        <hr>
+        <p>DINGO (<b>D</b>aily <b>In</b>dividual <b>G</b>ame <b>O</b>dds) is Baseball Analytica's model to predict MLB game odds for any given day in the baseball season. The model itself, which is proprietary, was created by <a href="/writers/kline">Addison Kline</a> in 2024 and has been in use since May 1 of that season.</p>
+        <h3>How are game odds calculated?</h3>
+        <p>For each individual game in its forecast, the DINGO model analyzes several metrics for both the home and away team to evaluate their ability to score and prevent runs. Then, it analyzes tens of thousands of previous MLB matchups, finding the matchups most similar to the current one and calculating probabilities based on a sample taken.</p>
+        <h3>Can I use these projections?</h3>
+        <p>If you reference or make use of these projections in any public way, we ask that you credit this site, providing a link if possible.</p>
+        <hr>
+        <h3>Changelog</h3>
+        <ul>
+            <li v-for="version in versions">
+                <h4>v{{ version.ver }} ({{ version.date }}): {{ version.desc }}</h4>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="bottom">
+        <section class="share">
+            <h3>Share this page</h3>
+            <div class="share-this-page">
+                <ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://baseball-analytica.com/rankings-explanation" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank">Twitter</a>
+                    <li><a href="http://www.reddit.com/submit?url=http://baseball-analytica.com/contact&title=Baseball%20Analytica%3A%20Rankings%20Explanation" target="_blank">Reddit</a></li>
+                    <li><a href="mailto:?to=&subject=Baseball%20Analytica%3A%20Rankings%20Explanation&body=https%3A%2F%2Fwww.baseball.analytica.com/rankings-explanation" target="_blank">Email</a></li>
+                </ul>
+            </div>
+            <div class="social-media-links">
+                <a href="https://www.twitter.com/bbanalytica" target="_blank">Baseball Analytica on Twitter >></a>
+            </div>
+        </section>
+    </div>
+
+    <script src="background.js"></script>
+    <script src="dingoChangelog.js"></script>
+
+</body>
+</html>

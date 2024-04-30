@@ -6,6 +6,7 @@ const backgroundApp = Vue.createApp({
                 { title: 'Posts', url: 'https://baseball-analytica.com', backlinkedUrl: 'https://baseball-analytica.com'},
                 { title: 'Leaderboards', url: '/leaderboards', backlinkedUrl: '../../leaderboards'},
                 { title: 'Projections', url: '/foxy', backlinkedUrl: '../../foxy'},
+                { title: 'Game Odds', url: '/dingo', backlinkedUrl: '../../dingo'},
                 { title: 'About', url: '/about', backlinkedUrl: '../../about'},
                 { title: 'Contact', url: '/contact', backlinkedUrl: '../../contact'}
             ]
