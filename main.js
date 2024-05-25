@@ -5,6 +5,7 @@ const app = Vue.createApp({
         return {
             testVar: 'This is a test variable',
             posts: [
+                { id: 'introducing-runners-worth', title: "Runner's Worth: A New Way to Evaluate Pitchers", author: 'A. Carreno', date: '05/24/2024', description: "Modern baserunning stats, at least the ones that are used, rely too heavily on game impact. So let's create an alternative.", url: '/posts/2024-05-24/introducing-runners-worth'},
                 { id: 'pitcher-similarity-scores', title: 'A New Approach to Pitcher Similarity Scores', author: 'A. Kline', date: '04/12/2024', description: 'Comparing baseball players is as old as baseball itself. So why not create a modern formula?', url: '/posts/2024-04-12/pitcher-similarity-scores'}, 
                 { id: 'american-league-harder', title: 'Is the American League Harder?', author: 'A. Kline', date: '04/05/2024', description: 'Evidence suggests that AL teams have harder schedules on average than NL teams. Is this true? And if so, why?', url: '/posts/2024-04-05/american-league-harder'}, 
                 { id: 'schedule-difficulty-by-team', title: 'How Does Schedule Difficulty Vary by Team?', author: 'A. Kline', date: '03/22/2024', description: 'No two teams have the same schedule. How much can they vary, and how much does this matter?', url: '/posts/2024-03-22/schedule-difficulty-by-team'}, 
